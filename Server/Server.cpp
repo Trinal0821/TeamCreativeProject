@@ -7,16 +7,24 @@
 #include <netinet/in.h>
 #include <vector>
 #include <json/value.h>
+#include <list>
 #include "clientObject.cpp"
+#include "SpreadsheetObject.cpp"
 
 #define PORT 1100
 
 
 
+std::list<SpreadsheetObject> allSpreadsheets;
 
 
 
-string openSpreadsheet(ClientObject client, std::string spreadsheet){
+
+/**********
+Opens the spreadsheet and broadcasts the information to the requesting client.
+If the spreadsheet doesn't exist, we create it. Returns a string if there is an error.
+*************/
+std::string openSpreadsheet(ClientObject client, std::string spreadsheet){
 	//Check if spreadsheet exists
 	
 	//If it does, send the data to the asking client
@@ -26,25 +34,74 @@ string openSpreadsheet(ClientObject client, std::string spreadsheet){
 	return null;
 }
 
-string updateCell(string spreadsheet, string cell, string update){
+
+
+
+
+
+
+/*****************
+Updates a cell in the spreadsheet, and broadcasts to all the users 
+Returns a string if there is an error.
+*****************/
+std::string updateCell(*SpreadsheetObject spreadsheet, std::string cell, std::string update){
 	//Update the cell in the spreadsheet
-	//Push this onto the "undo" stack
+	spreadsheet->addCell(cell, update);
+	
+	std::string message = "{\"messageType\":\"editCell\", \"cellName\": \""+cell+"\",\"contents\":\""+update+"\"}";
+	//Push this onto the "actions" stack
+	spreadsheet->actions.push_back(message);
 	
 	//Broadcast to everyone
+	std::string returnString = spreadsheet->broadcastToAll(message);
 	
 	//Return any errors
-	return null;
+	return returnString;
 }
 
-string highlightUpdate(string spreadsheet, string username){
-	//Broadcast the highlight to everyone
-	return null;
-}
 
-void undo(string spreadsheet){
-	//Pop from the undo stack
+
+
+
+
+
+/*****************
+Updates a cell in the spreadsheet, and broadcasts to all the users 
+Returns a string if there is an error.
+*****************/
+std::string highlightUpdate(*SpreadsheetObject spreadsheet, std::string cellName, int selectorId, std::string username){
+	std::string message = "{\"messageType\":\"cellSelected\", \"cellName\": \""+cellName+"\", \"selector\": \""+selectorId+"\",\"selectorName\":\""+username+"\"}";
+	
 	//Broadcast to everyone
+	std::string returnString = spreadsheet->broadcastToAll(message);
+	
+	//Return any errors
+	return returnString;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************
+Updates a cell in the spreadsheet, and broadcasts to all the users 
+Returns a string if there is an error.
+*****************/
+std::string broadcastToClient(int clientID, std::string message){
+	//Broadcast to one person
+}
+
+
+
+
+
 
 
 
@@ -93,33 +150,35 @@ int main()
 			//TODO: We need to interprit the JSON that comes in
 			ClientObject currentClient = //Search for the client's data
 			string workingSpreadsheet = currentClient->clientSpreadsheet;
-			else if(/*"User" in json*/){
+			string messageType = //Get this from json
+			if(/*"User" in json*/){
 				currentClient->clientName = //User field
+				//Send the spreadsheets to the user
 			}
 			else if(/*Spreadsheet*/){
 				//Open and create spreadsheet
 				//Send data to user
 				string result = openSpreadsheet(currentClient, /*Get spreadsheet from json*/);
 			}
-			else if(/*CellUpdate*/){
+			else if(requestType=="editCell"){
 				//Update cell in spreadsheet
-				string result = updateCell(workingSpreadsheet, string cell, string update);//Get these from json
+				string result = updateCell(workingSpreadsheet, cell, update);//Get these from json
 			}
-			else if(/*HighlightUpdate*/){
+			else if(requestType=="selectCell"){
 				//Open and create spreadsheet
 				highlightUpdate(workingSpreadsheet, currentClient->clientName); //Get these from json
 			}
-			else if(/*Undo*/){
+			else if(requestType=="undo"){
 				//Open and create 
-				undo(workingSpreadsheet){
+				spreadsheet->undo();
 			}
-			else if(/*Revert*/){
-				//Open and create spreadsheet
+			else if(requestType=="revertCell"){
+				//Open and create 
+				spreadsheet->revert();
 			}
 			else{
 				//Data is unreadable. Send a connectionerrror message
 			}
-			
 		}
 		
 		
