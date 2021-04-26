@@ -8,6 +8,8 @@
 #include <vector>
 #include <json/value.h>
 #include <list>
+#include <filesystem>
+#include <fstream>
 #include "clientObject.cpp"
 #include "SpreadsheetObject.cpp"
 
@@ -15,7 +17,8 @@
 
 
 
-std::list<SpreadsheetObject> allSpreadsheets;
+std::list<*SpreadsheetObject> allSpreadsheets;
+std::list<std::string> spreadsheetStrings;
 
 
 
@@ -24,16 +27,47 @@ std::list<SpreadsheetObject> allSpreadsheets;
 Opens the spreadsheet and broadcasts the information to the requesting client.
 If the spreadsheet doesn't exist, we create it. Returns a string if there is an error.
 *************/
-std::string openSpreadsheet(ClientObject client, std::string spreadsheet){
-	//Check if spreadsheet exists
+SpreadsheetObject openSpreadsheet(ClientObject client, std::string spreadsheet){
 	
-	//If it does, send the data to the asking client
-	//If it doesn't, create it
+	//Check if spreadsheet exists
+	*SpreadsheetObject foundSheet = null;
+	for(sheet = allSpreadsheets.begin; sheet!=allSpreadsheets.end(); ++sheet){
+		if(sheet->spreadsheetName == spreadsheet){
+			foundSheet=&sheet;
+			break;
+		}
+	}
+	
+	//If it doesn't exist, create it
+	if(foundSheet==null){
+		ofstream spreadsheetFile("Spreadsheet/"+spreadsheet+".xls");
+		foundSheet = new Spreadsheet(spreadsheet)
+		allSpreadsheets.push_back(foundSheet);
+		spreadsheetStrings.push_back(spreadsheet);
+	}
+	
+	//Send the data to the cleint
+	foundSheet->addClient(client);
+	broadcastToClient(client, foundSheet->getData());
 	
 	//If there is an error, we will return a string containing the error
 	return null;
 }
 
+
+
+
+/**********
+Returns a list of all files. Ideally, this will be called at the startup in order to 
+use throughout the program to capture all existing files. Put this into spreadsheetStrings
+for better use.
+*************/
+std::list<std::string> getAllFilesAsStrings(){
+	std::list<std::string> returnList;
+    std::string path = "Spreadsheet";
+    for (const auto & entry : std::filesystem::directory_iterator(path))
+        returnList.push_back(entry.path());
+}
 
 
 
