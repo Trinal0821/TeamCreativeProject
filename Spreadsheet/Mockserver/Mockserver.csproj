@@ -48,5 +48,19 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpreadsheetController\SpreadsheetController.csproj">
+      <Project>{CD63B342-6146-4F95-B3A4-926B3D5296E2}</Project>
+      <Name>SpreadsheetController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpreadsheetGUI\SpreadsheetGUI.csproj">
+      <Project>{A4327EA0-AD27-46BE-8230-1FCAEAD6AB05}</Project>
+      <Name>SpreadsheetGUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Spreadsheet\Spreadsheet.csproj">
+      <Project>{D0C74282-0901-4A15-BB54-1E949173B290}</Project>
+      <Name>Spreadsheet</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
