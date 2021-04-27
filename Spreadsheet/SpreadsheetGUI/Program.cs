@@ -105,4 +105,4 @@ namespace SpreadsheetGUI
             Application.Run(appContext);
         }
     }
-}   
+}

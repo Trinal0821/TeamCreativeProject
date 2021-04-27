@@ -16,14 +16,14 @@ namespace SpreadsheetGUI
 {
 
     public delegate void TextBoxContentsChangedHandler(SpreadsheetPanel sender);
-   
+
 
     public partial class SpreadsheetForm : Form
     {
         private SpreadsheetController controller;
         private bool error = false;
 
-       // public delegate void UpdateSelection(string cellName);
+        // public delegate void UpdateSelection(string cellName);
         //public event UpdateSelection ssSelection;
         //public delegate void EditSelection(string cellContents);
         //public event EditSelection ssEdit;
@@ -95,7 +95,7 @@ namespace SpreadsheetGUI
 
                 spreadsheetPanel1.SetContents(colUpdate, rowUpdate, cellToUpdate.Value);
 
-                controller.CellUpdated();
+                controller.cellUpdated();
             }
 
             string crntSel = controller.getClientSelection(controller.getThisID());
@@ -228,7 +228,6 @@ namespace SpreadsheetGUI
                 DialogResult r = MessageBox.Show("You have unsaved data that will be lost. Would you like to save?",
               "Unsaved Document",
               MessageBoxButtons.YesNoCancel);
-
                 switch (r)
                 {
                     case DialogResult.Yes:
@@ -303,7 +302,7 @@ namespace SpreadsheetGUI
         //  private void SpreadsheetForm_FormClosing(object sender, FormClosingEventArgs e)
         private void SpreadsheetForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
             if (CheckChanged(sender, e))
                 e.Cancel = true;
 
@@ -357,4 +356,3 @@ namespace SpreadsheetGUI
         }
     }
 }
-

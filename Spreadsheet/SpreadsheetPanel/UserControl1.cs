@@ -149,13 +149,13 @@ namespace SS
                 cellsToRecalculate = s.SetContentsOfCell(cellName, contents);
                 RecalculateCells(cellsToRecalculate);
             }
-            catch(FormulaFormatException e)
+            catch (FormulaFormatException e)
             {
                 cellsToRecalculate = s.SetContentsOfCell(cellName, initialContents);
                 RecalculateCells(cellsToRecalculate);
                 MessageBox.Show(e.Message, "Invalid Formula");
             }
-            catch(CircularException e)
+            catch (CircularException e)
             {
                 cellsToRecalculate = s.SetContentsOfCell(cellName, initialContents);
                 RecalculateCells(cellsToRecalculate);
@@ -175,7 +175,7 @@ namespace SS
                 int col = GetCellNameCol(cellName);
                 int row = GetCellNameRow(cellName);
                 object val = s.GetCellValue(cellName);
-                if(val is FormulaError)
+                if (val is FormulaError)
                     SetValue(col, row, "FormulaError");
                 else
                     SetValue(col, row, s.GetCellValue(cellName).ToString());
@@ -272,7 +272,6 @@ namespace SS
         {
             s.Save(fileName);
         }/*
-
         /// <summary>
         /// Returns true if the spreadsheet has changed. Otherwise, returns false.
         /// </summary>
@@ -489,39 +488,39 @@ namespace SS
                 Pen pen = new Pen(Color.Black);
                 SpreadsheetController controller = _ssp.controller;
 
-                    switch(id)
-                    {
-                        case 0:
-                            pen = new Pen(Color.Blue);
-                            break;
-                        case 1:
-                            pen = new Pen(Color.DarkMagenta);
-                            break;
-                        case 2:
-                            pen = new Pen(Color.Green);
-                            break;
-                        case 3:
-                            pen = new Pen(Color.Red);
-                            break;
-                        case 4:
-                            pen = new Pen(Color.Violet);
-                            break;
-                        case 5:
-                            pen = new Pen(Color.Purple);
-                            break;
-                        case 6:
-                            pen = new Pen(Color.Orange);
-                            break;
-                        case 7:
-                            pen = new Pen(Color.Yellow);
-                            break;
-                        case 8:
-                            pen = new Pen(Color.Aquamarine);
-                            break;
-                        default:
-                            pen = new Pen(Color.Brown);
-                            break;
-                    }
+                switch (id)
+                {
+                    case 0:
+                        pen = new Pen(Color.Blue);
+                        break;
+                    case 1:
+                        pen = new Pen(Color.DarkMagenta);
+                        break;
+                    case 2:
+                        pen = new Pen(Color.Green);
+                        break;
+                    case 3:
+                        pen = new Pen(Color.Red);
+                        break;
+                    case 4:
+                        pen = new Pen(Color.Violet);
+                        break;
+                    case 5:
+                        pen = new Pen(Color.Purple);
+                        break;
+                    case 6:
+                        pen = new Pen(Color.Orange);
+                        break;
+                    case 7:
+                        pen = new Pen(Color.Yellow);
+                        break;
+                    case 8:
+                        pen = new Pen(Color.Aquamarine);
+                        break;
+                    default:
+                        pen = new Pen(Color.Brown);
+                        break;
+                }
 
                 return pen;
             }
@@ -544,7 +543,7 @@ namespace SS
                 // Pen, brush, and fonts to use
                 Brush brush = new SolidBrush(fontColor);
                 Pen pen = new Pen(brush);
-               // Pen pen2 = new Pen(Color.Blue);
+                // Pen pen2 = new Pen(Color.Blue);
                 Font regularFont = Font;
                 Font boldFont = new Font(regularFont, FontStyle.Bold);
 

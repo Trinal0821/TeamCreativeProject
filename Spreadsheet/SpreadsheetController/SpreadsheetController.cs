@@ -20,7 +20,7 @@ namespace Controller
         public event UpdateFromServer ssUpdate;
         public delegate void UpdateError(string message);
         public event UpdateError ssUpdateError;
-       // public delegate void SelectionChanged();
+        // public delegate void SelectionChanged();
         //public event SelectionChanged SelectionUpdate;
         public delegate void ConnectedHandler(string[] ssNames);
         public event ConnectedHandler Connected;
@@ -38,7 +38,7 @@ namespace Controller
         private Dictionary<int, KeyValuePair<string, string>> clientList =
             new Dictionary<int, KeyValuePair<string, string>>(); // <clientID, <cellName(position), clientName>
         private KeyValuePair<string, string> cellToUpdate =
-            new KeyValuePair<string, string>("",""); // <cellName, cellContents>
+            new KeyValuePair<string, string>("", ""); // <cellName, cellContents>
 
         // User input variables
         private string contents = "";
@@ -202,7 +202,7 @@ namespace Controller
         private void UpdateSpreadsheet(string instruction)
         {
             if (clientID == int.MinValue)
-            { 
+            {
                 // Assign client ID
                 if (int.TryParse(instruction, out int ID))
                     clientID = ID;
@@ -210,7 +210,7 @@ namespace Controller
 
             JObject jObj = JObject.Parse(instruction);
 
-           // string deserializedMessageType = JsonConvert.DeserializeObject<string>(instruction);
+            // string deserializedMessageType = JsonConvert.DeserializeObject<string>(instruction);
 
             string deserializeMessage = jObj["messageType"].ToString();
             if (instruction.Contains("cellUpdate"))
@@ -220,7 +220,7 @@ namespace Controller
 
                 cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
             }
-            else if(instruction.Contains("cellSelected"))
+            else if (instruction.Contains("cellSelected"))
             {
                 string deserializedName = jObj["cellName"].ToString();
                 string deserializedSelector = jObj["selector"].ToString();
@@ -232,7 +232,7 @@ namespace Controller
                     addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
                 }
             }
-            else if(instruction.Contains("disconnected"))
+            else if (instruction.Contains("disconnected"))
             {
                 string deserializedID = jObj["user"].ToString();
                 if (int.TryParse(deserializedID, out int ID))
@@ -241,12 +241,12 @@ namespace Controller
                 }
 
             }
-            else if(instruction.Contains("requestError"))
+            else if (instruction.Contains("requestError"))
             {
                 string deserializedMessage = jObj["message"].ToString();
                 ssUpdateError(deserializedMessage);
             }
-            else if(instruction.Contains("serverError"))
+            else if (instruction.Contains("serverError"))
             {
                 string deserializedMessage = jObj["message"].ToString();
                 ssUpdateError(deserializedMessage);
@@ -262,28 +262,28 @@ namespace Controller
             }
         }
 
-       public void ProcessInputs()
+        public void ProcessInputs()
         {
             StringBuilder sb = new StringBuilder();
-            if(doUndo)
+            if (doUndo)
             {
                 sb.Append(JsonConvert.SerializeObject("requestType:" + "undo" + "\n"));
                 doUndo = false;
             }
-            else if(doRevert)
+            else if (doRevert)
             {
 
                 sb.Append(JsonConvert.SerializeObject("requestType:" + "revertCell" + "\n"));
                 sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
                 doUndo = false;
             }
-            else if(!contents.Equals(""))
+            else if (!contents.Equals(""))
             {
                 sb.Append(JsonConvert.SerializeObject("requestType:" + "editCell" + "\n"));
                 sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
                 sb.Append(JsonConvert.SerializeObject("contents:" + contents + "\n"));
             }
-            else if(!cellName.Equals(""))
+            else if (!cellName.Equals(""))
             {
                 sb.Append(JsonConvert.SerializeObject("requestType:" + "selectCell" + "\n"));
                 sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
@@ -339,7 +339,7 @@ namespace Controller
         /// <returns></returns>
         public string getClientSelection(int clientID)
         {
-            if (clientList.TryGetValue(clientID, out KeyValuePair<string,string> clientInfo))
+            if (clientList.TryGetValue(clientID, out KeyValuePair<string, string> clientInfo))
                 return clientInfo.Key;
             return null;
         }
@@ -380,7 +380,7 @@ namespace Controller
 
         public void cellUpdated()
         {
-            cellToUpdate = new KeyValuePair<string, string>("","");
+            cellToUpdate = new KeyValuePair<string, string>("", "");
         }
     }
 }
