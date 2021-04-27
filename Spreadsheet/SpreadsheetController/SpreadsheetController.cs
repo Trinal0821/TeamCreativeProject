@@ -35,10 +35,16 @@ namespace Controller
         private String userName;
         private int clientID = int.MinValue;
         private StringBuilder jsonInfo;
-        private List<int> clientList = new List<int>();
-        private Spreadsheet sheet = new Spreadsheet();
+        private Dictionary<int, KeyValuePair<string, string>> clientList =
+            new Dictionary<int, KeyValuePair<string, string>>(); // <clientID, <cellName(position), clientName>
+        private KeyValuePair<string, string> cellToUpdate =
+            new KeyValuePair<string, string>("",""); // <cellName, cellContents>
+
+        // User input variables
         private string contents = "";
         private string cellName = "";
+        private bool doUndo = false;
+        private bool doRevert = false;
 
         // state representing the connection to the server
         public SocketState theServer = null;
@@ -219,18 +225,18 @@ namespace Controller
                 string deserializedName = jObj["cellName"].ToString();
                 string deserializedcontents = jObj["contents"].ToString();
 
-                sheet.SetContentsOfCell(deserializedName, deserializedcontents);
+                cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
             }
             else if(instruction.Contains("cellSelected"))
             {
-                //string deserializedName = jObj["cellName"].ToString();
-                //string deserializedSelector = jObj["selector"].ToString();
-                //string deserializedSelectorName = jObj["selectorName"].ToString();
+                string deserializedName = jObj["cellName"].ToString();
+                string deserializedSelector = jObj["selector"].ToString();
+                string deserializedSelectorName = jObj["selectorName"].ToString();
 
                 //Add the client ID to the client list
                 if (int.TryParse(instruction, out int ID))
                 {
-                    addClients(ID);
+                    addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
                 }
             }
             else if(instruction.Contains("disconnected"))
@@ -266,7 +272,19 @@ namespace Controller
        public void ProcessInputs()
         {
             StringBuilder sb = new StringBuilder();
-            if(!contents.Equals(""))
+            if(doUndo)
+            {
+                sb.Append(JsonConvert.SerializeObject("requestType:" + "undo" + "\n"));
+                doUndo = false;
+            }
+            else if(doRevert)
+            {
+
+                sb.Append(JsonConvert.SerializeObject("requestType:" + "revertCell" + "\n"));
+                sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
+                doUndo = false;
+            }
+            else if(!contents.Equals(""))
             {
                 sb.Append(JsonConvert.SerializeObject("requestType:" + "editCell" + "\n"));
                 sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
@@ -281,20 +299,27 @@ namespace Controller
             Networking.Send(theServer.TheSocket, sb.ToString());
         }
 
-        /// <summary>
-        /// Add the client id into the clientlist
-        /// </summary>
-        /// <param name="clientID"></param>
-        private void addClients(int clientID)
+        public int getThisID()
         {
-            if (clientID != int.MinValue)
-            {
-                clientList.Add(clientID);
-            }
+            return this.clientID;
         }
 
         /// <summary>
-        /// Remove the client id from the clientlist
+        /// Adds/Updates the client info into the clientlist
+        /// </summary>
+        /// <param name="clientID"></param>
+        private void addClients(int clientID, KeyValuePair<string, string> userInfo)
+        {
+            if (clientList.ContainsKey(clientID))
+            {
+                clientList.Remove(clientID);
+            }
+
+            clientList.Add(clientID, new KeyValuePair<string, string>(userInfo.Key, userInfo.Value));
+        }
+
+        /// <summary>
+        /// Removes the client info from the clientlist
         /// </summary>
         /// <param name="clientID"></param>
         private void removeClients(int clientID)
@@ -308,7 +333,22 @@ namespace Controller
         /// <returns></returns>
         public List<int> getClientIDList()
         {
-            return clientList;
+            List<int> idList = new List<int>();
+            foreach (int i in clientList.Keys)
+                idList.Add(i);
+            return idList;
+        }
+
+        /// <summary>
+        /// Returns the selected cell for a specified client.
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <returns></returns>
+        public string getClientSelection(int clientID)
+        {
+            if (clientList.TryGetValue(clientID, out KeyValuePair<string,string> clientInfo))
+                return clientInfo.Key;
+            return null;
         }
 
         /// <summary>
@@ -327,6 +367,27 @@ namespace Controller
         public void setCellName(string cellName)
         {
             this.cellName = cellName;
+        }
+
+        public void undoAction()
+        {
+            doUndo = true;
+        }
+
+        public void revertCell(string cellName)
+        {
+            this.cellName = cellName;
+            doRevert = true;
+        }
+
+        public KeyValuePair<string, string> getCellToUpdate()
+        {
+            return cellToUpdate;
+        }
+
+        public void cellUpdated()
+        {
+            cellToUpdate = new KeyValuePair<string, string>("","");
         }
     }
 }

@@ -48,7 +48,7 @@ namespace SpreadsheetGUI
             this.Text = "Untitled Spreadsheet";
 
             // initialize form
-            InitializeComponent();
+            InitializeComponent(ssCtrl);
 
             // highlights 
             this.ActiveControl = textBoxCellContents;
@@ -85,7 +85,24 @@ namespace SpreadsheetGUI
             //{
 
             //}
-            spreadsheetPanel1.GetSelection(out int col, out int row);
+
+            // Update cell info if necessary
+            KeyValuePair<string, string> cellToUpdate = controller.getCellToUpdate();
+            if (cellToUpdate.Key.Length != 0)
+            {
+                int colUpdate = spreadsheetPanel1.GetCellNameCol(cellToUpdate.Key);
+                int rowUpdate = spreadsheetPanel1.GetCellNameRow(cellToUpdate.Value);
+
+                spreadsheetPanel1.SetContents(colUpdate, rowUpdate, cellToUpdate.Value);
+
+                controller.CellUpdated();
+            }
+
+            string crntSel = controller.getClientSelection(controller.getThisID());
+            int row = spreadsheetPanel1.GetCellNameRow(crntSel);
+            int col = spreadsheetPanel1.GetCellNameCol(crntSel);
+
+            spreadsheetPanel1.SetSelection(col, row);
             spreadsheetPanel1.GetValue(col, row, out string val);
             textBoxCellValue.Text = val;
             textBoxCellContents.Text = spreadsheetPanel1.GetContents(col, row);
@@ -205,7 +222,7 @@ namespace SpreadsheetGUI
         /// <param name="e"></param>
         /// <returns></returns>
         private bool CheckChanged(object sender, EventArgs e)
-        {
+        {/*
             if (spreadsheetPanel1.Changed())
             {
                 DialogResult r = MessageBox.Show("You have unsaved data that will be lost. Would you like to save?",
@@ -224,7 +241,7 @@ namespace SpreadsheetGUI
                     default:
                         return false;
                 }
-            }
+            }*/
             return false;
         }
 

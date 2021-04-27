@@ -1,4 +1,6 @@
-﻿namespace SpreadsheetGUI
+﻿using Controller;
+
+namespace SpreadsheetGUI
 {
     partial class SpreadsheetForm
     {
@@ -26,7 +28,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(SpreadsheetController controller)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpreadsheetForm));
             this.textBoxCellName = new System.Windows.Forms.TextBox();
@@ -36,15 +38,12 @@
             this.textBoxCellValue = new System.Windows.Forms.TextBox();
             this.textBoxCellContents = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.NewStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripNightModeButton = new System.Windows.Forms.ToolStripButton();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.spreadsheetPanel1 = new SS.SpreadsheetPanel();
+            this.spreadsheetPanel1 = new SS.SpreadsheetPanel(controller);
+            this.toolStripUndoButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRevertButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,56 +108,15 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripNightModeButton});
+            this.toolStripNightModeButton,
+            this.toolStripUndoButton,
+            this.toolStripRevertButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.toolStrip1.Size = new System.Drawing.Size(1632, 42);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NewStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.fileToolStripMenuItem,
-            this.closeToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(54, 36);
-            this.toolStripDropDownButton1.Text = "File";
-            // 
-            // NewStripMenuItem
-            // 
-            this.NewStripMenuItem.Name = "NewStripMenuItem";
-            this.NewStripMenuItem.Size = new System.Drawing.Size(208, 44);
-            this.NewStripMenuItem.Text = "New";
-            this.NewStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(208, 44);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(208, 44);
-            this.fileToolStripMenuItem.Text = "Open";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(208, 44);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStripNightModeButton
             // 
@@ -192,7 +150,25 @@
             this.spreadsheetPanel1.Size = new System.Drawing.Size(1612, 704);
             this.spreadsheetPanel1.TabIndex = 0;
             // 
-            // Form1
+            // toolStripUndoButton
+            // 
+            this.toolStripUndoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripUndoButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripUndoButton.Image")));
+            this.toolStripUndoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripUndoButton.Name = "toolStripUndoButton";
+            this.toolStripUndoButton.Size = new System.Drawing.Size(46, 36);
+            this.toolStripUndoButton.Text = "Undo";
+            // 
+            // toolStripRevertButton
+            // 
+            this.toolStripRevertButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripRevertButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripRevertButton.Image")));
+            this.toolStripRevertButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripRevertButton.Name = "toolStripRevertButton";
+            this.toolStripRevertButton.Size = new System.Drawing.Size(46, 36);
+            this.toolStripRevertButton.Text = "Revert Cell";
+            // 
+            // SpreadsheetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,7 +185,7 @@
             this.Controls.Add(this.spreadsheetPanel1);
             this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "SpreadsheetForm";
             this.Text = "Untitled";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SpreadsheetForm_FormClosing);
             this.toolStrip1.ResumeLayout(false);
@@ -229,15 +205,12 @@
         private System.Windows.Forms.TextBox textBoxCellValue;
         private System.Windows.Forms.TextBox textBoxCellContents;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem NewStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.HelpProvider helpProvider2;
         private System.Windows.Forms.ToolStripButton toolStripNightModeButton;
+        private System.Windows.Forms.ToolStripButton toolStripUndoButton;
+        private System.Windows.Forms.ToolStripButton toolStripRevertButton;
     }
 }
 

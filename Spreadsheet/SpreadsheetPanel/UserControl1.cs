@@ -56,13 +56,15 @@ namespace SS
         // The SpreadsheetPanel is backed by a Spreadsheet (contains all of the logic)
         private Spreadsheet s;
 
+        protected SpreadsheetController controller;
+
         /// <summary>
         /// Creates an empty SpreadsheetPanel
         /// </summary>
 
-        public SpreadsheetPanel()
+        public SpreadsheetPanel(SpreadsheetController controller)
         {
-
+            this.controller = controller;
             InitializeComponent();
 
             // The DrawingPanel is quite large, since it has 26 columns and 99 rows.  The
@@ -195,7 +197,7 @@ namespace SS
         /// <summary>
         /// Converts the cell name of into its corresponding column number
         /// </summary>
-        private int GetCellNameCol(string name)
+        public int GetCellNameCol(string name)
         {
             return Convert.ToInt32(name[0]) - 65;
         }
@@ -203,7 +205,7 @@ namespace SS
         /// <summary>
         /// Converts the cell name of into its corresponding row number
         /// </summary>
-        private int GetCellNameRow(string name)
+        public int GetCellNameRow(string name)
         {
             int.TryParse(name.Substring(1), out int result);
             return result - 1;
@@ -269,7 +271,7 @@ namespace SS
         public void Save(string fileName)
         {
             s.Save(fileName);
-        }
+        }/*
 
         /// <summary>
         /// Returns true if the spreadsheet has changed. Otherwise, returns false.
@@ -278,7 +280,7 @@ namespace SS
         public bool Changed()
         {
             return s.Changed;
-        }
+        }*/
 
         /// <summary>
         /// When the SpreadsheetPanel is resized, we set the size and locations of the three
@@ -482,13 +484,11 @@ namespace SS
             /// A method that will daraw the client's color and let other know which user is editing which cell.
             /// </summary>
             /// <returns></returns>
-            public Pen DrawClientColor()
+            public Pen DrawClientColor(int id)
             {
                 Pen pen = new Pen(Color.Black);
-                SpreadsheetController controller = new SpreadsheetController();
+                SpreadsheetController controller = _ssp.controller;
 
-                foreach(int id in controller.getClientIDList())
-                {
                     switch(id)
                     {
                         case 0:
@@ -522,7 +522,6 @@ namespace SS
                             pen = new Pen(Color.Brown);
                             break;
                     }
-                }
 
                 return pen;
             }
@@ -586,14 +585,21 @@ namespace SS
                 }
 
                 // Highlight the selection, if it is visible
-                if ((_selectedCol - _firstColumn >= 0) && (_selectedRow - _firstRow >= 0))
+                foreach (int id in _ssp.controller.getClientIDList())
                 {
-                    e.Graphics.DrawRectangle(
-                        DrawClientColor(),
-                        new Rectangle(LABEL_COL_WIDTH + (_selectedCol - _firstColumn) * DATA_COL_WIDTH + 1,
-                                      LABEL_ROW_HEIGHT + (_selectedRow - _firstRow) * DATA_ROW_HEIGHT + 1,
-                                      DATA_COL_WIDTH - 2,
-                                      DATA_ROW_HEIGHT - 2));
+                    string selection = _ssp.controller.getClientSelection(id);
+                    int col = _ssp.GetCellNameCol(selection);
+                    int row = _ssp.GetCellNameRow(selection);
+
+                    if ((col - _firstColumn >= 0) && (row - _firstRow >= 0))
+                    {
+                        e.Graphics.DrawRectangle(
+                            DrawClientColor(id),
+                            new Rectangle(LABEL_COL_WIDTH + (col - _firstColumn) * DATA_COL_WIDTH + 1,
+                                          LABEL_ROW_HEIGHT + (row - _firstRow) * DATA_ROW_HEIGHT + 1,
+                                          DATA_COL_WIDTH - 2,
+                                          DATA_ROW_HEIGHT - 2));
+                    }
                 }
 
                 // Draw the text
