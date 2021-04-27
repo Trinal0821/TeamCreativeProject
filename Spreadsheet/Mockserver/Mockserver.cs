@@ -17,9 +17,10 @@ namespace Mockserver
     class Mockserver
     {
         string lastedit = null;
-        private static Dictionary<long, SocketState> clientsdictionary;
+        private static Dictionary<SocketState, string> clientsdictionary;
         private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
         private SocketState clients = null;
+        private string name;
         static void Main(string[] args)
         {
             Mockserver server = new Mockserver();
@@ -38,7 +39,7 @@ namespace Mockserver
 
         public Mockserver()
         {
-            clientsdictionary = new Dictionary<long, SocketState>();
+            clientsdictionary = new Dictionary<SocketState, string>();
         }
 
         private void StartServer()
@@ -102,6 +103,8 @@ namespace Mockserver
         {
             clients = state;
 
+            clientsdictionary.Add(state, null);
+
             if (state.ErrorOccured)
                 return;
 
@@ -121,16 +124,6 @@ namespace Mockserver
         /// <param name="state"></param>
         private void ReceiveMessage(SocketState state)
         {
-            //A string builder that is used to append all of the json that need to be sent
-            StringBuilder builder = new StringBuilder();
-            builder.Append(state.ID);
-
-            //// Remove the client if they aren't still connected
-            //if (state.ErrorOccured)
-            //{
-            //    RemoveClient(state.ID);
-            //    return;
-            //}
 
             //A list that stores all of the data that was sent from the client
             List<string> list = ProcessMessage(clients);
@@ -139,35 +132,60 @@ namespace Mockserver
             HashSet<long> disconnectedClients = new HashSet<long>();
 
             //Gets the player's name from the list
-            string name = list[0];
+             name = list[0];
 
             //Remove the name from the list
             list.Remove(list[0]);
 
+            state.OnNetworkAction = SendSpreadsheets;
+
+            // Continue the event loop that receives messages from this client
+            Networking.GetData(state);
+        }
+
+        private void SendSpreadsheets(SocketState state)
+        {
+            List<string> list = ProcessMessage(clients);
+
+            //store the new spreadsheetname into a variable
+            if (list.Count > 0)
+            {
+                string spreadsheetname = list[0];
+
+                //Remove the spreadsheetname from the list
+                list.Remove(list[0]);
+            }
+
+            //If the spreadsheet list is empty then create a new one
+            if (!spreadsheetlist.Any())
+            {
+                AbstractSpreadsheet sheet = new Spreadsheet();
+                spreadsheetlist.Add(sheet);
+            }
+            else
+            {
+                StringBuilder stringbuilder = new StringBuilder();
+
+                foreach (Spreadsheet s in spreadsheetlist)
+                {
+                    stringbuilder.Append(s + "\n");
+                }
+                stringbuilder.Append("\n");
+                Networking.Send(clients.TheSocket, stringbuilder.ToString());
+            }
+
+            StringBuilder builder = new StringBuilder();
+            builder.Append(state.ID);
             System.Console.WriteLine("about to send id");
 
             //Send the startup info to the client. If the data cannot be sent then it will add them to a list of disconnected clients to be remove
             if (!Networking.Send(clients.TheSocket, builder.ToString()))
             {
-                disconnectedClients.Add(state.ID);
+                //disconnectedClients.Add(state.ID);
+                System.Console.WriteLine("Error with sending client ID");
             }
 
             System.Console.WriteLine("sent ID");
-
-            ////loop through all of the disconnected clients and remove them from the world
-            //foreach (long id in disconnectedClients)
-            //{
-            //    RemoveClient(id);
-            //}
-            //builder.Clear();
-
-
-            //// Save the client state
-            //// Need to lock here because clients can disconnect at any time
-            //lock (clients)
-            //{
-            //    clients[state.ID] = state;
-            //}
 
             Console.WriteLine("Client " + state.ID + " is connected");
 
@@ -176,6 +194,34 @@ namespace Mockserver
             // Continue the event loop that receives messages from this client
             Networking.GetData(state);
         }
+
+        ///// <summary>
+        ///// Sends the client ID after sending the spreadsheets
+        ///// </summary>
+        ///// <param name="state"></param>
+        //private void SendID(SocketState state)
+        //{
+        //    StringBuilder builder = new StringBuilder();
+        //    builder.Append(state.ID);
+        //    System.Console.WriteLine("about to send id");
+
+        //    //Send the startup info to the client. If the data cannot be sent then it will add them to a list of disconnected clients to be remove
+        //    if (!Networking.Send(clients.TheSocket, builder.ToString()))
+        //    {
+        //        //disconnectedClients.Add(state.ID);
+        //        System.Console.WriteLine("Error with sending client ID");
+        //    }
+
+        //    System.Console.WriteLine("sent ID");
+
+        //    Console.WriteLine("Client " + state.ID + " is connected");
+
+        //    state.OnNetworkAction = ProcessInput;
+
+        //    // Continue the event loop that receives messages from this client
+        //    Networking.GetData(state);
+        //}
+
         /// <summary>
         /// Process all of the commands that was sent from the client and store them accordingly
         /// </summary>
@@ -186,31 +232,7 @@ namespace Mockserver
             List<string> list = ProcessMessage(state);
             StringBuilder sb = new StringBuilder();
 
-            //store the new spreadsheetname into a variable
-            string spreadsheetname = list[0];
-
-            //Remove the spreadsheetname from the list
-            list.Remove(list[0]);
-
-            //If the spreadsheet list is empty then create a new one
-            if (!spreadsheetlist.Any())
-            {
-                AbstractSpreadsheet sheet = new Spreadsheet();
-                spreadsheetlist.Add(sheet);
-
-             //   SpreadsheetForm form = new SpreadsheetForm(new SpreadsheetController(), spreadsheetname);
-            }
-            else
-            {
-                StringBuilder stringbuilder = new StringBuilder();
-
-                foreach(Spreadsheet s in spreadsheetlist)
-                {
-                    stringbuilder.Append(s + "\n");
-                }
-                sb.Append("\n");
-                Networking.Send(clients.TheSocket, stringbuilder.ToString());
-            }
+            
 
             foreach (string p in list)
             {
@@ -233,6 +255,14 @@ namespace Mockserver
                     else if (p.Contains("selectCell"))
                     {
                         deserializedCell = jObj["cellName"].ToString();
+
+                        foreach(SocketState s in clientsdictionary.Keys)
+                        {
+                            if(s.ID == state.ID)
+                            {
+                                clientsdictionary[s] = deserializedCell;
+                            }
+                        }
                     }
                     else if (p.Contains("undo"))
                     {

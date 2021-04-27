@@ -155,6 +155,13 @@ namespace Controller
                 return;
             }
 
+            string clientID = state.GetData();
+
+            System.Console.WriteLine(clientID);
+
+            // remove the data we just processed from the state's buffer
+            state.RemoveData(0, clientID.Length);
+
             processData(state);
 
             // Continue event loop
