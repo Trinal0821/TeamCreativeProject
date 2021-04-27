@@ -16,3 +16,12 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\net
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.csproj.CoreCompileInputs.cache
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\bin\Debug\netstandard2.0\Formula.deps.json
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\bin\Debug\netstandard2.0\Formula.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\bin\Debug\netstandard2.0\Formula.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.csprojAssemblyReference.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.AssemblyInfoInputs.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.AssemblyInfo.cs
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.csproj.CoreCompileInputs.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.pdb

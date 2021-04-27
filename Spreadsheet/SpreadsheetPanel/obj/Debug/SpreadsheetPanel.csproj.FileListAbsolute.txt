@@ -36,3 +36,24 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\NetworkController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\Newtonsoft.Json.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetPanel.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetPanel.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\Formula.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\FormulaEvaluator.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\Spreadsheet.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\NetworkController.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\Newtonsoft.Json.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\DependencyGraph.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\FormulaEvaluator.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\Formula.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\Spreadsheet.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\bin\Debug\DependencyGraph.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csprojAssemblyReference.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SS.SpreadsheetPanel.resources
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csproj.GenerateResource.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csproj.CoreCompileInputs.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csproj.CopyComplete
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.pdb

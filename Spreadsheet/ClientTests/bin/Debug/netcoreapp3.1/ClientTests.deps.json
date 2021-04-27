@@ -1,0 +1,99 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ClientTests/1.0.0": {
+        "dependencies": {
+          "SpreadsheetController": "1.0.0"
+        },
+        "runtime": {
+          "ClientTests.dll": {}
+        }
+      },
+      "DependencyGraph/1.0.0": {
+        "runtime": {
+          "DependencyGraph.dll": {}
+        }
+      },
+      "Formula/1.0.0": {
+        "runtime": {
+          "Formula.dll": {}
+        }
+      },
+      "Spreadsheet/1.0.0": {
+        "dependencies": {
+          "DependencyGraph": "1.0.0",
+          "Formula": "1.0.0"
+        },
+        "runtime": {
+          "Spreadsheet.dll": {}
+        }
+      },
+      "SpreadsheetController/1.0.0": {
+        "dependencies": {
+          "Spreadsheet": "1.0.0"
+        },
+        "runtime": {
+          "SpreadsheetController.dll": {}
+        }
+      },
+      "NetworkController/1.0.0.0": {
+        "runtime": {
+          "NetworkController.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClientTests/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DependencyGraph/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Formula/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Spreadsheet/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SpreadsheetController/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NetworkController/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/12.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -23,13 +23,14 @@ namespace SpreadsheetGUI
             controller.Connected += OnConnect;
             controller.Error += ShowError;
             controller.Connect(IPaddress, userName);
+
+            InitializeComponent();
         }
 
         private void OnConnect(string[] ssNames)
         {
             foreach (string s in ssNames)
                 SpreadsheetNamesLabel.Text = SpreadsheetNamesLabel.Text + s;
-            InitializeComponent();
         }
 
         private void ShowError(string errorMsg)

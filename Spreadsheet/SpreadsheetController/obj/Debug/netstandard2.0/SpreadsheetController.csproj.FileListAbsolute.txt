@@ -28,3 +28,21 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\SpreadsheetController.deps.json
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\SpreadsheetController.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\SpreadsheetController.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\NetworkController.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.pdb
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.csprojAssemblyReference.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.AssemblyInfoInputs.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.AssemblyInfo.cs
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.csproj.CoreCompileInputs.cache
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.csproj.CopyComplete
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.dll
+G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.pdb

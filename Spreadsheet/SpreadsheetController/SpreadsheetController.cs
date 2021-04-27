@@ -27,6 +27,10 @@ namespace Controller
         public delegate void ErrorHandler(string err);
         public event ErrorHandler Error;
 
+        // For testing purposes
+        public delegate void UpdateTest(string message);
+        public event UpdateTest testUpdate;
+
         // private variables
         private String userName;
         private int clientID = int.MinValue;
@@ -246,7 +250,10 @@ namespace Controller
             {
                 ssUpdate();
             }
-
+            if (testUpdate != null)
+            {
+                testUpdate(instruction);
+            }
         }
 
        public void ProcessInputs()
