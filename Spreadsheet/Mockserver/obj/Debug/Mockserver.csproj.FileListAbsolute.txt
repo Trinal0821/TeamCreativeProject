@@ -8,3 +8,16 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.csproj.CopyComplete
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.exe
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Spreadsheet.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetController.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetGUI.exe
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetPanel.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Formula.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\DependencyGraph.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetController.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetGUI.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetGUI.exe.config
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Spreadsheet.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\SpreadsheetPanel.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Formula.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\DependencyGraph.pdb

@@ -1,6 +1,9 @@
-﻿using NetworkUtil;
+﻿using Controller;
+using NetworkUtil;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SpreadsheetGUI;
+using SS;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +17,9 @@ namespace Mockserver
     class Mockserver
     {
         string lastedit = null;
-        private static Dictionary<long, SocketState> clients;
+        private static Dictionary<long, SocketState> clientsdictionary;
+        private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
+        private SocketState clients = null;
         static void Main(string[] args)
         {
             Mockserver server = new Mockserver();
@@ -33,7 +38,7 @@ namespace Mockserver
 
         public Mockserver()
         {
-            clients = new Dictionary<long, SocketState>();
+            clientsdictionary = new Dictionary<long, SocketState>();
         }
 
         private void StartServer()
@@ -54,6 +59,7 @@ namespace Mockserver
             string[] parts = Regex.Split(totalData, @"(?<=[\n])");
 
             List<string> newMessages = new List<string>();
+            string temp;
 
             // Loop until we have processed all messages.
             // We may have received more than one.
@@ -68,7 +74,17 @@ namespace Mockserver
                 if (p[p.Length - 1] != '\n')
                     break;
 
-                newMessages.Add(p);
+                if(p.Contains("\n"))
+                {
+                    temp = p.TrimEnd('\n');
+                    newMessages.Add(temp);
+                }
+                else
+                {
+                    newMessages.Add(p);
+                }
+
+                
 
                 // Remove it from the SocketState's growable buffer
                 state.RemoveData(0, p.Length);
@@ -84,6 +100,7 @@ namespace Mockserver
         /// <param name="obj"></param>
         private void NewClientConnected(SocketState state)
         {
+            clients = state;
 
             if (state.ErrorOccured)
                 return;
@@ -116,7 +133,7 @@ namespace Mockserver
             //}
 
             //A list that stores all of the data that was sent from the client
-            List<string> list = ProcessMessage(state);
+            List<string> list = ProcessMessage(clients);
 
             //A set used to store all of the disconnected clients
             HashSet<long> disconnectedClients = new HashSet<long>();
@@ -130,7 +147,7 @@ namespace Mockserver
             System.Console.WriteLine("about to send id");
 
             //Send the startup info to the client. If the data cannot be sent then it will add them to a list of disconnected clients to be remove
-            if (!Networking.Send(state.TheSocket, builder.ToString()))
+            if (!Networking.Send(clients.TheSocket, builder.ToString()))
             {
                 disconnectedClients.Add(state.ID);
             }
@@ -169,37 +186,65 @@ namespace Mockserver
             List<string> list = ProcessMessage(state);
             StringBuilder sb = new StringBuilder();
 
-            foreach(string p in list)
+            //store the new spreadsheetname into a variable
+            string spreadsheetname = list[0];
+
+            //Remove the spreadsheetname from the list
+            list.Remove(list[0]);
+
+            //If the spreadsheet list is empty then create a new one
+            if (!spreadsheetlist.Any())
             {
-                JObject jObj = JObject.Parse(p);
-                string deserializedCell = "";
+                AbstractSpreadsheet sheet = new Spreadsheet();
+                spreadsheetlist.Add(sheet);
 
-                if(p.Contains("editCell"))
-                {
-                    deserializedCell = jObj["contents"].ToString();
-                    lastedit = deserializedCell;
-                }
-                else if(p.Contains("revertCell"))
-                {
-                    //deserializedCell = jObj["cellName"].ToString();
-                    deserializedCell = "";
-                    
-                }
-                else if(p.Contains("selectCell"))
-                {
-                    deserializedCell = jObj["cellName"].ToString();
-                }
-                else if(p.Contains("undo"))
-                {
-                    deserializedCell = lastedit;
-                }
+             //   SpreadsheetForm form = new SpreadsheetForm(new SpreadsheetController(), spreadsheetname);
+            }
+            else
+            {
+                StringBuilder stringbuilder = new StringBuilder();
 
-                sb.Append(JsonConvert.SerializeObject(deserializedCell) + "\n");
+                foreach(Spreadsheet s in spreadsheetlist)
+                {
+                    stringbuilder.Append(s + "\n");
+                }
+                sb.Append("\n");
+                Networking.Send(clients.TheSocket, stringbuilder.ToString());
+            }
 
+            foreach (string p in list)
+            {
+                if (p != "")
+                {
+                    JObject jObj = JObject.Parse(p);
+                    string deserializedCell = "";
 
+                    if (p.Contains("editCell"))
+                    {
+                        deserializedCell = jObj["contents"].ToString();
+                        lastedit = deserializedCell;
+                    }
+                    else if (p.Contains("revertCell"))
+                    {
+                        //deserializedCell = jObj["cellName"].ToString();
+                        deserializedCell = "";
+
+                    }
+                    else if (p.Contains("selectCell"))
+                    {
+                        deserializedCell = jObj["cellName"].ToString();
+                    }
+                    else if (p.Contains("undo"))
+                    {
+                        deserializedCell = lastedit;
+                    }
+
+                    sb.Append(JsonConvert.SerializeObject(deserializedCell) + "\n");
+
+                }
             }
             
-            if(!Networking.Send(state.TheSocket, sb.ToString()))
+            if(!Networking.Send(clients.TheSocket, sb.ToString()))
             {
                 System.Console.WriteLine("Mockserver send error");
             }
