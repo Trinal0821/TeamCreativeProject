@@ -22,31 +22,6 @@ G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Spreads
 G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\NetworkController.dll
 G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.pdb
 G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.SelectionPrompt.resources
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.exe.config
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.exe
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Spreadsheet.dll
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.dll
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetPanel.dll
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\NetworkController.dll
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Formula.dll
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\DependencyGraph.dll
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetPanel.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Spreadsheet.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Formula.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\DependencyGraph.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csprojAssemblyReference.cache
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.ConnectionPrompt.resources
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.SelectionPrompt.resources
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.SpreadsheetForm.resources
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.Properties.Resources.resources
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.GenerateResource.cache
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.CoreCompileInputs.cache
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.CopyComplete
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.exe
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.pdb
-C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Newtonsoft.Json.dll
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.exe.config
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.exe
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.pdb
@@ -72,4 +47,28 @@ G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\obj\Debug\Sp
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.CopyComplete
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.exe
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.exe.config
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.exe
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetGUI.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\NetworkController.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Spreadsheet.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetPanel.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Formula.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\DependencyGraph.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetPanel.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Spreadsheet.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Formula.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\DependencyGraph.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csprojAssemblyReference.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.ConnectionPrompt.resources
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.SelectionPrompt.resources
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.SpreadsheetForm.resources
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.Properties.Resources.resources
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.GenerateResource.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.CoreCompileInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.CopyComplete
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.exe
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.pdb

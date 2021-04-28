@@ -5732,19 +5732,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tneda\\.nuget\\packages\\": {}
+    "C:\\Users\\find\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaTests\\FormulaTests.csproj",
+      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaTests\\FormulaTests.csproj",
       "projectName": "FormulaTests",
-      "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaTests\\FormulaTests.csproj",
-      "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
-      "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaTests\\obj\\",
+      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaTests\\FormulaTests.csproj",
+      "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5757,8 +5757,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
-              "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj"
+            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
+              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj"
             }
           }
         }
