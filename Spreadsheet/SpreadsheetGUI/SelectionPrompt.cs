@@ -22,17 +22,36 @@ namespace SpreadsheetGUI
             controller = ssCtrl;
             controller.Connected += OnConnect;
             controller.Error += ShowError;
+            InitializeComponent();
+
             this.userInputTextBox.Enabled = false;
             controller.Connect(IPaddress, userName);
-
-            InitializeComponent();
         }
 
         private void OnConnect(string[] ssNames)
         {
-            foreach (string s in ssNames)
+            //try
+            // {
+            //  MethodInvoker invalidator = new MethodInvoker(() => this.Invalidate(true));
+            //this.Invoke(invalidator);
+
+            MethodInvoker invalidator = delegate
+            {
+                foreach (string s in ssNames)
                 SpreadsheetNamesLabel.Text = SpreadsheetNamesLabel.Text + s;
             userInputTextBox.Enabled = true;
+             };
+
+            BeginInvoke(invalidator);
+
+            //}
+            //catch (Exception)
+            //{
+
+            //}
+
+
+
         }
 
         private void ShowError(string errorMsg)
