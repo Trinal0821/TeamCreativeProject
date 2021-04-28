@@ -1,17 +1,3 @@
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.deps.json
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\DependencyGraph.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Formula.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\DependencyGraph.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Formula.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csprojAssemblyReference.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.AssemblyInfoInputs.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.AssemblyInfo.cs
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csproj.CoreCompileInputs.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csproj.CopyComplete
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.pdb
 G:\source\repos\BestTeamCreative Project\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.deps.json
 G:\source\repos\BestTeamCreative Project\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.dll
 G:\source\repos\BestTeamCreative Project\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.pdb
@@ -40,3 +26,17 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csproj.CopyComplete
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.deps.json
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Spreadsheet.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\DependencyGraph.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Formula.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\DependencyGraph.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\bin\Debug\netstandard2.0\Formula.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csprojAssemblyReference.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.AssemblyInfoInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.AssemblyInfo.cs
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csproj.CoreCompileInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.csproj.CopyComplete
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\Spreadsheet\obj\Debug\netstandard2.0\Spreadsheet.pdb

@@ -189,7 +189,7 @@ namespace SS
         /// <param name="col"></param>
         /// <param name="row"></param>
         /// <returns></returns>
-        private string ConvertCellName(int col, int row)
+        public string ConvertCellName(int col, int row)
         {
             return Convert.ToChar(col + 65) + "" + (row + 1);
         }

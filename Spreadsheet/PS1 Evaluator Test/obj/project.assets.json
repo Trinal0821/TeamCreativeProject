@@ -5732,19 +5732,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\find\\.nuget\\packages\\": {}
+    "C:\\Users\\tneda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
+      "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
       "projectName": "PS1 Evaluator Test",
-      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
-      "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\obj\\",
+      "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
+      "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+      "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5757,8 +5757,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
-              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj"
+            "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
+              "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj"
             }
           }
         }

@@ -370,12 +370,14 @@ namespace Controller
         public void undoAction()
         {
             doUndo = true;
+            ProcessInputs();
         }
 
         public void revertCell(string cellName)
         {
             this.cellName = cellName;
             doRevert = true;
+            ProcessInputs();
         }
 
         public KeyValuePair<string, string> getCellToUpdate()
@@ -383,6 +385,10 @@ namespace Controller
             return cellToUpdate;
         }
 
+        /// <summary>
+        /// A call for the spreadsheet form to call after it updates
+        /// a cell.
+        /// </summary>
         public void cellUpdated()
         {
             cellToUpdate = new KeyValuePair<string, string>("", "");

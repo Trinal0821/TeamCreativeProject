@@ -22,6 +22,7 @@ namespace SpreadsheetGUI
             controller = ssCtrl;
             controller.Connected += OnConnect;
             controller.Error += ShowError;
+            this.userInputTextBox.Enabled = false;
             controller.Connect(IPaddress, userName);
 
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace SpreadsheetGUI
         {
             foreach (string s in ssNames)
                 SpreadsheetNamesLabel.Text = SpreadsheetNamesLabel.Text + s;
+            userInputTextBox.Enabled = true;
         }
 
         private void ShowError(string errorMsg)

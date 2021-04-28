@@ -1,12 +1,3 @@
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.deps.json
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.csprojAssemblyReference.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.AssemblyInfoInputs.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.AssemblyInfo.cs
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.csproj.CoreCompileInputs.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.pdb
 G:\source\repos\BestTeamCreative Project\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.deps.json
 G:\source\repos\BestTeamCreative Project\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.dll
 G:\source\repos\BestTeamCreative Project\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.pdb
@@ -25,3 +16,12 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\D
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.csproj.CoreCompileInputs.cache
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.deps.json
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Debug\netstandard2.0\DependencyGraph.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.csprojAssemblyReference.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.AssemblyInfoInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.AssemblyInfo.cs
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.csproj.CoreCompileInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Debug\netstandard2.0\DependencyGraph.pdb
