@@ -1,7 +1,6 @@
 G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\bin\Debug\netstandard2.0\Formula.deps.json
 G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\bin\Debug\netstandard2.0\Formula.dll
 G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\bin\Debug\netstandard2.0\Formula.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.csprojAssemblyReference.cache
 G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.AssemblyInfoInputs.cache
 G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.AssemblyInfo.cs
 G:\source\repos\TeamCreativeProject\Spreadsheet\Formula\obj\Debug\netstandard2.0\Formula.csproj.CoreCompileInputs.cache

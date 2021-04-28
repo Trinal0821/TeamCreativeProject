@@ -57,3 +57,7 @@ G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csproj.CopyComplete
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.dll
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\NetworkController.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\Newtonsoft.Json.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.pdb

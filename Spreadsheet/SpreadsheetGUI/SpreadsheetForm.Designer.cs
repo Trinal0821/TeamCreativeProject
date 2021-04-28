@@ -158,6 +158,7 @@ namespace SpreadsheetGUI
             this.toolStripUndoButton.Name = "toolStripUndoButton";
             this.toolStripUndoButton.Size = new System.Drawing.Size(46, 36);
             this.toolStripUndoButton.Text = "Undo";
+            this.toolStripUndoButton.Click += new System.EventHandler(this.toolStripUndoButton_Click);
             // 
             // toolStripRevertButton
             // 
@@ -167,6 +168,7 @@ namespace SpreadsheetGUI
             this.toolStripRevertButton.Name = "toolStripRevertButton";
             this.toolStripRevertButton.Size = new System.Drawing.Size(46, 36);
             this.toolStripRevertButton.Text = "Revert Cell";
+            this.toolStripRevertButton.Click += new System.EventHandler(this.toolStripRevertButton_Click);
             // 
             // SpreadsheetForm
             // 

@@ -102,10 +102,13 @@ namespace SpreadsheetGUI
             int row = spreadsheetPanel1.GetCellNameRow(crntSel);
             int col = spreadsheetPanel1.GetCellNameCol(crntSel);
 
-            spreadsheetPanel1.SetSelection(col, row);
+
+            /*spreadsheetPanel1.SetSelection(col, row);
             spreadsheetPanel1.GetValue(col, row, out string val);
             textBoxCellValue.Text = val;
             textBoxCellContents.Text = spreadsheetPanel1.GetContents(col, row);
+            */
+
         }
 
         private void UpdateError(string message)
@@ -123,6 +126,11 @@ namespace SpreadsheetGUI
         {
             // Get where we are in the spreadsheet
             sender.GetSelection(out int col, out int row);
+            
+            // Send selection changed command to server
+            controller.setCellContents("");
+            controller.setCellName(sender.ConvertCellName(col, row));
+            controller.ProcessInputs();
 
             // Update name textBox
             textBoxCellName.Text = (ConvertCellName(col, row));
@@ -353,6 +361,16 @@ namespace SpreadsheetGUI
                 this.BackColor = ColorTranslator.FromHtml("#303030");
                 toolStripNightModeButton.Checked = true;
             }
+        }
+
+        private void toolStripUndoButton_Click(object sender, EventArgs e)
+        {
+            controller.undoAction();
+        }
+
+        private void toolStripRevertButton_Click(object sender, EventArgs e)
+        {
+            controller.revertCell(controller.getClientSelection(controller.getThisID()));
         }
     }
 }

@@ -46,3 +46,9 @@ G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\D
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.csproj.CopyComplete
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.dll
 G:\source\repos\BestTeamCreative Project\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.pdb

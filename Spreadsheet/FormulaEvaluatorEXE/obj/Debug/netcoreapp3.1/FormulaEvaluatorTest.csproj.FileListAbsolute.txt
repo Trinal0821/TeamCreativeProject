@@ -1,0 +1,16 @@
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluatorTest.exe
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluatorTest.deps.json
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluatorTest.runtimeconfig.json
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluatorTest.runtimeconfig.dev.json
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluatorTest.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluatorTest.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluator.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\bin\Debug\netcoreapp3.1\FormulaEvaluator.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.csprojAssemblyReference.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.AssemblyInfoInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.AssemblyInfo.cs
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.csproj.CoreCompileInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.csproj.CopyComplete
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluatorEXE\obj\Debug\netcoreapp3.1\FormulaEvaluatorTest.genruntimeconfig.cache
