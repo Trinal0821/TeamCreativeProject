@@ -1,0 +1,9 @@
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Release\netstandard2.0\DependencyGraph.deps.json
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Release\netstandard2.0\DependencyGraph.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\bin\Release\netstandard2.0\DependencyGraph.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Release\netstandard2.0\DependencyGraph.csprojAssemblyReference.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Release\netstandard2.0\DependencyGraph.AssemblyInfoInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Release\netstandard2.0\DependencyGraph.AssemblyInfo.cs
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Release\netstandard2.0\DependencyGraph.csproj.CoreCompileInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Release\netstandard2.0\DependencyGraph.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\DependencyGraph\obj\Release\netstandard2.0\DependencyGraph.pdb

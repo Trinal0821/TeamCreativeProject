@@ -17,6 +17,7 @@ namespace Mockserver
     class Mockserver
     {
         string lastedit = null;
+        string lastCellName = null;
         private static Dictionary<SocketState, string> clientsdictionary;
         private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
         private SocketState clients = null;
@@ -30,7 +31,7 @@ namespace Mockserver
 
             while(true)
             {
-                while(watch.ElapsedMilliseconds < 100000)
+                while(watch.ElapsedMilliseconds < 100)
                 {
                     watch.Restart();
                 }
@@ -233,43 +234,64 @@ namespace Mockserver
             StringBuilder sb = new StringBuilder();
 
             
-
+            //FIX THIS
             foreach (string p in list)
             {
                 if (p != "")
                 {
                     JObject jObj = JObject.Parse(p);
-                    string deserializedCell = "";
+                  //  string deserializedCell = "";
 
                     if (p.Contains("editCell"))
                     {
-                        deserializedCell = jObj["contents"].ToString();
-                        lastedit = deserializedCell;
+                       string deserializedCellContents = jObj["contents"].ToString();
+                        string deserilizedCellName = jObj["cellName"].ToString();
+                        lastedit = deserializedCellContents;
+                        lastCellName = deserilizedCellName;
+
+                        sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
+                        sb.Append(JsonConvert.SerializeObject("cellName: " + deserilizedCellName + "\n"));
+                        sb.Append(JsonConvert.SerializeObject("contents: " + deserializedCellContents + "\n"));
                     }
                     else if (p.Contains("revertCell"))
                     {
-                        //deserializedCell = jObj["cellName"].ToString();
-                        deserializedCell = "";
+                        string deserilizedCellName = jObj["cellName"].ToString();
+
+                        sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
+                        sb.Append(JsonConvert.SerializeObject("cellName: " + deserilizedCellName + "\n"));
+                        sb.Append(JsonConvert.SerializeObject("contents: " + "" + "\n"));
+
+                        lastedit = "";
+                        lastCellName = deserilizedCellName;
 
                     }
                     else if (p.Contains("selectCell"))
                     {
-                        deserializedCell = jObj["cellName"].ToString();
+                        string deserializedCellName = jObj["cellName"].ToString();
 
                         foreach(SocketState s in clientsdictionary.Keys)
                         {
                             if(s.ID == state.ID)
                             {
-                                clientsdictionary[s] = deserializedCell;
+                                //Set the location of where the client is
+                                clientsdictionary[s] = deserializedCellName;
+
+                                sb.Append(JsonConvert.SerializeObject("messageType: " + "cellSelected" + "\n"));
+                                sb.Append(JsonConvert.SerializeObject("cellName: " + deserializedCellName + "\n"));
+                                sb.Append(JsonConvert.SerializeObject("selector: " + s.ID + "\n"));
+
+                                //NEED TO CHANGE THIS!! THIS IS TEMPORARY
+                                sb.Append(JsonConvert.SerializeObject("selectorName" + "sam" + "\n"));
                             }
                         }
                     }
                     else if (p.Contains("undo"))
                     {
-                        deserializedCell = lastedit;
+                        sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
+                        sb.Append(JsonConvert.SerializeObject("cellName: " + lastCellName + "\n"));
+                        sb.Append(JsonConvert.SerializeObject("contents: " + lastedit + "\n"));
                     }
 
-                    sb.Append(JsonConvert.SerializeObject(deserializedCell) + "\n");
 
                 }
             }

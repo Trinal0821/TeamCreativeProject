@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ip7LYu074neIhe+NWE3CzpPgnUU5DOSGDWxcklxyf5M83MUkzp80X6cH+zgPx/yy3r9GeaRf/u/quxfEFWMWrQ==",
+  "dgSpecHash": "m178XhCSyRHwlRpR1dCiXb8y8UrrFI99Yg61l0EGTllSk1qwdQCCh1P9f7Gmz4DKTWKgf6zFRHD14rdSoBoFwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
+  "projectFilePath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\find\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\find\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

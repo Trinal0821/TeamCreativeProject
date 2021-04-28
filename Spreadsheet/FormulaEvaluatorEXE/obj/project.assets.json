@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluatorEXE\\FormulaEvaluatorTest.csproj",
+      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluatorEXE\\FormulaEvaluatorTest.csproj",
       "projectName": "FormulaEvaluatorTest",
-      "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluatorEXE\\FormulaEvaluatorTest.csproj",
+      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluatorEXE\\FormulaEvaluatorTest.csproj",
       "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluatorEXE\\obj\\",
+      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluatorEXE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -52,8 +52,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
-              "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj"
+            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
+              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj"
             }
           }
         }

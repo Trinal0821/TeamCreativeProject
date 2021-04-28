@@ -166,7 +166,7 @@ namespace SpreadsheetGUI
                 controller.setCellName(ConvertCellName(col, row));
 
                 //spreadsheetPanel1.SetContents(col, row, contents);
-                Update();
+               // Update();
                 e.Handled = true;
             }
         }

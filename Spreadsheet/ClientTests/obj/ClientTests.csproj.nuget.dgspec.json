@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {}
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
         "projectName": "ClientTests",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
+              "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
+                "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
               }
             }
           }
@@ -60,14 +60,14 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
         "projectName": "DependencyGraph",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -115,14 +115,14 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
         "projectName": "Formula",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -170,14 +170,14 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
         "projectName": "SpreadsheetController",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -193,8 +193,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
+              "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+                "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
               }
             }
           }
@@ -229,14 +229,14 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
         "projectName": "Spreadsheet",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -252,11 +252,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj"
+              "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
+                "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj"
               },
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj"
+              "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
+                "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj"
               }
             }
           }

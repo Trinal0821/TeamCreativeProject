@@ -5771,11 +5771,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetTests\\SpreadsheetTests.csproj",
+      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetTests\\SpreadsheetTests.csproj",
       "projectName": "SpreadsheetTests",
-      "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetTests\\SpreadsheetTests.csproj",
+      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetTests\\SpreadsheetTests.csproj",
       "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetTests\\obj\\",
+      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5791,8 +5791,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
-              "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
+            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
             }
           }
         }

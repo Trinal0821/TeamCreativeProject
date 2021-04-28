@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj": {}
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj",
         "projectName": "DependencyGraphTests",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\DependencyGraphTests.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraphTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj"
+              "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
+                "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj"
               }
             }
           }
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
+    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
+        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
         "projectName": "DependencyGraph",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
+        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\obj\\",
+        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
