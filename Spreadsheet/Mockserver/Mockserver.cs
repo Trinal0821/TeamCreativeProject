@@ -19,9 +19,12 @@ namespace Mockserver
         string lastedit = null;
         string lastCellName = null;
         private static Dictionary<SocketState, string> clientsdictionary;
-        private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
+        // private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
+        private Dictionary<string, AbstractSpreadsheet> spreadsheetList = new Dictionary<string, AbstractSpreadsheet>();
         private SocketState clients = null;
         private string name;
+       private StringBuilder sb = new StringBuilder();
+
         static void Main(string[] args)
         {
             Mockserver server = new Mockserver();
@@ -57,8 +60,11 @@ namespace Mockserver
         private List<string> ProcessMessage(SocketState state)
         {
             //Gets all of the data and split them based on new line
-            string totalData = state.GetData();
-            string[] parts = Regex.Split(totalData, @"(?<=[\n])");
+            sb.Append(state.GetData());
+           
+
+
+            string[] parts = Regex.Split(sb.ToString(), @"(?<=[\n])");
 
             List<string> newMessages = new List<string>();
             string temp;
@@ -76,20 +82,22 @@ namespace Mockserver
                 if (p[p.Length - 1] != '\n')
                     break;
 
-                if(p.Contains("\n"))
+               // sb.Append(newMessages);
+               
+
+                if (p.Contains("\n"))
                 {
-                    temp = p.TrimEnd('\n');
-                    newMessages.Add(temp);
-                }
-                else
-                {
+                  //  temp = p.TrimEnd('\n');
+                    //newMessages.Add(temp);
+                    sb.Remove(0, p.Length);
                     newMessages.Add(p);
+
+                    state.RemoveData(0, p.Length);
+
                 }
-
                 
-
                 // Remove it from the SocketState's growable buffer
-                state.RemoveData(0, p.Length);
+               
 
             }
             return newMessages;
@@ -125,7 +133,6 @@ namespace Mockserver
         /// <param name="state"></param>
         private void ReceiveMessage(SocketState state)
         {
-
             //A list that stores all of the data that was sent from the client
             List<string> list = ProcessMessage(clients);
 
@@ -137,42 +144,75 @@ namespace Mockserver
 
             //Remove the name from the list
             list.Remove(list[0]);
+            
 
-            state.OnNetworkAction = SendSpreadsheets;
+            StringBuilder stringbuilder = new StringBuilder();
 
-            // Continue the event loop that receives messages from this client
-            Networking.GetData(state);
-        }
-
-        private void SendSpreadsheets(SocketState state)
-        {
-            List<string> list = ProcessMessage(clients);
-
-            //store the new spreadsheetname into a variable
-            if (list.Count > 0)
+            if (spreadsheetList.Count != 0)
             {
-                string spreadsheetname = list[0];
-
-                //Remove the spreadsheetname from the list
-                list.Remove(list[0]);
-            }
-
-            //If the spreadsheet list is empty then create a new one
-            if (!spreadsheetlist.Any())
-            {
-                AbstractSpreadsheet sheet = new Spreadsheet();
-                spreadsheetlist.Add(sheet);
-            }
-            else
-            {
-                StringBuilder stringbuilder = new StringBuilder();
-
-                foreach (Spreadsheet s in spreadsheetlist)
+                foreach (string s in spreadsheetList.Keys)
                 {
                     stringbuilder.Append(s + "\n");
                 }
                 stringbuilder.Append("\n");
-                Networking.Send(clients.TheSocket, stringbuilder.ToString());
+            }
+            else
+            {
+                stringbuilder.Append("\n\n");
+            }
+
+            Networking.Send(clients.TheSocket, stringbuilder.ToString());
+
+            state.OnNetworkAction = SendSpreadsheet;
+            Networking.GetData(state);
+        }
+
+        private string[] getCellRowAndColumn(string cellName)
+        {
+            List<int> rowAndColumn = new List<int>();
+
+            //Source: https://stackoverflow.com/questions/3650118/how-to-split-a-string-on-numbers-and-it-substrings
+            string[] output = Regex.Matches(cellName, "[0-9]+|[^0-9]+")
+            .Cast<Match>()
+            .Select(match => match.Value)
+            .ToArray();
+
+            return output;
+        }
+       
+
+        private void SendSpreadsheet(SocketState state)
+        {
+            List<string> list = ProcessMessage(clients);
+
+            //string spreadsheetName = list[0];
+            //list.Remove(list[0]);
+
+            string spreadsheetName = "GOTTA FIX THIS LATER";
+
+            if (spreadsheetList.TryGetValue(spreadsheetName, out AbstractSpreadsheet sheet))
+            {
+                //Open the spreadsheet
+                sheet = new Spreadsheet();
+
+                //Create a stringbuilder
+                StringBuilder sb = new StringBuilder();
+
+                //go through and update each of the values in the cell
+                IEnumerable<string> nonemptyCells = sheet.GetNamesOfAllNonemptyCells();
+                Spreadsheet spreadsheet = new Spreadsheet();
+
+                foreach(string s in nonemptyCells)
+                {
+                    sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
+                    sb.Append(JsonConvert.SerializeObject("cellName: " + s + "\n"));
+                    sb.Append(JsonConvert.SerializeObject("contents: " + spreadsheet.GetCellValue(s) + "\n"));
+                }
+            }
+            else
+            {
+                AbstractSpreadsheet newSpreadsheet = new Spreadsheet();
+                spreadsheetList.Add(spreadsheetName, newSpreadsheet);
             }
 
             StringBuilder builder = new StringBuilder();
@@ -233,8 +273,7 @@ namespace Mockserver
             List<string> list = ProcessMessage(state);
             StringBuilder sb = new StringBuilder();
 
-            
-            //FIX THIS
+        
             foreach (string p in list)
             {
                 if (p != "")

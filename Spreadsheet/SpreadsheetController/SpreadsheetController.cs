@@ -83,11 +83,10 @@ namespace Controller
                 // tell the server who we are
                 Networking.Send(theServer.TheSocket, this.userName + "\n");
 
-                // assign the network action event to our recieve data event
-                state.OnNetworkAction = receiveStartUpData;
-
                 // start receiving start up data
                 jsonInfo = new StringBuilder();
+                // assign the network action event to our recieve data event
+                state.OnNetworkAction = receiveStartUpData;
                 Networking.GetData(state);
             }
 
@@ -107,21 +106,23 @@ namespace Controller
                 return;
             }
 
-            // get the Json information
-            jsonInfo.Append(state.GetData());
+                // get the Json information
+                jsonInfo.Append(state.GetData());
 
-            // Check if all spreadsheet name data has been gathered
-            if (jsonInfo.ToString().Contains("\n\n"))
-            {
-                // split it into actual messages
-                // send the spreadsheet names to the GUI
-                Connected(Regex.Split(jsonInfo.ToString(), @"(?<=[\n])"));
-            }
-            // Continue gathering startup data
-            else
-            {
-                Networking.GetData(state);
-            }
+
+                // Check if all spreadsheet name data has been gathered
+                if (jsonInfo.ToString().Contains("\n\n"))
+                {
+                    // split it into actual messages
+                    // send the spreadsheet names to the GUI
+                    Connected(Regex.Split(jsonInfo.ToString(), @"(?<=[\n])"));
+
+                }
+                // Continue gathering startup data
+                else
+                {
+                    Networking.GetData(state);
+                }
         }
 
         /// <summary>
@@ -195,7 +196,7 @@ namespace Controller
             }
 
             //What user inputs happened during the last frame, process them
-            ProcessInputs();
+           // ProcessInputs();
 
             Networking.GetData(state);
         }

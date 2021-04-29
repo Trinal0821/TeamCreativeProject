@@ -59,8 +59,7 @@ namespace SpreadsheetGUI
             // set initial selection to A1, 1
             spreadsheetPanel1.SetSelection(0, 0);
 
-            // call the method to update selection
-            OnSelectionChanged(spreadsheetPanel1);
+           
 
             // Select Spreadsheet from server
             ssCtrl.selectSpreadsheet(ssName);
@@ -85,6 +84,9 @@ namespace SpreadsheetGUI
             //{
 
             //}
+
+            // call the method to update selection
+            OnSelectionChanged(spreadsheetPanel1);
 
             // Update cell info if necessary
             KeyValuePair<string, string> cellToUpdate = controller.getCellToUpdate();

@@ -7,6 +7,14 @@ G:\source\repos\BestTeamCreative Project\Spreadsheet\FormulaEvaluator\obj\Debug\
 G:\source\repos\BestTeamCreative Project\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.csproj.CoreCompileInputs.cache
 G:\source\repos\BestTeamCreative Project\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.dll
 G:\source\repos\BestTeamCreative Project\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.deps.json
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.AssemblyInfoInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.AssemblyInfo.cs
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.csproj.CoreCompileInputs.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.deps.json
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.pdb
@@ -16,11 +24,3 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.csproj.CoreCompileInputs.cache
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.deps.json
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\bin\Debug\netstandard2.0\FormulaEvaluator.pdb
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.AssemblyInfoInputs.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.AssemblyInfo.cs
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.csproj.CoreCompileInputs.cache
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.dll
-G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.pdb

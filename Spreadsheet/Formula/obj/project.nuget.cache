@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Mqm0zS1uomQddqzPoSMj85C2obOFmQ0VyIvAfv8qT5TM/2ITIpiROQmMEcSyDbVLhQgyIgV0EPiCAF47XJVmOQ==",
+  "dgSpecHash": "pUdhhR49eeVnNsR31tkX6evB6Ve8nmStNolNONufBN/5NeS5Csi60+R7fhzpOSBOJQUfFiEm+RjB2fnPTLP1yg==",
   "success": true,
-  "projectFilePath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+  "projectFilePath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tneda\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\tneda\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\find\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\find\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

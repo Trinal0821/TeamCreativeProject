@@ -230,19 +230,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tneda\\.nuget\\packages\\": {}
+    "C:\\Users\\find\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
       "projectName": "SpreadsheetController",
-      "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
-      "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
-      "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
+      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+      "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -255,8 +255,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
-              "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
+            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
             }
           }
         }
