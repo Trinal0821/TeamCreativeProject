@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <deque>
 #include <iostream>
+#include <ofstream>
 #include <fstream>
 #include <list>
 #include <set>
@@ -10,6 +11,7 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include "rapidxml/rapidxml.hpp"
+#include "actionNodes.cpp"
 
 class spreadsheet_instance
 {
@@ -19,22 +21,23 @@ public:
 		Creates an instance of the spreadsheet
 	*/
 	spreadsheet_instance(std::string filename){
-		this.filename="Spreadsheet/"+filename+".sprd";
+		this->filename="Spreadsheet/"+filename+".sprd";
 		std::list<std::string> fileList;
     std::string path = "Spreadsheet";
-    for (const auto & entry : std::filesystem::directory_iterator(path))
+    for (const auto & entry : std::filesystem::directory_iterator(path)){
         fileList.push_back(entry.path());
+    }
 
-		*SpreadsheetObject foundSheet = null;
+		bool foundSheet = false;
 		for(sheet = fileList.begin; sheet!=fileList.end(); ++sheet){
 			if(sheet == filename){
-				foundSheet=&sheet;
+				foundSheet=true;
 				break;
 			}
 		}
 
 		//If it doesn't exist, create it
-		if(foundSheet==null){
+		if(!foundSheet){
 			ofstream spreadsheetFile("Spreadsheet/"+filename+".sprd");
 			spreadsheetFile <<"<Spreadsheet>\n";
 			spreadsheetFile <<"</Spreadsheet>\n";
@@ -53,15 +56,13 @@ public:
 			for (rapidxml::xml_node<> * node = root_node->first_node("Cell"); node; node = node->next_sibling()){
 				cell = node->first_node("Cell");
 				contents = node->first_node("Contents");
-				this.actions.push_back(new ActionNode(cell,contents));
+				this->actions.push_back(new ActionNode(cell,contents));
 			}
 
 		}
 
 		//TODO: Send the data to the client
 
-		//If there is an error, we will return a string containing the error
-		return null;
 	}
 
 
@@ -92,7 +93,7 @@ public:
 
 	/*
 	* Send a message to all clients
-	*/
+ 	*/
 	void deliver(const std::string& msg)
 	{
 		std::for_each(participants_.begin(), participants_.end(),

@@ -1,7 +1,7 @@
 /*********************************
 Actions for the spreadsheet instances
 ********************************/
-
+#include<string>
 
 
 class ActionNode{
@@ -10,8 +10,8 @@ class ActionNode{
     std::string contents;
 
   private:
-    ActionNode(cell, contents){
-      this.cell = cell;
-      this.contents = contents;
+  ActionNode(std::string cell, std::string contents){
+      this->cell = cell;
+      this->contents = contents;
     }
-}
+};
