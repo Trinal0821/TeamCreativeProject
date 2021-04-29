@@ -65,8 +65,8 @@ public:
 	*/
 	void deliver(const std::string& msg)
 	{
-		std::for_each(participants_.begin(), participants_.end(),
-			boost::bind(&chat_participant::deliver, _1, boost::ref(msg)));
+		std::for_each(clients_.begin(), clients_.end(),
+			boost::bind(&client::deliver, _1, boost::ref(msg)));
 	}
 
 	/*
@@ -87,13 +87,6 @@ public:
 		TODO: Update a cell in the file
 	*/
 	void addCell(std::string cell, std::string value){
-
-	}
-
-	/*
-		TODO: Broadcast a message to all the users
-	*/
-	void broadcastToAll(std::string message){
 
 	}
 

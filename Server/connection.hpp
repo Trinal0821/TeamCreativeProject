@@ -206,8 +206,14 @@ public:
 	*/
 	void write()
 	{
-		instance_.deliver(message_);
-		read();
+		messages_.pop_front();
+		if (!messages_.empty())
+		{
+			boost::asio::async_write(socket_,
+				boost::asio::buffer(messages_.front().data(),
+					messages_.front().length()),
+				boost::bind(&connection::write, shared_from_this()));
+		}
 	}
 
 
@@ -224,15 +230,14 @@ public:
 	*/
 	void deliver(const std::string& msg)
 	{
-		/*bool write_in_progress = !write_msgs_.empty();
-		write_msgs_.push_back(msg);
+		bool write_in_progress = !messages_.empty();
+		messages_.push_back(msg);
 		if (!write_in_progress)
 		{
 			boost::asio::async_write(socket_,
-				boost::asio::buffer(write_msgs_.front().data(),
-					write_msgs_.front().length()),
-				boost::bind(&chat_session::handle_write, shared_from_this(),
-					boost::asio::placeholders::error));
+				boost::asio::buffer(messages_.front().data(),
+					messages_.front().length()),
+				boost::bind(&connection::handle_write, shared_from_this()));
 		}*/
 	}
 
