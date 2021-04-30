@@ -37,11 +37,15 @@ G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\obj\Debug\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\SpreadsheetController.deps.json
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\SpreadsheetController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\SpreadsheetController.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\ClientCommands.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\MockserverCommands.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\NetworkController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\ClientCommands.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\MockserverCommands.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Spreadsheet.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\DependencyGraph.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\Formula.pdb

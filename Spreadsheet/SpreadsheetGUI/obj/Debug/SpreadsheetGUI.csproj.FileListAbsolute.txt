@@ -56,11 +56,15 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\De
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetPanel.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\MockserverCommands.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\ClientCommands.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Formula.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\DependencyGraph.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetController.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\SpreadsheetPanel.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Spreadsheet.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\MockserverCommands.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\ClientCommands.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\Formula.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\DependencyGraph.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csprojAssemblyReference.cache

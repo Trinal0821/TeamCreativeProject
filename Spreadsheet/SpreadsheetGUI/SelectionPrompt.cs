@@ -43,15 +43,6 @@ namespace SpreadsheetGUI
              };
 
             BeginInvoke(invalidator);
-
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-
-
-
         }
 
         private void ShowError(string errorMsg)

@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClientCommands\ClientCommands.csproj" />
+    <ProjectReference Include="..\MockeserverCommands\MockserverCommands.csproj" />
     <ProjectReference Include="..\Spreadsheet\Spreadsheet.csproj" />
   </ItemGroup>
 

@@ -26,6 +26,16 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "ClientCommands/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ClientCommands.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClientCommands.dll": {}
+        }
+      },
       "DependencyGraph/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -44,6 +54,16 @@
         },
         "runtime": {
           "bin/placeholder/Formula.dll": {}
+        }
+      },
+      "MockserverCommands/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/MockserverCommands.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MockserverCommands.dll": {}
         }
       },
       "Spreadsheet/1.0.0": {
@@ -207,6 +227,11 @@
         "netstandard.library.nuspec"
       ]
     },
+    "ClientCommands/1.0.0": {
+      "type": "project",
+      "path": "../ClientCommands/ClientCommands.csproj",
+      "msbuildProject": "../ClientCommands/ClientCommands.csproj"
+    },
     "DependencyGraph/1.0.0": {
       "type": "project",
       "path": "../DependencyGraph/DependencyGraph.csproj",
@@ -217,6 +242,11 @@
       "path": "../Formula/Formula.csproj",
       "msbuildProject": "../Formula/Formula.csproj"
     },
+    "MockserverCommands/1.0.0": {
+      "type": "project",
+      "path": "../MockeserverCommands/MockserverCommands.csproj",
+      "msbuildProject": "../MockeserverCommands/MockserverCommands.csproj"
+    },
     "Spreadsheet/1.0.0": {
       "type": "project",
       "path": "../Spreadsheet/Spreadsheet.csproj",
@@ -225,6 +255,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "ClientCommands >= 1.0.0",
+      "MockserverCommands >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
       "Spreadsheet >= 1.0.0"
     ]
@@ -235,11 +267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+      "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
       "projectName": "SpreadsheetController",
-      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+      "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
       "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
+      "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -255,8 +287,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
-              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
+            "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
+              "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj"
+            },
+            "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
+              "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj"
+            },
+            "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+              "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
             }
           }
         }

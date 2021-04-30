@@ -2,6 +2,16 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "ClientCommands/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ClientCommands.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClientCommands.dll": {}
+        }
+      },
       "DependencyGraph/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -22,6 +32,16 @@
           "bin/placeholder/Formula.dll": {}
         }
       },
+      "MockserverCommands/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/MockserverCommands.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MockserverCommands.dll": {}
+        }
+      },
       "Spreadsheet/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -40,6 +60,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "ClientCommands": "1.0.0",
+          "MockserverCommands": "1.0.0",
           "Spreadsheet": "1.0.0"
         },
         "compile": {
@@ -52,6 +74,11 @@
     }
   },
   "libraries": {
+    "ClientCommands/1.0.0": {
+      "type": "project",
+      "path": "../ClientCommands/ClientCommands.csproj",
+      "msbuildProject": "../ClientCommands/ClientCommands.csproj"
+    },
     "DependencyGraph/1.0.0": {
       "type": "project",
       "path": "../DependencyGraph/DependencyGraph.csproj",
@@ -61,6 +88,11 @@
       "type": "project",
       "path": "../Formula/Formula.csproj",
       "msbuildProject": "../Formula/Formula.csproj"
+    },
+    "MockserverCommands/1.0.0": {
+      "type": "project",
+      "path": "../MockeserverCommands/MockserverCommands.csproj",
+      "msbuildProject": "../MockeserverCommands/MockserverCommands.csproj"
     },
     "Spreadsheet/1.0.0": {
       "type": "project",
@@ -84,11 +116,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
+      "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
       "projectName": "ClientTests",
-      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
+      "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
       "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\obj\\",
+      "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,8 +136,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
-              "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
+            "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
+              "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
             }
           }
         }

@@ -9,6 +9,8 @@
     ".NETStandard,Version=v2.0/": {
       "SpreadsheetController/1.0.0": {
         "dependencies": {
+          "ClientCommands": "1.0.0",
+          "MockserverCommands": "1.0.0",
           "NETStandard.Library": "2.0.3",
           "Spreadsheet": "1.0.0",
           "NetworkController": "1.0.0.0",
@@ -24,6 +26,11 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
+      "ClientCommands/1.0.0": {
+        "runtime": {
+          "ClientCommands.dll": {}
+        }
+      },
       "DependencyGraph/1.0.0": {
         "runtime": {
           "DependencyGraph.dll": {}
@@ -32,6 +39,11 @@
       "Formula/1.0.0": {
         "runtime": {
           "Formula.dll": {}
+        }
+      },
+      "MockserverCommands/1.0.0": {
+        "runtime": {
+          "MockserverCommands.dll": {}
         }
       },
       "Spreadsheet/1.0.0": {
@@ -81,12 +93,22 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
+    "ClientCommands/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "DependencyGraph/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "Formula/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MockserverCommands/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

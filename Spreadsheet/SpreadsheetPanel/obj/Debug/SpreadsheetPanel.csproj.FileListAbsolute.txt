@@ -48,11 +48,15 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\NetworkController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\MockserverCommands.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\ClientCommands.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\DependencyGraph.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\FormulaEvaluator.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\Formula.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\SpreadsheetController.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\Spreadsheet.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\MockserverCommands.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\ClientCommands.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\DependencyGraph.pdb
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csprojAssemblyReference.cache
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\obj\Debug\SS.SpreadsheetPanel.resources

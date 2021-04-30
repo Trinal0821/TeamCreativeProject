@@ -6,6 +6,8 @@ using NetworkUtil;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SS;
+using MockserverCommands;
+using ClientCommands;
 
 namespace Controller
 {
@@ -119,10 +121,10 @@ namespace Controller
 
                 }
                 // Continue gathering startup data
-                else
-                {
+              //  else
+               // {
                     Networking.GetData(state);
-                }
+               // }
         }
 
         /// <summary>
@@ -156,12 +158,13 @@ namespace Controller
                 return;
             }
 
-            string clientID = state.GetData();
+            //Gets the client ID from the server and parse it to an int
+            string tempID = state.GetData();
 
             // remove the data we just processed from the state's buffer
-            state.RemoveData(0, clientID.Length);
+            state.RemoveData(0, tempID.Length);
 
-            processData(state);
+            state.OnNetworkAction = processData;
 
             // Continue event loop
             Networking.GetData(state);
@@ -196,9 +199,10 @@ namespace Controller
             }
 
             //What user inputs happened during the last frame, process them
-           // ProcessInputs();
+           ProcessInputs();
 
             Networking.GetData(state);
+
         }
 
         /// <summary>
@@ -215,48 +219,70 @@ namespace Controller
             }
 
             JObject jObj = JObject.Parse(instruction);
+            JToken cellupdate = jObj["cellUpdated"];
+            JToken cellselected = jObj["cellSelected"];
+            JToken disconnected = jObj["disconnected"];
 
             // string deserializedMessageType = JsonConvert.DeserializeObject<string>(instruction);
 
-            string deserializeMessage = jObj["messageType"].ToString();
-            if (instruction.Contains("cellUpdate"))
+            if(cellupdate != null)
             {
-                string deserializedName = jObj["cellName"].ToString();
-                string deserializedcontents = jObj["contents"].ToString();
+                CellUpdate update = JsonConvert.DeserializeObject<CellUpdate>(instruction);
 
-                cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
+                cellToUpdate = new KeyValuePair<string, string>(update.cellName, update.contents);
             }
-            else if (instruction.Contains("cellSelected"))
+            else if(cellselected != null)
             {
-                string deserializedName = jObj["cellName"].ToString();
-                string deserializedSelector = jObj["selector"].ToString();
-                string deserializedSelectorName = jObj["selectorName"].ToString();
+                CellSelected select = JsonConvert.DeserializeObject<CellSelected>(instruction);
 
-                //Add the client ID to the client list
-                if (int.TryParse(instruction, out int ID))
-                {
-                    addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
-                }
+                addClients(select.selector, new KeyValuePair<string, string>(select.cellName, select.selectorName));
             }
-            else if (instruction.Contains("disconnected"))
+            else if(disconnected != null)
             {
-                string deserializedID = jObj["user"].ToString();
-                if (int.TryParse(deserializedID, out int ID))
-                {
-                    removeClients(ID);
-                }
+                Disconnected disconnect = JsonConvert.DeserializeObject<Disconnected>(instruction);
+            }
+            //NEED TWO MORE ERROR CHECKING STATEMENTS
 
-            }
-            else if (instruction.Contains("requestError"))
-            {
-                string deserializedMessage = jObj["message"].ToString();
-                ssUpdateError(deserializedMessage);
-            }
-            else if (instruction.Contains("serverError"))
-            {
-                string deserializedMessage = jObj["message"].ToString();
-                ssUpdateError(deserializedMessage);
-            }
+
+            //string deserializeMessage = jObj["messageType"].ToString();
+            //if (instruction.Contains("cellUpdate"))
+            //{
+            //    string deserializedName = jObj["cellName"].ToString();
+            //    string deserializedcontents = jObj["contents"].ToString();
+
+            //    cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
+            //}
+            //else if (instruction.Contains("cellSelected"))
+            //{
+            //    string deserializedName = jObj["cellName"].ToString();
+            //    string deserializedSelector = jObj["selector"].ToString();
+            //    string deserializedSelectorName = jObj["selectorName"].ToString();
+
+            //    //Add the client ID to the client list
+            //    if (int.TryParse(instruction, out int ID))
+            //    {
+            //        addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
+            //    }
+            //}
+            //else if (instruction.Contains("disconnected"))
+            //{
+            //    string deserializedID = jObj["user"].ToString();
+            //    if (int.TryParse(deserializedID, out int ID))
+            //    {
+            //        removeClients(ID);
+            //    }
+
+            //}
+            //else if (instruction.Contains("requestError"))
+            //{
+            //    string deserializedMessage = jObj["message"].ToString();
+            //    ssUpdateError(deserializedMessage);
+            //}
+            //else if (instruction.Contains("serverError"))
+            //{
+            //    string deserializedMessage = jObj["message"].ToString();
+            //    ssUpdateError(deserializedMessage);
+            //}
 
             if (ssUpdate != null)
             {
@@ -273,28 +299,32 @@ namespace Controller
             StringBuilder sb = new StringBuilder();
             if (doUndo)
             {
-                sb.Append(JsonConvert.SerializeObject("requestType:" + "undo" + "\n"));
+               // sb.Append(JsonConvert.SerializeObject("requestType:" + "undo") + "\n");
                 doUndo = false;
             }
             else if (doRevert)
             {
 
-                sb.Append(JsonConvert.SerializeObject("requestType:" + "revertCell" + "\n"));
-                sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
+                //sb.Append(JsonConvert.SerializeObject("requestType:" + "revertCell") + "\n");
+               // sb.Append(JsonConvert.SerializeObject("cellName:" + cellName) + "\n");
                 doUndo = false;
             }
             else if (!contents.Equals(""))
             {
-                sb.Append(JsonConvert.SerializeObject("requestType:" + "editCell" + "\n"));
-                sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
-                sb.Append(JsonConvert.SerializeObject("contents:" + contents + "\n"));
+                EditCell edit = new EditCell("editCell", cellName, contents);
+                sb.Append(JsonConvert.SerializeObject(edit) + "\n");
+
+               // sb.Append(JsonConvert.SerializeObject("requestType:" + "editCell") + "\n");
+                //sb.Append(JsonConvert.SerializeObject("cellName:" + cellName ) + "\n");
+                //sb.Append(JsonConvert.SerializeObject("contents:" + contents) + "\n");
             }
             else if (!cellName.Equals(""))
             {
-                sb.Append(JsonConvert.SerializeObject("requestType:" + "selectCell" + "\n"));
-                sb.Append(JsonConvert.SerializeObject("cellName:" + cellName + "\n"));
+                SelectCell select = new SelectCell("selectCell", cellName);
+                sb.Append(JsonConvert.SerializeObject(select) + "\n");
+                //sb.Append(JsonConvert.SerializeObject("requestType:" + "selectCell") + "\n");
+                //sb.Append(JsonConvert.SerializeObject("cellName:" + cellName ) + "\n");
             }
-
             Networking.Send(theServer.TheSocket, sb.ToString());
         }
 

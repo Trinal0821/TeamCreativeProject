@@ -1,0 +1,11 @@
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\bin\Debug\netstandard2.0\ClientCommands.deps.json
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\bin\Debug\netstandard2.0\ClientCommands.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\bin\Debug\netstandard2.0\ClientCommands.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.csprojAssemblyReference.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.AssemblyInfoInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.AssemblyInfo.cs
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.csproj.CoreCompileInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.csproj.CopyComplete
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\ClientCommands\obj\Debug\netstandard2.0\ClientCommands.pdb

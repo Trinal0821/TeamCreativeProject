@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {}
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
         "projectName": "Formula",
-        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\obj\\",
+        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",

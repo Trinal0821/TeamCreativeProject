@@ -49,6 +49,14 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClientCommands\ClientCommands.csproj">
+      <Project>{227E4180-8134-4BE4-846E-826C9F3D72C5}</Project>
+      <Name>ClientCommands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MockeserverCommands\MockserverCommands.csproj">
+      <Project>{C6ED82F7-9E27-4E82-84F3-29CF682EEDB7}</Project>
+      <Name>MockserverCommands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpreadsheetController\SpreadsheetController.csproj">
       <Project>{CD63B342-6146-4F95-B3A4-926B3D5296E2}</Project>
       <Name>SpreadsheetController</Name>

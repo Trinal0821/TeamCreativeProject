@@ -1,0 +1,10 @@
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\bin\Debug\netstandard2.0\MockserverCommands.deps.json
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\bin\Debug\netstandard2.0\MockserverCommands.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\bin\Debug\netstandard2.0\MockserverCommands.pdb
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.AssemblyInfoInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.AssemblyInfo.cs
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.csproj.CoreCompileInputs.cache
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.csproj.CopyComplete
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.dll
+C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.pdb

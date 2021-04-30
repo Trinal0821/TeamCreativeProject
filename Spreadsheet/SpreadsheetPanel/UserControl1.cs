@@ -601,6 +601,7 @@ namespace SS
                     }
                 }
 
+                
                 // Draw the text
                 foreach (KeyValuePair<Address, String> address in _values)
                 {
