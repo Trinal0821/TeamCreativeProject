@@ -8,7 +8,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
-#include "Json/single_include/json.hpp"
+#include "Json/single_include/nlohmann/json.hpp"
 
 using boost::asio::ip::tcp;
 
