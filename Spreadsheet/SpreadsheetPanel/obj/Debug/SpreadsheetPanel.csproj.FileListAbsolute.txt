@@ -65,3 +65,7 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\obj\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.csproj.CopyComplete
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\obj\Debug\SpreadsheetPanel.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\MockserverCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\ClientCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\MockserverCommands.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetPanel\bin\Debug\ClientCommands.pdb

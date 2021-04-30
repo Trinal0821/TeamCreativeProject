@@ -180,19 +180,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\find\\.nuget\\packages\\": {}
+    "C:\\Users\\tneda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
+      "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
       "projectName": "FormulaEvaluator",
-      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
-      "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\obj\\",
+      "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
+      "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+      "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

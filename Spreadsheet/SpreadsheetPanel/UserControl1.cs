@@ -134,7 +134,7 @@ namespace SS
         /// </summary>
         /// <param name="col"></param>
         /// <param name="row"></param>
-        /// <param name="value"></param>
+        /// <param name="contents"></param>
         /// <returns></returns>
         public bool SetContents(int col, int row, string contents)
         {
@@ -162,6 +162,20 @@ namespace SS
                 MessageBox.Show(e.Message, "Circular Exception");
             }
             return true;
+        }
+
+        /// <summary>
+        /// If the cell name is in range, sets the contents of that
+        /// cell and returns true.  Otherwise, returns false.
+        /// </summary>
+        /// <param name="cellName"></param>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        public bool SetContents(string cellName, string contents)
+        {
+            int col = GetCellNameCol(cellName);
+            int row = GetCellNameRow(cellName);
+            return SetContents(col, row, contents);
         }
 
         /// <summary>
@@ -197,7 +211,7 @@ namespace SS
         /// <summary>
         /// Converts the cell name of into its corresponding column number
         /// </summary>
-        public int GetCellNameCol(string name)
+        private int GetCellNameCol(string name)
         {
             return Convert.ToInt32(name[0]) - 65;
         }
@@ -205,7 +219,7 @@ namespace SS
         /// <summary>
         /// Converts the cell name of into its corresponding row number
         /// </summary>
-        public int GetCellNameRow(string name)
+        private int GetCellNameRow(string name)
         {
             int.TryParse(name.Substring(1), out int result);
             return result - 1;
@@ -251,6 +265,19 @@ namespace SS
         public bool SetSelection(int col, int row)
         {
             return drawingPanel.SetSelection(col, row);
+        }
+
+        /// <summary>
+        /// If the cell name is in range, uses them to set
+        /// the current selection and returns true.  Otherwise, returns false.
+        /// </summary>
+        /// <param name="cellName"></param>
+        /// <returns></returns>
+        public bool SetSelection(string cellName)
+        {
+            int col = GetCellNameCol(cellName);
+            int row = GetCellNameRow(cellName);
+            return SetSelection(col, row);
         }
 
         /// <summary>
@@ -486,40 +513,43 @@ namespace SS
             public Pen DrawClientColor(int id)
             {
                 Pen pen = new Pen(Color.Black);
-                SpreadsheetController controller = _ssp.controller;
 
-                switch (id)
+                // Change highlight color for other clients
+                if (id != _ssp.controller.getThisID())
                 {
-                    case 0:
-                        pen = new Pen(Color.Blue);
-                        break;
-                    case 1:
-                        pen = new Pen(Color.DarkMagenta);
-                        break;
-                    case 2:
-                        pen = new Pen(Color.Green);
-                        break;
-                    case 3:
-                        pen = new Pen(Color.Red);
-                        break;
-                    case 4:
-                        pen = new Pen(Color.Violet);
-                        break;
-                    case 5:
-                        pen = new Pen(Color.Purple);
-                        break;
-                    case 6:
-                        pen = new Pen(Color.Orange);
-                        break;
-                    case 7:
-                        pen = new Pen(Color.Yellow);
-                        break;
-                    case 8:
-                        pen = new Pen(Color.Aquamarine);
-                        break;
-                    default:
-                        pen = new Pen(Color.Brown);
-                        break;
+                    switch (id)
+                    {
+                        case 0:
+                            pen = new Pen(Color.Blue);
+                            break;
+                        case 1:
+                            pen = new Pen(Color.DarkMagenta);
+                            break;
+                        case 2:
+                            pen = new Pen(Color.Green);
+                            break;
+                        case 3:
+                            pen = new Pen(Color.Red);
+                            break;
+                        case 4:
+                            pen = new Pen(Color.Violet);
+                            break;
+                        case 5:
+                            pen = new Pen(Color.Purple);
+                            break;
+                        case 6:
+                            pen = new Pen(Color.Orange);
+                            break;
+                        case 7:
+                            pen = new Pen(Color.Yellow);
+                            break;
+                        case 8:
+                            pen = new Pen(Color.Aquamarine);
+                            break;
+                        default:
+                            pen = new Pen(Color.Brown);
+                            break;
+                    }
                 }
 
                 return pen;
@@ -583,25 +613,29 @@ namespace SS
                     DrawRowLabel(e.Graphics, y, f);
                 }
 
-                // Highlight the selection, if it is visible
-                foreach (int id in _ssp.controller.getClientIDList())
-                {
-                    string selection = _ssp.controller.getClientSelection(id);
-                    int col = _ssp.GetCellNameCol(selection);
-                    int row = _ssp.GetCellNameRow(selection);
-
-                    if ((col - _firstColumn >= 0) && (row - _firstRow >= 0))
+                lock (_ssp.controller)
+                    // Highlight the selection, if it is visible
+                    foreach (int id in _ssp.controller.getClientIDList())
                     {
-                        e.Graphics.DrawRectangle(
-                            DrawClientColor(id),
-                            new Rectangle(LABEL_COL_WIDTH + (col - _firstColumn) * DATA_COL_WIDTH + 1,
-                                          LABEL_ROW_HEIGHT + (row - _firstRow) * DATA_ROW_HEIGHT + 1,
-                                          DATA_COL_WIDTH - 2,
-                                          DATA_ROW_HEIGHT - 2));
-                    }
-                }
+                        string selection = _ssp.controller.getClientSelection(id);
+                        if (selection != null)
+                        {
+                            int col = _ssp.GetCellNameCol(selection);
+                            int row = _ssp.GetCellNameRow(selection);
 
-                
+                            if ((col - _firstColumn >= 0) && (row - _firstRow >= 0))
+                            {
+                                e.Graphics.DrawRectangle(
+                                    DrawClientColor(id),
+                                    new Rectangle(LABEL_COL_WIDTH + (col - _firstColumn) * DATA_COL_WIDTH + 1,
+                                                  LABEL_ROW_HEIGHT + (row - _firstRow) * DATA_ROW_HEIGHT + 1,
+                                                  DATA_COL_WIDTH - 2,
+                                                  DATA_ROW_HEIGHT - 2));
+                            }
+                        }
+                    }
+
+
                 // Draw the text
                 foreach (KeyValuePair<Address, String> address in _values)
                 {

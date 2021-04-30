@@ -56,3 +56,7 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.csproj.CopyComplete
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\obj\Debug\netstandard2.0\SpreadsheetController.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\ClientCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\MockserverCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\ClientCommands.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetController\bin\Debug\netstandard2.0\MockserverCommands.pdb

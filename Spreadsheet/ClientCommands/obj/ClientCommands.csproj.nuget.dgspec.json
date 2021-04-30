@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {}
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
         "projectName": "ClientCommands",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -77,3 +77,7 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\De
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.csproj.CopyComplete
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.exe
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\obj\Debug\SpreadsheetGUI.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\MockserverCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\ClientCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\MockserverCommands.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\SpreadsheetGUI\bin\Debug\ClientCommands.pdb

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {}
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
         "projectName": "ClientCommands",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,17 +59,17 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
         "projectName": "ClientTests",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\ClientTests.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,8 +82,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
+              "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
+                "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
               }
             }
           }
@@ -115,17 +115,17 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
         "projectName": "DependencyGraph",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -170,17 +170,17 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
         "projectName": "Formula",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -225,17 +225,17 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
         "projectName": "MockserverCommands",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -280,17 +280,17 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
         "projectName": "SpreadsheetController",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -303,14 +303,14 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj"
+              "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
+                "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj"
               },
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj"
+              "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
+                "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj"
               },
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
+              "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+                "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj"
               }
             }
           }
@@ -345,17 +345,17 @@
         }
       }
     },
-    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
+    "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
+        "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
         "projectName": "Spreadsheet",
-        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
-        "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\obj\\",
+        "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\Spreadsheet.csproj",
+        "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
+        "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Spreadsheet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -368,11 +368,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj"
+              "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj": {
+                "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\DependencyGraph\\DependencyGraph.csproj"
               },
-              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
-                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj"
+              "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj": {
+                "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\Formula\\Formula.csproj"
               }
             }
           }

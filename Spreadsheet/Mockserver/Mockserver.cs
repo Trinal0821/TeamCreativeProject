@@ -25,7 +25,7 @@ namespace Mockserver
         private Dictionary<string, AbstractSpreadsheet> spreadsheetList = new Dictionary<string, AbstractSpreadsheet>();
         private SocketState clients = null;
         private string name;
-       private StringBuilder sb = new StringBuilder();
+        private StringBuilder sb = new StringBuilder();
 
         static void Main(string[] args)
         {
@@ -34,9 +34,9 @@ namespace Mockserver
 
             Stopwatch watch = new Stopwatch();
 
-            while(true)
+            while (true)
             {
-                while(watch.ElapsedMilliseconds < 100)
+                while (watch.ElapsedMilliseconds < 100)
                 {
                     watch.Restart();
                 }
@@ -87,7 +87,7 @@ namespace Mockserver
             //        break;
 
             //   // sb.Append(newMessages);
-               
+
 
             //    if (p.Contains("\n"))
             //    {
@@ -99,9 +99,9 @@ namespace Mockserver
             //        state.RemoveData(0, p.Length);
 
             //    }
-                
+
             //    // Remove it from the SocketState's growable buffer
-               
+
 
             //}
             //return newMessages;
@@ -132,8 +132,8 @@ namespace Mockserver
 
             }
             return newMessages;
-        
-    }
+
+        }
 
         /// <summary>
         /// Method to be invoked by the networking library
@@ -171,11 +171,11 @@ namespace Mockserver
             HashSet<long> disconnectedClients = new HashSet<long>();
 
             //Gets the player's name from the list
-             name = list[0];
+            name = list[0];
 
             //Remove the name from the list
             list.Remove(list[0]);
-            
+
 
             StringBuilder stringbuilder = new StringBuilder();
 
@@ -210,7 +210,7 @@ namespace Mockserver
 
             return output;
         }
-       
+
 
         private void SendSpreadsheet(SocketState state)
         {
@@ -231,7 +231,7 @@ namespace Mockserver
                 IEnumerable<string> nonemptyCells = sheet.GetNamesOfAllNonemptyCells();
                 Spreadsheet spreadsheet = new Spreadsheet();
 
-                foreach(string s in nonemptyCells)
+                foreach (string s in nonemptyCells)
                 {
                     sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
                     sb.Append(JsonConvert.SerializeObject("cellName: " + s + "\n"));
@@ -245,7 +245,7 @@ namespace Mockserver
             }
 
             StringBuilder builder = new StringBuilder();
-            builder.Append(state.ID);
+            builder.Append(state.ID + "\n");
             System.Console.WriteLine("about to send id");
 
             //Send the startup info to the client. If the data cannot be sent then it will add them to a list of disconnected clients to be remove
@@ -275,7 +275,7 @@ namespace Mockserver
             List<string> list = ProcessMessage(state);
             StringBuilder sb = new StringBuilder();
 
-        
+
             foreach (string p in list)
             {
                 if (p != "")
@@ -286,25 +286,25 @@ namespace Mockserver
                     JToken revert = jObj["revertCell"];
                     JToken undo = jObj["undoCell"];
 
-                    if(edit != null)
+                    if (edit != null)
                     {
                         EditCell editcell = JsonConvert.DeserializeObject<EditCell>(p);
 
                         CellUpdate update = new CellUpdate("cellUpdated", editcell.cellName, editcell.contents);
                         sb.Append(JsonConvert.SerializeObject(update) + "\n");
                     }
-                    else if(select != null)
+                    else if (select != null)
                     {
                         SelectCell selectCell = JsonConvert.DeserializeObject<SelectCell>(p);
 
                         CellSelected selected = new CellSelected("cellSelected", selectCell.cellName, (int)state.ID, name);
-                        sb.Append(JsonConvert.SerializeObject(selectCell) + "\n");
+                        sb.Append(JsonConvert.SerializeObject(selected) + "\n");
                     }
-                    else if(revert != null)
+                    else if (revert != null)
                     {
                         RevertCell revertCell = JsonConvert.DeserializeObject<RevertCell>(p);
                     }
-                    else if(undo != null)
+                    else if (undo != null)
                     {
                         UndoCell undoCell = JsonConvert.DeserializeObject<UndoCell>(p);
                     }
@@ -363,11 +363,12 @@ namespace Mockserver
 
                 }
             }
-
-            if (!Networking.Send(state.TheSocket, sb.ToString()))
-            {
-               System.Console.WriteLine("ERROR");
-            }
+            // Send updates to each client
+            foreach (SocketState s in clientsdictionary.Keys)
+                if (!Networking.Send(s.TheSocket, sb.ToString()))
+                {
+                    System.Console.WriteLine("ERROR");
+                }
 
             Networking.GetData(state);
         }

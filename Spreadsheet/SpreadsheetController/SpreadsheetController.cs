@@ -26,6 +26,8 @@ namespace Controller
         //public event SelectionChanged SelectionUpdate;
         public delegate void ConnectedHandler(string[] ssNames);
         public event ConnectedHandler Connected;
+        public delegate void SpreadsheetConnection();
+        public event SpreadsheetConnection ssConnected;
         public delegate void ErrorHandler(string err);
         public event ErrorHandler Error;
 
@@ -108,23 +110,23 @@ namespace Controller
                 return;
             }
 
-                // get the Json information
-                jsonInfo.Append(state.GetData());
+            // get the Json information
+            jsonInfo.Append(state.GetData());
 
 
-                // Check if all spreadsheet name data has been gathered
-                if (jsonInfo.ToString().Contains("\n\n"))
-                {
-                    // split it into actual messages
-                    // send the spreadsheet names to the GUI
-                    Connected(Regex.Split(jsonInfo.ToString(), @"(?<=[\n])"));
+            // Check if all spreadsheet name data has been gathered
+            if (jsonInfo.ToString().Contains("\n\n"))
+            {
+                // split it into actual messages
+                // send the spreadsheet names to the GUI
+                Connected(Regex.Split(jsonInfo.ToString(), @"(?<=[\n])"));
 
-                }
-                // Continue gathering startup data
-              //  else
-               // {
-                    Networking.GetData(state);
-               // }
+            }
+            // Continue gathering startup data
+            //  else
+            // {
+            Networking.GetData(state);
+            // }
         }
 
         /// <summary>
@@ -158,13 +160,8 @@ namespace Controller
                 return;
             }
 
-            //Gets the client ID from the server and parse it to an int
-            string tempID = state.GetData();
-
-            // remove the data we just processed from the state's buffer
-            state.RemoveData(0, tempID.Length);
-
-            state.OnNetworkAction = processData;
+            // Proccess the data we have
+            processData(state);
 
             // Continue event loop
             Networking.GetData(state);
@@ -176,10 +173,10 @@ namespace Controller
         /// <param name="state"></param>
         private void processData(SocketState state)
         {
-            // get the Json information
+            // Gets the json information form the server
             string jsonInfo = state.GetData();
 
-            // split it into actual messages
+            // Split it into actual messages
             string[] updates = Regex.Split(jsonInfo, @"(?<=[\n])");
 
             foreach (string instruction in updates)
@@ -192,14 +189,16 @@ namespace Controller
                 if (instruction[instruction.Length - 1] != '\n')
                     break;
 
-                UpdateSpreadsheet(instruction);
+                if (instruction.Trim() != "")
+                    UpdateSpreadsheet(instruction);
 
                 // remove the data we just processed from the state's buffer
-                state.RemoveData(0, instruction.Length);
+                if(state.GetData().Length != 0)
+                    state.RemoveData(0, instruction.Length);
             }
 
             //What user inputs happened during the last frame, process them
-           ProcessInputs();
+            //ProcessInputs();
 
             Networking.GetData(state);
 
@@ -216,81 +215,86 @@ namespace Controller
                 // Assign client ID
                 if (int.TryParse(instruction, out int ID))
                     clientID = ID;
+
+                // Tell the GUI we're connected to the spreadsheet
+                ssConnected();
             }
-
-            JObject jObj = JObject.Parse(instruction);
-            JToken cellupdate = jObj["cellUpdated"];
-            JToken cellselected = jObj["cellSelected"];
-            JToken disconnected = jObj["disconnected"];
-
-            // string deserializedMessageType = JsonConvert.DeserializeObject<string>(instruction);
-
-            if(cellupdate != null)
+            else
             {
-                CellUpdate update = JsonConvert.DeserializeObject<CellUpdate>(instruction);
+                JObject jObj = JObject.Parse(instruction);
+                JToken cellupdate = jObj["cellUpdated"];
+                JToken cellselected = jObj["cellSelected"];
+                JToken disconnected = jObj["disconnected"];
 
-                cellToUpdate = new KeyValuePair<string, string>(update.cellName, update.contents);
-            }
-            else if(cellselected != null)
-            {
-                CellSelected select = JsonConvert.DeserializeObject<CellSelected>(instruction);
+                // string deserializedMessageType = JsonConvert.DeserializeObject<string>(instruction);
 
-                addClients(select.selector, new KeyValuePair<string, string>(select.cellName, select.selectorName));
-            }
-            else if(disconnected != null)
-            {
-                Disconnected disconnect = JsonConvert.DeserializeObject<Disconnected>(instruction);
-            }
-            //NEED TWO MORE ERROR CHECKING STATEMENTS
+                if (cellupdate != null)
+                {
+                    CellUpdate update = JsonConvert.DeserializeObject<CellUpdate>(instruction);
+
+                    cellToUpdate = new KeyValuePair<string, string>(update.cellName, update.contents);
+                }
+                else if (cellselected != null)
+                {
+                    CellSelected select = JsonConvert.DeserializeObject<CellSelected>(instruction);
+                    lock (this)
+                        addClients(select.selector, new KeyValuePair<string, string>(select.cellName, select.selectorName));
+                }
+                else if (disconnected != null)
+                {
+                    Disconnected disconnect = JsonConvert.DeserializeObject<Disconnected>(instruction);
+                }
+                //NEED TWO MORE ERROR CHECKING STATEMENTS
 
 
-            //string deserializeMessage = jObj["messageType"].ToString();
-            //if (instruction.Contains("cellUpdate"))
-            //{
-            //    string deserializedName = jObj["cellName"].ToString();
-            //    string deserializedcontents = jObj["contents"].ToString();
+                //string deserializeMessage = jObj["messageType"].ToString();
+                //if (instruction.Contains("cellUpdate"))
+                //{
+                //    string deserializedName = jObj["cellName"].ToString();
+                //    string deserializedcontents = jObj["contents"].ToString();
 
-            //    cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
-            //}
-            //else if (instruction.Contains("cellSelected"))
-            //{
-            //    string deserializedName = jObj["cellName"].ToString();
-            //    string deserializedSelector = jObj["selector"].ToString();
-            //    string deserializedSelectorName = jObj["selectorName"].ToString();
+                //    cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
+                //}
+                //else if (instruction.Contains("cellSelected"))
+                //{
+                //    string deserializedName = jObj["cellName"].ToString();
+                //    string deserializedSelector = jObj["selector"].ToString();
+                //    string deserializedSelectorName = jObj["selectorName"].ToString();
 
-            //    //Add the client ID to the client list
-            //    if (int.TryParse(instruction, out int ID))
-            //    {
-            //        addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
-            //    }
-            //}
-            //else if (instruction.Contains("disconnected"))
-            //{
-            //    string deserializedID = jObj["user"].ToString();
-            //    if (int.TryParse(deserializedID, out int ID))
-            //    {
-            //        removeClients(ID);
-            //    }
+                //    //Add the client ID to the client list
+                //    if (int.TryParse(instruction, out int ID))
+                //    {
+                //        addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
+                //    }
+                //}
+                //else if (instruction.Contains("disconnected"))
+                //{
+                //    string deserializedID = jObj["user"].ToString();
+                //    if (int.TryParse(deserializedID, out int ID))
+                //    {
+                //        removeClients(ID);
+                //    }
 
-            //}
-            //else if (instruction.Contains("requestError"))
-            //{
-            //    string deserializedMessage = jObj["message"].ToString();
-            //    ssUpdateError(deserializedMessage);
-            //}
-            //else if (instruction.Contains("serverError"))
-            //{
-            //    string deserializedMessage = jObj["message"].ToString();
-            //    ssUpdateError(deserializedMessage);
-            //}
+                //}
+                //else if (instruction.Contains("requestError"))
+                //{
+                //    string deserializedMessage = jObj["message"].ToString();
+                //    ssUpdateError(deserializedMessage);
+                //}
+                //else if (instruction.Contains("serverError"))
+                //{
+                //    string deserializedMessage = jObj["message"].ToString();
+                //    ssUpdateError(deserializedMessage);
+                //}
 
-            if (ssUpdate != null)
-            {
-                ssUpdate();
-            }
-            if (testUpdate != null)
-            {
-                testUpdate(instruction);
+                if (ssUpdate != null)
+                {
+                    ssUpdate();
+                }
+                if (testUpdate != null)
+                {
+                    testUpdate(instruction);
+                }
             }
         }
 
@@ -299,14 +303,14 @@ namespace Controller
             StringBuilder sb = new StringBuilder();
             if (doUndo)
             {
-               // sb.Append(JsonConvert.SerializeObject("requestType:" + "undo") + "\n");
+                // sb.Append(JsonConvert.SerializeObject("requestType:" + "undo") + "\n");
                 doUndo = false;
             }
             else if (doRevert)
             {
 
                 //sb.Append(JsonConvert.SerializeObject("requestType:" + "revertCell") + "\n");
-               // sb.Append(JsonConvert.SerializeObject("cellName:" + cellName) + "\n");
+                // sb.Append(JsonConvert.SerializeObject("cellName:" + cellName) + "\n");
                 doUndo = false;
             }
             else if (!contents.Equals(""))
@@ -314,7 +318,7 @@ namespace Controller
                 EditCell edit = new EditCell("editCell", cellName, contents);
                 sb.Append(JsonConvert.SerializeObject(edit) + "\n");
 
-               // sb.Append(JsonConvert.SerializeObject("requestType:" + "editCell") + "\n");
+                // sb.Append(JsonConvert.SerializeObject("requestType:" + "editCell") + "\n");
                 //sb.Append(JsonConvert.SerializeObject("cellName:" + cellName ) + "\n");
                 //sb.Append(JsonConvert.SerializeObject("contents:" + contents) + "\n");
             }
@@ -337,14 +341,14 @@ namespace Controller
         /// Adds/Updates the client info into the clientlist
         /// </summary>
         /// <param name="clientID"></param>
-        private void addClients(int clientID, KeyValuePair<string, string> userInfo)
+        private void addClients(int ID, KeyValuePair<string, string> userInfo)
         {
-            if (clientList.ContainsKey(clientID))
+            if (clientList.ContainsKey(ID))
             {
-                clientList.Remove(clientID);
+                clientList.Remove(ID);
             }
 
-            clientList.Add(clientID, new KeyValuePair<string, string>(userInfo.Key, userInfo.Value));
+            clientList.Add(ID, new KeyValuePair<string, string>(userInfo.Key, userInfo.Value));
         }
 
         /// <summary>

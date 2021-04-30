@@ -44,3 +44,11 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.csproj.CopyComplete
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.exe
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Mockserver.exe.config
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Mockserver.exe
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\Mockserver.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\ClientCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\MockserverCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\ClientCommands.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\bin\Debug\MockserverCommands.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\Mockserver\obj\Debug\Mockserver.csproj.CopyComplete

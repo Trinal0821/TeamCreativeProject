@@ -24,3 +24,4 @@ C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.csproj.CoreCompileInputs.cache
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.dll
 C:\Users\find\Source\Repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\FormulaEvaluator\obj\Debug\netstandard2.0\FormulaEvaluator.csprojAssemblyReference.cache
