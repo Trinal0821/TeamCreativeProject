@@ -18,14 +18,15 @@ namespace Mockserver
 {
     class Mockserver
     {
-        string lastedit = null;
-        string lastCellName = null;
+        Stack<string> lastedit = new Stack<string>();
+        Stack<string> lastCellName = new Stack<string>();
         private static Dictionary<SocketState, string> clientsdictionary;
         // private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
         private Dictionary<string, AbstractSpreadsheet> spreadsheetList = new Dictionary<string, AbstractSpreadsheet>();
         private SocketState clients = null;
         private string name;
         private StringBuilder sb = new StringBuilder();
+        private EditCell tempCell;
 
         static void Main(string[] args)
         {
@@ -61,50 +62,6 @@ namespace Mockserver
         /// <param name="state"></param>
         private List<string> ProcessMessage(SocketState state)
         {
-            ////Gets all of the data and split them based on new line
-            ////  sb.Append(state.GetData());
-            //string totalData = state.GetData();
-            //string temp2 = totalData.Replace(@"\", "") ;
-
-
-            ////string[] parts = Regex.Split(totalData, @"(?<=[\n])");
-
-            //string[] parts = Regex.Split(totalData, @"(?<=[\n])");
-            //List<string> newMessages = new List<string>();
-            //string temp;
-
-            //// Loop until we have processed all messages.
-            //// We may have received more than one.
-            //foreach (string p in parts)
-            //{
-            //    // Ignore empty strings added by the regex splitter
-            //    if (p.Length == 0)
-            //        continue;
-
-            //    // The regex splitter will include the last string even if it doesn't end with a '\n',
-            //    // So we need to ignore it if this happens. 
-            //    if (p[p.Length - 1] != '\n')
-            //        break;
-
-            //   // sb.Append(newMessages);
-
-
-            //    if (p.Contains("\n"))
-            //    {
-            //      //  temp = p.TrimEnd('\n');
-            //        //newMessages.Add(temp);
-            //        //sb.Remove(0, p.Length);
-            //        newMessages.Add(p);
-
-            //        state.RemoveData(0, p.Length);
-
-            //    }
-
-            //    // Remove it from the SocketState's growable buffer
-
-
-            //}
-            //return newMessages;
 
             //Gets all of the data and split them based on new line
             string totalData = state.GetData();
@@ -292,6 +249,10 @@ namespace Mockserver
 
                         CellUpdate update = new CellUpdate("cellUpdated", editcell.cellName, editcell.contents);
                         sb.Append(JsonConvert.SerializeObject(update) + "\n");
+
+                        lastCellName.Push(editcell.cellName);
+                        lastedit.Push(editcell.contents);
+                        tempCell = editcell;
                     }
                     else if (select != null)
                     {
@@ -303,64 +264,26 @@ namespace Mockserver
                     else if (revert != null)
                     {
                         RevertCell revertCell = JsonConvert.DeserializeObject<RevertCell>(p);
+
+                        CellUpdate update = new CellUpdate("cellUpdated", revertCell.cellName, "");
+                        sb.Append(JsonConvert.SerializeObject(update));
                     }
                     else if (undo != null)
                     {
                         UndoCell undoCell = JsonConvert.DeserializeObject<UndoCell>(p);
+
+                        if (lastedit.Peek().Equals(tempCell.contents) && lastCellName.Peek().Equals(tempCell.cellName));
+                        {
+                            string tempContents = lastedit.Pop();
+                            string tempCellName = lastCellName.Pop();
+
+                            CellUpdate update = new CellUpdate("cellUpdated", lastCellName.Pop(), lastedit.Pop());
+                            sb.Append(JsonConvert.SerializeObject(update) + "\n");
+
+                            lastCellName.Push(tempCellName);
+                            lastedit.Push(tempContents);
+                        }
                     }
-
-
-                    //if (p.Contains("editCell"))
-                    //{
-                    //   string deserializedCellContents = jObj["contents"].ToString();
-                    //    string deserilizedCellName = jObj["cellName"].ToString();
-                    //    lastedit = deserializedCellContents;
-                    //    lastCellName = deserilizedCellName;
-
-                    //    sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" ) + "\n");
-                    //    sb.Append(JsonConvert.SerializeObject("cellName: " + deserilizedCellName ) + "\n");
-                    //    sb.Append(JsonConvert.SerializeObject("contents: " + deserializedCellContents ) + "\n");
-                    //}
-                    //else if (p.Contains("revertCell"))
-                    //{
-                    //    string deserilizedCellName = jObj["cellName"].ToString();
-
-                    //    sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated") + "\n");
-                    //    sb.Append(JsonConvert.SerializeObject("cellName: " + deserilizedCellName ) + "\n");
-                    //    sb.Append(JsonConvert.SerializeObject("contents: " + "" ) + "\n");
-
-                    //    lastedit = "";
-                    //    lastCellName = deserilizedCellName;
-
-                    //}
-                    //else if (p.Contains("selectCell"))
-                    //{
-                    //    string deserializedCellName = jObj["cellName"].ToString();
-
-                    //    foreach(SocketState s in clientsdictionary.Keys)
-                    //    {
-                    //        if(s.ID == state.ID)
-                    //        {
-                    //            //Set the location of where the client is
-                    //            clientsdictionary[s] = deserializedCellName;
-
-                    //            sb.Append(JsonConvert.SerializeObject("messageType: " + "cellSelected" + "\n"));
-                    //            sb.Append(JsonConvert.SerializeObject("cellName: " + deserializedCellName + "\n"));
-                    //            sb.Append(JsonConvert.SerializeObject("selector: " + s.ID + "\n"));
-
-                    //            //NEED TO CHANGE THIS!! THIS IS TEMPORARY
-                    //            sb.Append(JsonConvert.SerializeObject("selectorName" + "sam" + "\n"));
-                    //        }
-                    //    }
-                    //}
-                    //else if (p.Contains("undo"))
-                    //{
-                    //    sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
-                    //    sb.Append(JsonConvert.SerializeObject("cellName: " + lastCellName + "\n"));
-                    //    sb.Append(JsonConvert.SerializeObject("contents: " + lastedit + "\n"));
-                    //}
-
-
                 }
             }
             // Send updates to each client

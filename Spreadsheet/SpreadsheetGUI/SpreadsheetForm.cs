@@ -38,7 +38,6 @@ namespace SpreadsheetGUI
             // Event listeners
             ssCtrl.Error += ShowError;
             ssCtrl.ssUpdate += UpdateSpreadsheet;
-            ssCtrl.ssUpdateError += UpdateError;
             ssCtrl.ssConnected += InitialSelection;
             // ssCtrl.SelectionUpdate += OnSelectionChanged;
 
@@ -74,87 +73,75 @@ namespace SpreadsheetGUI
             MessageBox.Show(errorMessage);
         }
 
-        private void UpdateSpreadsheet()
+        private void UpdateSpreadsheet(string errormessage, string message)
         {
-            //try
-            //{
-            //    MethodInvoker invalidator = new MethodInvoker(() => this.Invalidate(true));
-            //    this.Invoke(invalidator);
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-
-            lock (controller)
+            if (errormessage.Equals("disconnected"))
             {
-                // Update client's selection if necessary
-                MethodInvoker updateSelection = delegate
+                error = true;
+                MessageBox.Show(message);
+            }
+            else if (errormessage.Equals("serverError"))
+            {
+                error = true;
+                MessageBox.Show(message);
+            }
+            else if (errormessage.Equals(""))
+            {
+
+                lock (controller)
                 {
-                    string newSel = controller.getClientSelection(controller.getThisID());
-                    spreadsheetPanel1.GetSelection(out int col, out int row);
-                    string crntSel = spreadsheetPanel1.ConvertCellName(col, row);
+                    // Update client's selection if necessary
+                    MethodInvoker updateSelection = delegate
+                    {
+                        string newSel = controller.getClientSelection(controller.getThisID());
+                        spreadsheetPanel1.GetSelection(out int col, out int row);
+                        string crntSel = spreadsheetPanel1.ConvertCellName(col, row);
 
                     //if (newSel != crntSel)
                     {
-                        spreadsheetPanel1.SetSelection(col, row);
+                            spreadsheetPanel1.SetSelection(col, row);
 
                         // Update name, value, and contents textBoxs
                         textBoxCellName.Text = (ConvertCellName(col, row));
 
-                        spreadsheetPanel1.GetValue(col, row, out string val);
-                        textBoxCellValue.Text = val;
+                            spreadsheetPanel1.GetValue(col, row, out string val);
+                            textBoxCellValue.Text = val;
 
-                        textBoxCellContents.Text = spreadsheetPanel1.GetContents(col, row);
+                            textBoxCellContents.Text = spreadsheetPanel1.GetContents(col, row);
 
                         // Focus the input onto the contents textbox
                         textBoxCellContents.Focus();
 
-                    }
-
-                    //spreadsheetPanel1.GetSelection(out int col, out int row);
-                    //controller.setCellName(spreadsheetPanel1.ConvertCellName(col, row));
-                    //spreadsheetPanel1.GetValue(col, row, out string val);
-                    //textBoxCellValue.Text = val;
-
-                    //textBoxCellValue.Text = spreadsheetPanel1.GetContents(col, row);
-
-                    //textBoxCellContents.Focus();
+                        }
                 };
 
-                BeginInvoke(updateSelection);
+                    BeginInvoke(updateSelection);
 
-                // Update the cell info from server
-                MethodInvoker updateCell = delegate
-                {
-                    lock (controller)
+                    // Update the cell info from server
+                    MethodInvoker updateCell = delegate
                     {
-                        KeyValuePair<string, string> cellToUpdate = controller.getCellToUpdate();
-                        if (cellToUpdate.Key.Length != 0)
+                        lock (controller)
                         {
+                            KeyValuePair<string, string> cellToUpdate = controller.getCellToUpdate();
+                            if (cellToUpdate.Key.Length != 0)
+                            {
                             // Update the spreadsheet
                             spreadsheetPanel1.SetContents(cellToUpdate.Key, cellToUpdate.Value);
 
                             // Update the textbox
                             textBoxCellContents.Text = cellToUpdate.Value;
 
-                            controller.cellUpdated();
+                                controller.cellUpdated();
+                            }
                         }
-                    }
-                };
+                    };
 
-                BeginInvoke(updateCell);
+                    BeginInvoke(updateCell);
+                }
+
             }
 
 
-
-
-        }
-
-        private void UpdateError(string message)
-        {
-            error = true;
-            MessageBox.Show(message);
         }
 
         /// <summary>
@@ -408,7 +395,7 @@ namespace SpreadsheetGUI
             lock (controller)
             {
                 controller.undoAction();
-                controller.ProcessInputs();
+               // controller.ProcessInputs();
             }
         }
 
@@ -417,7 +404,7 @@ namespace SpreadsheetGUI
             lock (controller)
             {
                 controller.revertCell(controller.getClientSelection(controller.getThisID()));
-                controller.ProcessInputs();
+               // controller.ProcessInputs();
             }
         }
     }

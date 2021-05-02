@@ -5,21 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClientCommands
+namespace MockserverCommands
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public class RevertCell
+    public class MockUndoCell
     {
         //Sets all for the edit cell's json property
-        [JsonProperty(PropertyName = "revertCell")]
+        [JsonProperty(PropertyName = "selectCell")]
         private string requestType;
-        [JsonProperty]
-        public string cellName;
 
-        public RevertCell(string requestType, string cellName)
+        public MockUndoCell(string requestType)
         {
             this.requestType = requestType;
-            this.cellName = cellName;
         }
     }
 }

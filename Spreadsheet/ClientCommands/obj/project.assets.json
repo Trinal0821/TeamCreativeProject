@@ -180,19 +180,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tneda\\.nuget\\packages\\": {}
+    "C:\\Users\\find\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+      "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
       "projectName": "ClientCommands",
-      "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
-      "packagesPath": "C:\\Users\\tneda\\.nuget\\packages\\",
-      "outputPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\obj\\",
+      "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+      "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tneda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

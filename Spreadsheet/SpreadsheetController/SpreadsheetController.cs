@@ -18,10 +18,8 @@ namespace Controller
     public class SpreadsheetController
     {
         // Controller events that the view can subscribe to
-        public delegate void UpdateFromServer();
+        public delegate void UpdateFromServer(string errormessage, string message);
         public event UpdateFromServer ssUpdate;
-        public delegate void UpdateError(string message);
-        public event UpdateError ssUpdateError;
         // public delegate void SelectionChanged();
         //public event SelectionChanged SelectionUpdate;
         public delegate void ConnectedHandler(string[] ssNames);
@@ -225,6 +223,11 @@ namespace Controller
                 JToken cellupdate = jObj["cellUpdated"];
                 JToken cellselected = jObj["cellSelected"];
                 JToken disconnected = jObj["disconnected"];
+                JToken requestError = jObj["requestError"];
+                JToken serverError = jObj["serverError"];
+
+                string errormessage = "";
+                string message = "";
 
                 // string deserializedMessageType = JsonConvert.DeserializeObject<string>(instruction);
 
@@ -243,53 +246,26 @@ namespace Controller
                 else if (disconnected != null)
                 {
                     Disconnected disconnect = JsonConvert.DeserializeObject<Disconnected>(instruction);
+                    errormessage = "disconnected";
+                    message = "You are disconnected from the server";
+
                 }
-                //NEED TWO MORE ERROR CHECKING STATEMENTS
-
-
-                //string deserializeMessage = jObj["messageType"].ToString();
-                //if (instruction.Contains("cellUpdate"))
-                //{
-                //    string deserializedName = jObj["cellName"].ToString();
-                //    string deserializedcontents = jObj["contents"].ToString();
-
-                //    cellToUpdate = new KeyValuePair<string, string>(deserializedName, deserializedcontents);
-                //}
-                //else if (instruction.Contains("cellSelected"))
-                //{
-                //    string deserializedName = jObj["cellName"].ToString();
-                //    string deserializedSelector = jObj["selector"].ToString();
-                //    string deserializedSelectorName = jObj["selectorName"].ToString();
-
-                //    //Add the client ID to the client list
-                //    if (int.TryParse(instruction, out int ID))
-                //    {
-                //        addClients(ID, new KeyValuePair<string, string>(deserializedName, deserializedSelectorName));
-                //    }
-                //}
-                //else if (instruction.Contains("disconnected"))
-                //{
-                //    string deserializedID = jObj["user"].ToString();
-                //    if (int.TryParse(deserializedID, out int ID))
-                //    {
-                //        removeClients(ID);
-                //    }
-
-                //}
-                //else if (instruction.Contains("requestError"))
-                //{
-                //    string deserializedMessage = jObj["message"].ToString();
-                //    ssUpdateError(deserializedMessage);
-                //}
-                //else if (instruction.Contains("serverError"))
-                //{
-                //    string deserializedMessage = jObj["message"].ToString();
-                //    ssUpdateError(deserializedMessage);
-                //}
+                else if(requestError != null)
+                {
+                    RequestError rError = JsonConvert.DeserializeObject<RequestError>(instruction);
+                    errormessage = "requestError";
+                    message = rError.message;
+                }
+                else if(serverError != null)
+                {
+                    ServerError sError = JsonConvert.DeserializeObject<ServerError>(instruction);
+                    errormessage = "serverError";
+                    message = sError.message;
+                }
 
                 if (ssUpdate != null)
                 {
-                    ssUpdate();
+                    ssUpdate(errormessage, message);
                 }
                 if (testUpdate != null)
                 {
@@ -303,14 +279,14 @@ namespace Controller
             StringBuilder sb = new StringBuilder();
             if (doUndo)
             {
-                // sb.Append(JsonConvert.SerializeObject("requestType:" + "undo") + "\n");
+                UndoCell undo = new UndoCell("undo");
+                 sb.Append(JsonConvert.SerializeObject(undo) + "\n");
                 doUndo = false;
             }
             else if (doRevert)
             {
-
-                //sb.Append(JsonConvert.SerializeObject("requestType:" + "revertCell") + "\n");
-                // sb.Append(JsonConvert.SerializeObject("cellName:" + cellName) + "\n");
+                RevertCell revert = new RevertCell("revertCell", cellName);
+                sb.Append(JsonConvert.SerializeObject(revert) + "\n");
                 doUndo = false;
             }
             else if (!contents.Equals(""))

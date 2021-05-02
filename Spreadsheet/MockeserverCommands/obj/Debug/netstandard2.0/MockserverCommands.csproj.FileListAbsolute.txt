@@ -19,3 +19,4 @@ G:\source\repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\ne
 G:\source\repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.csproj.CopyComplete
 G:\source\repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.dll
 G:\source\repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.pdb
+C:\Users\find\source\repos\TeamCreativeProject\Spreadsheet\MockeserverCommands\obj\Debug\netstandard2.0\MockserverCommands.csprojAssemblyReference.cache
