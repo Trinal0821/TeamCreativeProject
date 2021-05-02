@@ -266,7 +266,7 @@ namespace Mockserver
                         RevertCell revertCell = JsonConvert.DeserializeObject<RevertCell>(p);
 
                         CellUpdate update = new CellUpdate("cellUpdated", revertCell.cellName, "");
-                        sb.Append(JsonConvert.SerializeObject(update));
+                        sb.Append(JsonConvert.SerializeObject(update) + "\n");
                     }
                     else if (undo != null)
                     {

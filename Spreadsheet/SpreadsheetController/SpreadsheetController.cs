@@ -287,7 +287,7 @@ namespace Controller
             {
                 RevertCell revert = new RevertCell("revertCell", cellName);
                 sb.Append(JsonConvert.SerializeObject(revert) + "\n");
-                doUndo = false;
+                doRevert = false;
             }
             else if (!contents.Equals(""))
             {

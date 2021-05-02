@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N/TIc+5H0oIkHNkuQ+YPXo4Vlq0nBfLSSodso872bGDwmg/EdhQrol4YI5DVYev7OSfXXf1bFJs2ZqNcKiNnJg==",
+  "dgSpecHash": "MY2KohT/wCdUkYUEl16+1BKi7GR5s7hgtzrhjM5B1iuOD2rDKcKyUJf+Q/illN7ZdA4XdZT1QA0xs+vRD00Onw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
+  "projectFilePath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\find\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\find\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

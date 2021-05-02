@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj": {}
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
+        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
         "projectName": "FormulaEvaluator",
-        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
+        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\obj\\",
+        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj": {
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
+        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
         "projectName": "PS1 Evaluator Test",
-        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
+        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\PS1 Evaluator Test.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\obj\\",
+        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\PS1 Evaluator Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
-                "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj"
+              "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj": {
+                "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\FormulaEvaluator\\FormulaEvaluator.csproj"
               }
             }
           }

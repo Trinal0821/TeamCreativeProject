@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {}
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {}
   },
   "projects": {
-    "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
+    "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
+        "projectUniqueName": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
         "projectName": "MockserverCommands",
-        "projectPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
+        "projectPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\MockserverCommands.csproj",
         "packagesPath": "C:\\Users\\find\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\find\\source\\repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\obj\\",
+        "outputPath": "C:\\Users\\find\\Source\\Repos\\TeamCreativeProject\\Spreadsheet\\MockeserverCommands\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\find\\AppData\\Roaming\\NuGet\\NuGet.Config",
