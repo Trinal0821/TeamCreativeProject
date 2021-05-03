@@ -43,13 +43,13 @@ namespace SpreadsheetGUI
             // ssCtrl.SelectionUpdate += OnSelectionChanged;
 
 
-            // Basic Spreadsheet
-
-            // the name of the form
-            this.Text = "Untitled Spreadsheet";
+            // Client Spreadsheet
 
             // initialize form
             InitializeComponent(ssCtrl);
+
+            // the name of the form
+            this.Text = ssName;
 
             // highlights 
             this.ActiveControl = textBoxCellContents;

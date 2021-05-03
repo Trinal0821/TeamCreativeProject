@@ -178,6 +178,10 @@ namespace Mockserver
                 //Remove the name from the list
                 list.Remove(list[0]);
 
+                //Update clientdictionary
+                clientsdictionary.Remove(state);
+                clientsdictionary.Add(state, name);
+
 
                 StringBuilder stringbuilder = new StringBuilder();
 
@@ -260,7 +264,8 @@ namespace Mockserver
 
             System.Console.WriteLine("sent ID");
 
-            Console.WriteLine("Client " + state.ID + " is connected");
+            clientsdictionary.TryGetValue(state, out string clientName);
+            Console.WriteLine("Client " + state.ID + " is connected. Name: " + clientName);
 
             state.OnNetworkAction = ProcessInput;
 
@@ -300,7 +305,8 @@ namespace Mockserver
                     {
                         SelectCell selectCell = JsonConvert.DeserializeObject<SelectCell>(p);
 
-                        CellSelected selected = new CellSelected("cellSelected", selectCell.cellName, (int)state.ID, name);
+                        clientsdictionary.TryGetValue(state, out string clientName);
+                        CellSelected selected = new CellSelected("cellSelected", selectCell.cellName, (int)state.ID, clientName);
                         sb.Append(JsonConvert.SerializeObject(selected) + "\n");
                     }
                     else if (revert != null)
