@@ -78,7 +78,7 @@ public:
 		//TODO: send empty string with two newlines if new spreadsheet
 		if (newlyCreated)
 		{
-			client.deliver("\n");
+			client->deliver("\n");
 		}
 		else
 		{
@@ -97,9 +97,7 @@ public:
 	*/
 	void leave(client_ptr client)
 	{
-		it = std::find(clients_.begin(), clients_.end(), client);
-		int clientNum = it - vec.begin();
-		}
+		int clientNum = getID(client);		
 		clients_.erase(client);
 		deliver("{\"messageType\":\"disconnected\", \"user\":\"" + clientNum + "\"}")
 		//DONE: Broadcast leave to all clients
@@ -110,7 +108,6 @@ public:
 
 	/*
 	* Send a message to all clients
-	* TODO: Add JSON Compatability
  	*/
 	void deliver(const std::string& msg)
 	{
@@ -140,7 +137,7 @@ public:
 		}
 		catch
 		{
-			client.deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No undo's possible." + "\"}")
+			client->deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No undo's possible." + "\"}")
 		}
 	}
 
@@ -158,7 +155,7 @@ public:
 		}
 		catch
 		{
-			client.deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No reverts possible." + "\"}")
+			client->deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No reverts possible." + "\"}")
 		}
 	}
 
@@ -186,11 +183,15 @@ public:
 
 		actions.push_back(new ActionNode(cell, value));
 		std::string message = "{\"messageType\":\"editCell\", \"cellName\": \""+cell+"\",\"contents\":\""+update+"\"}";
-		//TODO: THIS SHOULD BE A JSON OBJECT
 		deliver(message);
 	}
 
-
+	int getID(client_ptr client)
+	{
+		it = std::find(clients_.begin(), clients_.end(), client);
+		int clientNum = it - vec.begin();
+		return clientNum;
+	}
 
 
 private:

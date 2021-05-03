@@ -189,7 +189,8 @@ public:
 				else if (requestType == "selectCell") {
 					//Open and create spreadsheet
 					std::string cell = decodedMessage.value("cellName", "none");
-					//TODO: We need to get the selector id
+					//DONE: We need to get the selector id
+					selectorID = this.workingSheet->getID(shared_from_this());
 					std::string highlightMessage = "{\"messageType\":\"cellSelected\", \"cellName\": \"" + cell + "\", \"selector\": \"" + selectorId + "\",\"selectorName\":\"" + this.name_ + "\"}";
 					this.workingSheet->deliver(highlightMessage);
 				}
