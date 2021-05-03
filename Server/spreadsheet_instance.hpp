@@ -12,6 +12,7 @@
 #include <boost/asio.hpp>
 #include "rapidxml/rapidxml.hpp"
 #include "actionNodes.cpp"
+#include <map>
 
 class spreadsheet_instance
 {
@@ -42,6 +43,7 @@ public:
 			spreadsheetFile <<"<Spreadsheet>\n";
 			spreadsheetFile <<"</Spreadsheet>\n";
 			spreadsheetFile.close();
+			bool newlyCreated = true;
 		}
 
 		//If it does, put the cells in the actions newNode
@@ -58,10 +60,10 @@ public:
 				contents = node->first_node("Contents");
 				this->actions.push_back(new ActionNode(cell,contents));
 			}
-
+			bool newlyCreated = false;
 		}
 
-		//TODO: Send the data to the client
+		//MOVED (see below): Send the data to the client
 
 	}
 
@@ -71,10 +73,20 @@ public:
 	/*
 	* Assigns the client to the instance of the server, for output purposes
 	*/
-	void join(client_ptr client)
+	int join(client_ptr client)
 	{
+		//TODO: send empty string with two newlines if new spreadsheet
+		if (newlyCreated)
+		{
+			client.deliver("\n");
+		}
+		else
+		{
+			//TODO: send spreadsheet as combination of edits
+		}
+		clientNumCounter++;
 		clients_.insert(client);
-		client.deliver();
+		return clientNumCounter;
 	}
 
 
@@ -85,7 +97,12 @@ public:
 	*/
 	void leave(client_ptr client)
 	{
+		it = std::find(clients_.begin(), clients_.end(), client);
+		int clientNum = it - vec.begin();
+		}
 		clients_.erase(client);
+		deliver("{\"messageType\":\"disconnected\", \"user\":\"" + clientNum + "\"}")
+		//DONE: Broadcast leave to all clients
 	}
 
 
@@ -93,11 +110,12 @@ public:
 
 	/*
 	* Send a message to all clients
+	* TODO: Add JSON Compatability
  	*/
 	void deliver(const std::string& msg)
 	{
-		std::for_each(participants_.begin(), participants_.end(),
-			boost::bind(&chat_participant::deliver, _1, boost::ref(msg)));
+		std::for_each(clients_.begin(), clients_.end(),
+			boost::bind(&client::deliver, _1, boost::ref(msg)));
 	}
 
 
@@ -106,17 +124,24 @@ public:
 	/*
 		Undo a cell action
 	*/
-	void undo(){
-		ActionNode removingNode = actions.pop();
-		for(node = actions.begin; node!=actions.end(); ++node){
-			if(removingNode.cell = node.cell){
-				addCell(removingNode.cell, removingNode.value);
-				undone.push_back(new ActionNode(removingNode.cell, removingNode.value));
-				return;
+	void undo(client_ptr client){
+		try {
+			//DONE: Wrap in try/catch
+			ActionNode removingNode = actions.pop();
+			for (node = actions.begin; node != actions.end(); ++node) {
+				if (removingNode.cell = node.cell) {
+					addCell(removingNode.cell, removingNode.value);
+					undone.push_back(new ActionNode(removingNode.cell, removingNode.value));
+					return;
+				}
 			}
+			addCell("", removingNode.value);
+			undone.push_back(new ActionNode(removingNode.cell, removingNode.value));
 		}
-		addCell("", removingNode.value);
-		undone.push_back(new ActionNode(removingNode.cell, removingNode.value));
+		catch
+		{
+			client.deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No undo's possible." + "\"}")
+		}
 	}
 
 
@@ -125,9 +150,16 @@ public:
 	/*
 		Redo a cell action
 	*/
-	void redo(){
-		ActionNode newNode = undone.pop();
-		addCell(newNode.cell, newNode.value);
+	void revert(client_ptr client){
+		//DONE: Wrap in try/catch
+		try {
+			ActionNode newNode = undone.pop();
+			addCell(newNode.cell, newNode.value);
+		}
+		catch
+		{
+			client.deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No reverts possible." + "\"}")
+		}
 	}
 
 
@@ -154,28 +186,21 @@ public:
 
 		actions.push_back(new ActionNode(cell, value));
 		std::string message = "{\"messageType\":\"editCell\", \"cellName\": \""+cell+"\",\"contents\":\""+update+"\"}";
-		broadcastToAll(message);
+		//TODO: THIS SHOULD BE A JSON OBJECT
+		deliver(message);
 	}
 
 
-
-
-
-	/*
-		TODO: Broadcast a message to all the users
-	*/
-	void broadcastToAll(std::string message){
-
-	}
 
 
 private:
-	std::set<client_ptr> clients_;
+	std::vector<client_ptr> clients_;
 	enum { max_recent_msgs = 100 };
 	message_queue messages_;
 	list<ActionNode> actions;
 	list<ActionNode> undone;
 	std::string filename;
+	Spreadsheet sheet;
+	clientNumCounter = -1;
+	bool newlyCreated;
 };
-
-typedef std::deque<chat_message> message_queue;

@@ -14,7 +14,7 @@ using boost::asio::ip::tcp;
 
 class connection
 	: public client,
-	  public boost::enable_shared_from_this<chat_session>
+	public boost::enable_shared_from_this<connection>
 {
 
 public:
@@ -28,8 +28,7 @@ public:
 	* Constructor; instant assign to remove chance for incomplete connection object
 	*/
 	connection(boost::asio::io_service& io_service)
-		: socket_(io_service),
-		instance_(instance)
+		: socket_(io_service)
 	{}
 
 
@@ -58,8 +57,9 @@ public:
 	void start()
 	{
 		//begin by reading from the buffer and seeing if the name has been sent
-		boost::asio::async_read_until(socket_, message_, "\n\n",
-			boost::bind(&connection::process_name, shared_from_this()));
+		boost::asio::async_read_until(socket_, input_message_, "\n\n",
+			boost::bind(&connection::process_name, shared_from_this(),
+				boost::asio::placeholders::error));
 	}
 
 
@@ -74,23 +74,27 @@ public:
 	* First step of the handshake.
 	* After reading, the name is recorded, to be used for spreadsheet details.
 	*/
-	void process_name()
+	void process_name(const boost::system::error_code& error)
 	{
-		std::string name, serverlist;
-		std::istream is(&data_);
-		//pull the name out to save
-		is >> name;
-		name_ = name;
-		//create a string list of all available spreadsheets
-		for (int i = 0; i < spreadsheets.size(); i++)
+		if (!error)
 		{
-			spreadlist += spreadsheets.at(i) + "\n";
+			std::string name, serverlist;
+			std::istream is(&data_);
+			//pull the name out to save
+			is >> name;
+			name_ = name;
+			//create a string list of all available spreadsheets
+			for (int i = 0; i < spreadsheets.size(); i++)
+			{
+				spreadlist += spreadsheets.at(i) + "\n";
+			}
+			spreadlist += "\n";
+			//send list of spreadsheets to client, move onto the next part of the handshake
+			boost::asio::async_write(socket,
+				boost::asio::buffer(spreadlist),
+				boost::bind(&connection::read_filename, shared_from_this(),
+					boost::asio::placeholders::error));
 		}
-		spreadlist += "\n";
-		//send list of spreadsheets to client, move onto the next part of the handshake
-		boost::asio::async_write(socket,
-			boost::asio::buffer(spreadlist)
-			boost::bind(&connection::read_filename, shared_from_this()));
 	}
 
 
@@ -101,11 +105,15 @@ public:
 	/*
 	* Intermediate call to get the desired spreadsheet name from the client
 	*/
-	void read_filename()
+	void read_filename(const boost::system::error_code& error)
 	{
-		//next call to read the incoming filename selection
-		boost::asio::async_read_until(socket, message_, "\n\n",
-			boost::bind(&connection::process_filename, shared_from_this()));
+		if (!error)
+		{
+			//next call to read the incoming filename selection
+			boost::asio::async_read_until(socket, input_message_, "\n\n",
+				boost::bind(&connection::process_filename, shared_from_this(),
+					boost::asio::placeholders::error));
+		}
 	}
 
 
@@ -119,19 +127,26 @@ public:
 	* Begins the loop to start reading and writing to the client
 	* upon spreadsheet update.
 	*
-	* TODO: spreadsheet part not yet implemented
+	* DONE: spreadsheet part not yet implemented
 	*/
-	void process_filename()
+	void process_filename(const boost::system::error_code& error)
 	{
-		std::string filename;
-		std::istream is(&data_);
-		is >> filename;
-		filename_ = filename;
-		boost::asio::async_read_until(socket_,
-			boost::asio::buffer(message_), "\n",
-			boost::bind(&connection::write, shared_from_this()));
-		instance_.join(shared_from_this(), );
-		//todo::CREATE WORKING SHEET
+		if (!error)
+		{
+			std::string filename;
+			std::istream is(&data_);
+			is >> filename;
+			filename_ = filename;
+
+			spreadsheet_instance instance(filename_);
+			workingSheet = instance;
+			int clientNum = workingSheet.join(shared_from_this());
+			//DONE:send clientID- have increment counter
+			//DONE::CREATE WORKING SHEET
+			boost::asio::async_write(socket, clientNum + "",
+				boost::bind(&connection::read, shared_from_this(),
+					boost::asio::placeholders::error));
+		}
 	}
 
 
@@ -144,13 +159,16 @@ public:
 	/*
 	* Waits for a new update from the client, then calls write method
 	*/
-	void read()
+	void read(const boost::system::error_code& error)
 	{
-		boost::asio::async_read_until(socket_,
-			boost::asio::buffer(message_), "\n",
-			boost::bind(&connection::write, shared_from_this()));
+		if (!error)
+		{
+			boost::asio::async_read_until(socket_,
+				boost::asio::buffer(input_message_), "\n",
+				boost::bind(&connection::write, shared_from_this(),
+					boost::asio::placeholders::error));
 			//read in the message
-			std::istream is(&buffer(message_));
+			std::istream is(&buffer(input_message_));
 			std::string msg;
 
 			//get the message and store it in msg
@@ -159,36 +177,41 @@ public:
 			//Parse Json
 			nlohmann::json decodedMessage = nlohmann::json::parse(msg);
 			std::string requestType = decodedMessage.value("requestType", "none");
-			switch(fName){
-				if(requestType=="editCell"){
+			switch (fName) {
+				if (requestType == "editCell") {
 					//Update cell in spreadsheet
 					std::string cell = decodedMessage.value("cellName", "none");
 					std::string update = decodedMessage.value("contents", "none");
 					this.workingSheet->updateCell(cell, update);
-					std::string message = "{\"messageType\":\"editCell\", \"cellName\": \""+cell+"\",\"contents\":\""+update+"\"}";
+					std::string message = "{\"messageType\":\"editCell\", \"cellName\": \"" + cell + "\",\"contents\":\"" + update + "\"}";
 				}
 
-				else if(requestType=="selectCell"){
+				else if (requestType == "selectCell") {
 					//Open and create spreadsheet
 					std::string cell = decodedMessage.value("cellName", "none");
 					//TODO: We need to get the selector id
-					std::string highlightMessage = "{\"messageType\":\"cellSelected\", \"cellName\": \""+cell+"\", \"selector\": \""+selectorId+"\",\"selectorName\":\""+this.name_+"\"}";
-					this.workingSheet->broadcastToAll(highlightMessage);
+					std::string highlightMessage = "{\"messageType\":\"cellSelected\", \"cellName\": \"" + cell + "\", \"selector\": \"" + selectorId + "\",\"selectorName\":\"" + this.name_ + "\"}";
+					this.workingSheet->deliver(highlightMessage);
 				}
 
-				else if(requestType=="undo"){
+				else if (requestType == "undo") {
 					//Undo
-					this.workingSheet->undo();
+					this.workingSheet->undo(shared_from_this());
 				}
 
-				else if(requestType=="revertCell"){
+				else if (requestType == "revertCell") {
 					//Revert
-					this.workingSheet->revert();
+					this.workingSheet->revert(shared_from_this());
 				}
-				else{
-					//Data is unreadable. Send a connectionerror message
+				else {
+					//Data is unreadable. Send a requestError message
 				}
 			}
+		}
+		else
+		{
+			workingSheet.leave(shared_from_this());
+		}
 	}
 
 
@@ -204,15 +227,25 @@ public:
 	* Deliver the message to the instance for distribution to all clients
 	* Continues loop to wait for more client input
 	*/
-	void write()
+	void write(const boost::system::error_code& error)
 	{
-		messages_.pop_front();
-		if (!messages_.empty())
+		//DONE: Remove client from list if send fails
+		//TODO: LOCK EVERYTHING BEFORE SENDING
+		if (!error)
 		{
-			boost::asio::async_write(socket_,
-				boost::asio::buffer(messages_.front().data(),
-					messages_.front().length()),
-				boost::bind(&connection::write, shared_from_this()));
+			to_write.pop_front();
+			if (!to_write.empty())
+			{
+				boost::asio::async_write(socket_,
+					boost::asio::buffer(to_write.front().data(),
+						to_write.front().length()),
+					boost::bind(&connection::write, shared_from_this(),
+						boost::asio::placeholders::error));
+			}
+		}
+		else
+		{
+			workingSheet.leave(shared_from_this());
 		}
 	}
 
@@ -230,15 +263,16 @@ public:
 	*/
 	void deliver(const std::string& msg)
 	{
-		bool write_in_progress = !messages_.empty();
-		messages_.push_back(msg);
+		bool write_in_progress = !to_write.empty();
+		to_write.push_back(msg);
 		if (!write_in_progress)
 		{
 			boost::asio::async_write(socket_,
-				boost::asio::buffer(messages_.front().data(),
-					messages_.front().length()),
-				boost::bind(&connection::handle_write, shared_from_this()));
-		}*/
+				boost::asio::buffer(to_write.front().data(),
+					to_write.front().length()),
+				boost::bind(&connection::write, shared_from_this(),
+					boost::asio::placeholders::error));
+		}
 	}
 
 
@@ -246,9 +280,10 @@ public:
 
 
 private:
-	boost::asio::streambuf message_;
+	std::string input_message_;
 	std::string name_, filename_;
-	spreadsheet_instance *workingSheet;
+	spreadsheet_instance& workingSheet;
+	std::deque<string> to_write;
 };
 
-typedef boost::shared_ptr<connection> session_ptr;
+typedef boost::shared_ptr<connection> connection_ptr;
