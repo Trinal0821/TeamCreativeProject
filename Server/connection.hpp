@@ -1,3 +1,4 @@
+/*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
@@ -9,6 +10,8 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include "Json/single_include/nlohmann/json.hpp"
+#include <signal.h>
+#include <unistd.h>
 
 using boost::asio::ip::tcp;
 
@@ -257,7 +260,6 @@ public:
 
 
 
-
 	/*
 	* IN PROGRESS
 	* Send messages out to clients
@@ -277,10 +279,24 @@ public:
 	}
 
 
+	
+	void close()
+	{
+		socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_receive);
+		boost::asio::async_write(socket_,
+			boost::asio::buffer(to_write.front().data(),
+				to_write.front().length()),
+			boost::bind(&connection::socket_close, shared_from_this(),
+				boost::asio::placeholders::error));
+	}
 
-
+	void socket_close(const boost::system::error_code& error)
+	{
+		socket_.close();
+	}
 
 private:
+	tcp::socket socket_;
 	std::string input_message_;
 	std::string name_, filename_;
 	spreadsheet_instance& workingSheet;

@@ -1,3 +1,4 @@
+/*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
 #include <algorithm>
 #include <cstdlib>
 #include <boost/bind.hpp>
@@ -37,12 +38,22 @@ class server
 	void handle_accept(connection_ptr connection)
 	{
 		connection->start();
+
 		start_accept();
+	}
+
+	void close()
+	{
+		std::set<connection_ptr>::iterator it;
+		for (it = connections_.begin(); it != connections_.end(); ++it) {
+			it.close();
+		}
 	}
 
 private:
 	boost::asio::io_service& io_service_;
 	tcp::acceptor acceptor_;
+	std::set<connection_ptr> connections_;
 };
 
 typedef boost::shared_ptr<server> server_ptr;

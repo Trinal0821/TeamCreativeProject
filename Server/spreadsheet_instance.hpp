@@ -1,3 +1,4 @@
+/*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
@@ -13,6 +14,7 @@
 #include "rapidxml/rapidxml.hpp"
 #include "actionNodes.cpp"
 #include <map>
+#include <mutex> 
 
 class spreadsheet_instance
 {
@@ -82,7 +84,9 @@ public:
 		}
 		else
 		{
+			std::lock(sheet);
 			//TODO: send spreadsheet as combination of edits
+			sheet.unlock();
 		}
 		clientNumCounter++;
 		clients_.insert(client);
@@ -111,8 +115,10 @@ public:
  	*/
 	void deliver(const std::string& msg)
 	{
+		std::lock(sheet);
 		std::for_each(clients_.begin(), clients_.end(),
 			boost::bind(&client::deliver, _1, boost::ref(msg)));
+		sheet.unlock();
 	}
 
 
@@ -137,7 +143,7 @@ public:
 		}
 		catch
 		{
-			client->deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No undo's possible." + "\"}")
+			client->deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No undo's possible." + "\"}");
 		}
 	}
 
@@ -155,7 +161,7 @@ public:
 		}
 		catch
 		{
-			client->deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No reverts possible." + "\"}")
+			client->deliver("{\"messageType\":\"requestError\",\"message\":\"" + "No reverts possible." + "\"}");
 		}
 	}
 
@@ -167,7 +173,7 @@ public:
 		Update a cell in the file
 	*/
 	void addCell(std::string cell, std::string value){
-
+		std::lock(sheet);
 		//This is the worst way to do this, but I'm running out of time
 		remove(this.filename);
 
@@ -184,6 +190,7 @@ public:
 		actions.push_back(new ActionNode(cell, value));
 		std::string message = "{\"messageType\":\"editCell\", \"cellName\": \""+cell+"\",\"contents\":\""+update+"\"}";
 		deliver(message);
+		sheet.unlock();
 	}
 
 	int getID(client_ptr client)
