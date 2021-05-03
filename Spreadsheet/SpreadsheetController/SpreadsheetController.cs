@@ -385,6 +385,18 @@ namespace Controller
         }
 
         /// <summary>
+        /// Returns a clients self-provided name.
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <returns></returns>
+        public string getClientName(int clientID)
+        {
+            if (clientList.TryGetValue(clientID, out KeyValuePair<string, string> clientInfo))
+                return clientInfo.Value;
+            return null;
+        }
+
+        /// <summary>
         /// Set the cell Contents
         /// </summary>
         /// <param name="contents"></param>

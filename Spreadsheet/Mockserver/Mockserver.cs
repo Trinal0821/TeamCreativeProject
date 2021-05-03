@@ -167,35 +167,38 @@ namespace Mockserver
             //A list that stores all of the data that was sent from the client
             List<string> list = ProcessMessage(state);
 
-            //A set used to store all of the disconnected clients
-            HashSet<long> disconnectedClients = new HashSet<long>();
-
-            //Gets the player's name from the list
-            name = list[0];
-
-            //Remove the name from the list
-            list.Remove(list[0]);
-
-
-            StringBuilder stringbuilder = new StringBuilder();
-
-            if (spreadsheetList.Count != 0)
+            if (!state.ErrorOccured)
             {
-                foreach (string s in spreadsheetList.Keys)
+                //A set used to store all of the disconnected clients
+                HashSet<long> disconnectedClients = new HashSet<long>();
+
+                //Gets the player's name from the list
+                name = list[0];
+
+                //Remove the name from the list
+                list.Remove(list[0]);
+
+
+                StringBuilder stringbuilder = new StringBuilder();
+
+                if (spreadsheetList.Count != 0)
                 {
-                    stringbuilder.Append(s + "\n");
+                    foreach (string s in spreadsheetList.Keys)
+                    {
+                        stringbuilder.Append(s + "\n");
+                    }
+                    stringbuilder.Append("\n");
                 }
-                stringbuilder.Append("\n");
-            }
-            else
-            {
-                stringbuilder.Append("\n\n");
-            }
+                else
+                {
+                    stringbuilder.Append("\n\n");
+                }
 
-            Networking.Send(state.TheSocket, stringbuilder.ToString());
+                Networking.Send(state.TheSocket, stringbuilder.ToString());
 
-            state.OnNetworkAction = SendSpreadsheet;
-            Networking.GetData(state);
+                state.OnNetworkAction = SendSpreadsheet;
+                Networking.GetData(state);
+            }
         }
 
         private string[] getCellRowAndColumn(string cellName)
@@ -364,13 +367,18 @@ namespace Mockserver
                 }
             }
             // Send updates to each client
+            List<SocketState> disconnectedClients = new List<SocketState>();
             foreach (SocketState s in clientsdictionary.Keys)
                 if (!Networking.Send(s.TheSocket, sb.ToString()))
                 {
                     System.Console.WriteLine("ERROR");
-                }
 
-            Networking.GetData(state);
+                    disconnectedClients.Add(s);
+                }
+            foreach (SocketState s in disconnectedClients)
+                clientsdictionary.Remove(s);
+            if(!state.ErrorOccured)
+                Networking.GetData(state);
         }
     }
 }

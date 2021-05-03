@@ -46,3 +46,7 @@ G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\obj\Debug\netcoreapp
 G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\obj\Debug\netcoreapp3.1\ClientTests.dll
 G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\obj\Debug\netcoreapp3.1\ClientTests.pdb
 G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\obj\Debug\netcoreapp3.1\ClientTests.genruntimeconfig.cache
+G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\bin\Debug\netcoreapp3.1\ClientCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\bin\Debug\netcoreapp3.1\MockserverCommands.dll
+G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\bin\Debug\netcoreapp3.1\ClientCommands.pdb
+G:\source\repos\TeamCreativeProject\Spreadsheet\ClientTests\bin\Debug\netcoreapp3.1\MockserverCommands.pdb

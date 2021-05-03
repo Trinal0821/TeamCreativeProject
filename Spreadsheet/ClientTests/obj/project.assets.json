@@ -107,6 +107,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ClientCommands >= 1.0.0",
       "SpreadsheetController >= 1.0.0"
     ]
   },
@@ -136,6 +137,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj": {
+              "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\ClientCommands\\ClientCommands.csproj"
+            },
             "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj": {
               "projectPath": "G:\\source\\repos\\TeamCreativeProject\\Spreadsheet\\SpreadsheetController\\SpreadsheetController.csproj"
             }

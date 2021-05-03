@@ -240,6 +240,23 @@ namespace SS
         }
 
         /// <summary>
+        /// If the cell name is in range, assigns the value
+        /// of that cell to the out parameter and returns true.
+        /// Otherwise, returns false.
+        /// </summary>
+        /// <param name="cellName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool GetValue(string cellName, out string value)
+        {
+            int col = GetCellNameCol(cellName);
+            int row = GetCellNameRow(cellName);
+            bool result = GetValue(col, row, out string val);
+            value = val;
+            return result;
+        }
+
+        /// <summary>
         /// If the zero-based column and row are in range, assigns the value
         /// of that cell to the out parameter and returns true.  Otherwise,
         /// returns false.
@@ -341,6 +358,7 @@ namespace SS
                 drawingPanel.fontColor = Color.Black;
                 drawingPanel.RowLabelColor = Color.Black;
                 drawingPanel.ColLabelColor = Color.Black;
+                drawingPanel.ClientColor = Color.Black;
                 Refresh();
             }
             else
@@ -350,6 +368,7 @@ namespace SS
                 drawingPanel.fontColor = ColorTranslator.FromHtml("#919090");
                 drawingPanel.RowLabelColor = Color.LightGray;
                 drawingPanel.ColLabelColor = Color.LightGray;
+                drawingPanel.ClientColor = Color.White;
                 Refresh();
             }
         }
@@ -412,6 +431,7 @@ namespace SS
             public Color fontColor;
             public Color RowLabelColor;
             public Color ColLabelColor;
+            public Color ClientColor;
 
             public DrawingPanel(SpreadsheetPanel ss)
             {
@@ -422,6 +442,7 @@ namespace SS
                 fontColor = Color.Black;
                 RowLabelColor = Color.Black;
                 ColLabelColor = Color.Black;
+                ClientColor = Color.Black;
             }
 
 
@@ -512,7 +533,7 @@ namespace SS
             /// <returns></returns>
             public Pen DrawClientColor(int id)
             {
-                Pen pen = new Pen(Color.Black);
+                Pen pen = new Pen(ClientColor);
 
                 // Change highlight color for other clients
                 if (id != _ssp.controller.getThisID())
@@ -576,6 +597,7 @@ namespace SS
                 // Pen pen2 = new Pen(Color.Blue);
                 Font regularFont = Font;
                 Font boldFont = new Font(regularFont, FontStyle.Bold);
+                Font nameFont = new Font(regularFont.FontFamily, regularFont.Size, FontStyle.Regular);
 
                 // Draw the column lines
                 int bottom = LABEL_ROW_HEIGHT + (ROW_COUNT - _firstRow) * DATA_ROW_HEIGHT;
@@ -625,12 +647,31 @@ namespace SS
 
                             if ((col - _firstColumn >= 0) && (row - _firstRow >= 0))
                             {
+                                Pen penColor = DrawClientColor(id);
                                 e.Graphics.DrawRectangle(
-                                    DrawClientColor(id),
+                                    penColor,
                                     new Rectangle(LABEL_COL_WIDTH + (col - _firstColumn) * DATA_COL_WIDTH + 1,
                                                   LABEL_ROW_HEIGHT + (row - _firstRow) * DATA_ROW_HEIGHT + 1,
                                                   DATA_COL_WIDTH - 2,
                                                   DATA_ROW_HEIGHT - 2));
+
+                                if (_ssp.controller.getThisID() != id)
+                                {
+                                    // Draw name above selection
+                                    Rectangle nameRect = new Rectangle(LABEL_COL_WIDTH + (col - _firstColumn) * DATA_COL_WIDTH + 1,
+                                                      LABEL_ROW_HEIGHT +(row - _firstColumn) * DATA_ROW_HEIGHT - 6,
+                                                      DATA_COL_WIDTH,
+                                                      DATA_ROW_HEIGHT - 8);
+                                    e.Graphics.FillRectangle(
+                                        new SolidBrush(penColor.Color),
+                                        nameRect);
+
+                                    e.Graphics.DrawString(
+                                        _ssp.controller.getClientName(id),
+                                        nameFont,
+                                        new SolidBrush(Color.White),
+                                        nameRect);
+                                }
                             }
                         }
                     }

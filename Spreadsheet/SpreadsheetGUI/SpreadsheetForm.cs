@@ -137,6 +137,8 @@ namespace SpreadsheetGUI
 
                             // Update the textbox
                             textBoxCellContents.Text = cellToUpdate.Value;
+                            spreadsheetPanel1.GetValue(cellToUpdate.Key, out string cellValue);
+                            textBoxCellValue.Text = cellValue;
 
                             controller.cellUpdated();
                         }

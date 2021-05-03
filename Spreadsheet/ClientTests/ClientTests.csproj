@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClientCommands\ClientCommands.csproj" />
     <ProjectReference Include="..\SpreadsheetController\SpreadsheetController.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NetworkController">
+      <HintPath>..\Libraries\NetworkController.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
