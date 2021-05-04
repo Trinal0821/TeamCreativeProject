@@ -1,3 +1,4 @@
+/*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
 #include <algorithm>
 #include <cstdlib>
 #include <boost/bind.hpp>
@@ -5,11 +6,13 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include <list>
+#include "connection.hpp"
 
 using boost::asio::ip::tcp;
 
 class server
 {
+public:
 	/*
 	* Constructor that automatically starts the connection process upon build
 	*/
@@ -28,7 +31,7 @@ class server
 	{
 		connection_ptr new_connection(new connection(io_service_));
 		acceptor_.async_accept(new_connection->socket(),
-			boost::bind(&connection::handle_accept, this, new_connection));
+			boost::bind(&server::handle_accept, this, new_connection));
 	}
 	/*
 	* Method to handle the acception of clients
@@ -37,12 +40,22 @@ class server
 	void handle_accept(connection_ptr connection)
 	{
 		connection->start();
+		connections_.insert(connection);
 		start_accept();
+	}
+
+	void close()
+	{
+		std::set<connection_ptr>::iterator it;
+		for (it = connections_.begin(); it != connections_.end(); ++it) {
+			it->close();
+		}
 	}
 
 private:
 	boost::asio::io_service& io_service_;
 	tcp::acceptor acceptor_;
+	std::set<connection_ptr> connections_;
 };
 
 typedef boost::shared_ptr<server> server_ptr;
