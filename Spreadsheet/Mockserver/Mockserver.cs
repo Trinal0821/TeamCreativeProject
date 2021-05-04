@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using SpreadsheetUtilities;
 
 namespace Mockserver
 {
@@ -20,9 +21,12 @@ namespace Mockserver
     {
         string lastedit = null;
         string lastCellName = null;
-        private static Dictionary<SocketState, string> clientsdictionary;
+        private static Dictionary<SocketState, KeyValuePair<string, string>> clientsdictionary; // KeyValuePair<string clientName, ssName(ss connection)>
         // private List<AbstractSpreadsheet> spreadsheetlist = new List<AbstractSpreadsheet>();
-        private Dictionary<string, AbstractSpreadsheet> spreadsheetList = new Dictionary<string, AbstractSpreadsheet>();
+        private Dictionary<string, Spreadsheet> spreadsheetList = new Dictionary<string, Spreadsheet>();
+        private Dictionary<Spreadsheet, Dictionary<int, KeyValuePair<string, string>>> selectionList =
+            new Dictionary<Spreadsheet, Dictionary<int, KeyValuePair<string,string>>>();
+        // ^^Note: List<keyvaluepair<int selector, KeyValuePair<string cellName, string selectorName>>>
         private SocketState clients = null;
         private string name;
         private StringBuilder sb = new StringBuilder();
@@ -45,7 +49,7 @@ namespace Mockserver
 
         public Mockserver()
         {
-            clientsdictionary = new Dictionary<SocketState, string>();
+            clientsdictionary = new Dictionary<SocketState, KeyValuePair<string, string>>();
         }
 
         private void StartServer()
@@ -143,7 +147,7 @@ namespace Mockserver
         private void NewClientConnected(SocketState state)
         {
 
-            clientsdictionary.Add(state, null);
+            clientsdictionary.Add(state, new KeyValuePair<string, string>());
 
             if (state.ErrorOccured)
                 return;
@@ -180,7 +184,7 @@ namespace Mockserver
 
                 //Update clientdictionary
                 clientsdictionary.Remove(state);
-                clientsdictionary.Add(state, name);
+                clientsdictionary.Add(state, new KeyValuePair<string, string>(name, null));
 
 
                 StringBuilder stringbuilder = new StringBuilder();
@@ -226,29 +230,57 @@ namespace Mockserver
             string spreadsheetName = list[0];
             list.Remove(list[0]);
 
-            if (spreadsheetList.TryGetValue(spreadsheetName, out AbstractSpreadsheet sheet))
+            //Update clientdictionary
+            if (clientsdictionary.TryGetValue(state, out KeyValuePair<string, string> client))
             {
-                //Open the spreadsheet
-                sheet = new Spreadsheet();
+                clientsdictionary.Remove(state);
+                clientsdictionary.Add(state, new KeyValuePair<string, string>(client.Key, spreadsheetName));
+            }
 
+            if (spreadsheetList.TryGetValue(spreadsheetName, out Spreadsheet sheet))
+            {
                 //Create a stringbuilder
                 StringBuilder sb = new StringBuilder();
 
                 //go through and update each of the values in the cell
                 IEnumerable<string> nonemptyCells = sheet.GetNamesOfAllNonemptyCells();
-                Spreadsheet spreadsheet = new Spreadsheet();
 
                 foreach (string s in nonemptyCells)
                 {
-                    sb.Append(JsonConvert.SerializeObject("messageType: " + "cellUpdated" + "\n"));
-                    sb.Append(JsonConvert.SerializeObject("cellName: " + s + "\n"));
-                    sb.Append(JsonConvert.SerializeObject("contents: " + spreadsheet.GetCellValue(s) + "\n"));
+                    // Cell Updates
+                    object val = sheet.GetCellContents(s);
+                    CellUpdate update;
+                    if (val is double)
+                        update = new CellUpdate("cellUpdated", s, ((double) val).ToString());
+                    else if (val is Formula)
+                        update = new CellUpdate("cellUpdated", s, "=" +((Formula)val).ToString());
+                    else
+                        update = new CellUpdate("cellUpdated", s, (string)val);
+
+                    sb.Append(JsonConvert.SerializeObject(update) + "\n");
                 }
+
+
+                if (selectionList.TryGetValue(sheet, out Dictionary<int, KeyValuePair<string,string>> selList))
+                {
+                    foreach(KeyValuePair<int, KeyValuePair<string, string>> sel in selList)
+                    {
+                        int selID = sel.Key;
+                        string selCell = sel.Value.Key;
+                        string selName = sel.Value.Value;
+
+                        // Selection Updates
+                        CellSelected selection = new CellSelected("cellSelected", selCell, selID, selName);
+                        sb.Append(JsonConvert.SerializeObject(selection) + "\n");
+                    }
+                }
+
+                Networking.Send(state.TheSocket, sb.ToString());
             }
             else
             {
-                AbstractSpreadsheet newSpreadsheet = new Spreadsheet();
-                spreadsheetList.Add(spreadsheetName, newSpreadsheet);
+                // Create a new spreadsheet
+                spreadsheetList.Add(spreadsheetName, new Spreadsheet());
             }
 
             StringBuilder builder = new StringBuilder();
@@ -264,8 +296,8 @@ namespace Mockserver
 
             System.Console.WriteLine("sent ID");
 
-            clientsdictionary.TryGetValue(state, out string clientName);
-            Console.WriteLine("Client " + state.ID + " is connected. Name: " + clientName);
+            clientsdictionary.TryGetValue(state, out KeyValuePair<string, string> clientName);
+            Console.WriteLine("Client " + state.ID + " is connected. Name: " + clientName.Key);
 
             state.OnNetworkAction = ProcessInput;
 
@@ -300,14 +332,39 @@ namespace Mockserver
 
                         CellUpdate update = new CellUpdate("cellUpdated", editcell.cellName, editcell.contents);
                         sb.Append(JsonConvert.SerializeObject(update) + "\n");
+
+                        clientsdictionary.TryGetValue(state, out KeyValuePair<string, string> clientInfo);
+                        spreadsheetList.TryGetValue(clientInfo.Value, out Spreadsheet ss);
+                        ss.SetContentsOfCell(editcell.cellName, editcell.contents);
                     }
                     else if (select != null)
                     {
                         SelectCell selectCell = JsonConvert.DeserializeObject<SelectCell>(p);
 
-                        clientsdictionary.TryGetValue(state, out string clientName);
-                        CellSelected selected = new CellSelected("cellSelected", selectCell.cellName, (int)state.ID, clientName);
+                        clientsdictionary.TryGetValue(state, out KeyValuePair<string,string> client);
+                        CellSelected selected = new CellSelected("cellSelected", selectCell.cellName, (int)state.ID, client.Key);
                         sb.Append(JsonConvert.SerializeObject(selected) + "\n");
+
+                        spreadsheetList.TryGetValue(client.Value, out Spreadsheet ss);
+                        if (selectionList.TryGetValue(ss, out Dictionary<int, KeyValuePair<string, string>> sel))
+                        {
+                            // Selection needs to be rewritten
+                            if(sel.ContainsKey(selected.selector))
+                            {
+                                sel.Remove(selected.selector);
+                            }
+                            // Add Selection
+                            sel.Add(selected.selector, new KeyValuePair<string, string>(selected.cellName, selected.selectorName));
+                        }
+                        // Dictionary needs to be added for the spreadsheet
+                        else
+                        {
+                            KeyValuePair<string, string> selection = new KeyValuePair<string, string>(selected.cellName, selected.selectorName);
+                            Dictionary<int, KeyValuePair<string, string>> newDict = new Dictionary<int, KeyValuePair<string, string>>();
+
+                            newDict.Add(selected.selector, selection);
+                            selectionList.Add(ss, newDict);
+                        }
                     }
                     else if (revert != null)
                     {
@@ -375,15 +432,34 @@ namespace Mockserver
             // Send updates to each client
             List<SocketState> disconnectedClients = new List<SocketState>();
             foreach (SocketState s in clientsdictionary.Keys)
-                if (!Networking.Send(s.TheSocket, sb.ToString()))
+                if (!Networking.Send(s.TheSocket, sb.ToString()) || !s.TheSocket.Connected)
                 {
-                    System.Console.WriteLine("ERROR");
+                    System.Console.WriteLine("Client " + s.ID + " disconnected.");
 
                     disconnectedClients.Add(s);
                 }
-            foreach (SocketState s in disconnectedClients)
-                clientsdictionary.Remove(s);
-            if(!state.ErrorOccured)
+            foreach (SocketState d in disconnectedClients)
+            {
+                // Remove clients selections from spreadsheet dictionary
+                clientsdictionary.TryGetValue(d, out KeyValuePair<string, string> clientInfo);
+                spreadsheetList.TryGetValue(clientInfo.Value, out Spreadsheet ss);
+                selectionList.TryGetValue(ss, out Dictionary<int, KeyValuePair<string, string>> sel);
+
+                sel.Remove((int)d.ID);
+
+                // Remove client
+                clientsdictionary.Remove(d);
+            }
+            foreach (SocketState s in clientsdictionary.Keys)
+            {
+                foreach (SocketState d in disconnectedClients)
+                {
+                    Disconnected disconnect = new Disconnected("disconnected", (int)d.ID);
+
+                    Networking.Send(s.TheSocket, JsonConvert.SerializeObject(disconnect) + "\n");
+                }
+            }
+            if (!state.ErrorOccured)
                 Networking.GetData(state);
         }
     }

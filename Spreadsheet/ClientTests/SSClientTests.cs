@@ -151,7 +151,7 @@ namespace SSTests
                     return;
                 }
 
-                if (select.selectorName != "Tester")
+                if (select.selectorName.Trim() != "Tester")
                 {
                     testResults.Add(new KeyValuePair<bool, string>(false, "CellSelected[selectorName] does not match expected.\n" +
                         "Expected: Tester\n" +
@@ -213,24 +213,23 @@ namespace SSTests
 
         private static void ServerUpdate(string instruction)
         {
-
-            switch (testIndex)
-            {
-                case 1:
-                    Test1(instruction);
-                    break;
-                case 2:
-                    Test2(instruction);
-                    break;
-                case 3:
-                    //Test3(instruction);
-                    break;
-                    // TODO
-                    // ... and so on
-            }
-
             if (instruction == "Finished")
                 PrintResults();
+            else
+                switch (testIndex)
+                {
+                    case 1:
+                        Test1(instruction);
+                        break;
+                    case 2:
+                        Test2(instruction);
+                        break;
+                    case 3:
+                        //Test3(instruction);
+                        break;
+                        // TODO
+                        // ... and so on
+                }
         }
 
         private static void PrintResults()

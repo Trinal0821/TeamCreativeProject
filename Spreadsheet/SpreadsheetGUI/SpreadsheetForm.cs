@@ -60,8 +60,6 @@ namespace SpreadsheetGUI
             // set initial selection to A1, 1
             spreadsheetPanel1.SetSelection(0, 0);
 
-
-
             // Select Spreadsheet from server
             ssCtrl.selectSpreadsheet(ssName);
         }
@@ -74,17 +72,12 @@ namespace SpreadsheetGUI
             MessageBox.Show(errorMessage);
         }
 
+        /// <summary>
+        /// Updates the clients current selection, handles cell updates, and redraws
+        /// the spreadsheet panel.
+        /// </summary>
         private void UpdateSpreadsheet()
         {
-            //try
-            //{
-            //    MethodInvoker invalidator = new MethodInvoker(() => this.Invalidate(true));
-            //    this.Invoke(invalidator);
-            //}
-            //catch (Exception)
-            //{
-
-            //}
 
             lock (controller)
             {
@@ -100,7 +93,7 @@ namespace SpreadsheetGUI
                         spreadsheetPanel1.SetSelection(col, row);
 
                         // Update name, value, and contents textBoxs
-                        textBoxCellName.Text = (ConvertCellName(col, row));
+                        textBoxCellName.Text = (this.spreadsheetPanel1.ConvertCellName(col, row));
 
                         spreadsheetPanel1.GetValue(col, row, out string val);
                         textBoxCellValue.Text = val;
@@ -111,15 +104,6 @@ namespace SpreadsheetGUI
                         textBoxCellContents.Focus();
 
                     }
-
-                    //spreadsheetPanel1.GetSelection(out int col, out int row);
-                    //controller.setCellName(spreadsheetPanel1.ConvertCellName(col, row));
-                    //spreadsheetPanel1.GetValue(col, row, out string val);
-                    //textBoxCellValue.Text = val;
-
-                    //textBoxCellValue.Text = spreadsheetPanel1.GetContents(col, row);
-
-                    //textBoxCellContents.Focus();
                 };
 
                 BeginInvoke(updateSelection);
@@ -127,32 +111,36 @@ namespace SpreadsheetGUI
                 // Update the cell info from server
                 MethodInvoker updateCell = delegate
                 {
-                    lock (controller)
+                    lock (controller.getCellsToUpdate())
                     {
-                        KeyValuePair<string, string> cellToUpdate = controller.getCellToUpdate();
-                        if (cellToUpdate.Key.Length != 0)
+                        List<KeyValuePair<string, string>> cellsToUpdate = controller.getCellsToUpdate();
+                        List<KeyValuePair<string, string>> cellsToRemove = new List<KeyValuePair<string, string>>(cellsToUpdate);
+                        foreach (KeyValuePair<string, string> cellUpdate in cellsToUpdate)
                         {
                             // Update the spreadsheet
-                            spreadsheetPanel1.SetContents(cellToUpdate.Key, cellToUpdate.Value);
+                            spreadsheetPanel1.SetContents(cellUpdate.Key, cellUpdate.Value);
 
                             // Update the textbox
-                            textBoxCellContents.Text = cellToUpdate.Value;
-                            spreadsheetPanel1.GetValue(cellToUpdate.Key, out string cellValue);
+                            textBoxCellContents.Text = cellUpdate.Value;
+                            spreadsheetPanel1.GetValue(cellUpdate.Key, out string cellValue);
                             textBoxCellValue.Text = cellValue;
-
-                            controller.cellUpdated();
                         }
+                        foreach (KeyValuePair<string, string> updatedCell in cellsToRemove)
+                            controller.cellUpdated(updatedCell);
                     }
                 };
 
                 BeginInvoke(updateCell);
+
+                // Redrawn in case clients disconnect
+                spreadsheetPanel1.Invalidate();
             }
-
-
-
-
         }
 
+        /// <summary>
+        /// Shows an error from the server/controller.
+        /// </summary>
+        /// <param name="message"></param>
         private void UpdateError(string message)
         {
             error = true;
@@ -160,8 +148,8 @@ namespace SpreadsheetGUI
         }
 
         /// <summary>
-        /// when the selection of a spreadsheet is changed, updates values of name, contents, and value of spreadsheet. 
-        /// 
+        /// When the selection of a spreadsheet is changed, sends a message to the server to
+        /// request an update.
         /// </summary>
         /// <param name="sender"></param>
         private void OnSelectionChanged(SpreadsheetPanel sender)
@@ -178,20 +166,12 @@ namespace SpreadsheetGUI
             }
         }
 
+        /// <summary>
+        /// Starts up the first selection after client recieves ID.
+        /// </summary>
         private void InitialSelection()
         {
             OnSelectionChanged(spreadsheetPanel1);
-        }
-
-        /// <summary>
-        /// Converts a cell name to coordinates 
-        /// </summary>
-        /// <param name="col"></param>
-        /// <param name="row"></param>
-        /// <returns></returns>
-        public string ConvertCellName(int col, int row)
-        {
-            return char.ConvertFromUtf32(col + 65) + "" + (row + 1);
         }
 
         /// <summary>
@@ -211,7 +191,7 @@ namespace SpreadsheetGUI
                 lock (controller)
                 {
                     controller.setCellContents(contents);
-                    controller.setCellName(ConvertCellName(col, row));
+                    controller.setCellName(this.spreadsheetPanel1.ConvertCellName(col, row));
 
                     controller.ProcessInputs();
                 }
@@ -219,127 +199,6 @@ namespace SpreadsheetGUI
                 // Update();
                 e.Handled = true;
             }
-        }
-
-        /// <summary>
-        /// Method that reads a spreadsheet file, and opens it up,
-        /// and displays it in the current working spreadsheet window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // check to see if the current spreadsheet has been edited. 
-            CheckChanged(sender, e);
-            try
-            {
-                using (OpenFileDialog fileDialog = new OpenFileDialog())
-                {
-                    fileDialog.Filter = "Spreadsheet|*.sprd|All Files| *.*";
-                    fileDialog.DefaultExt = ".sprd";
-                    fileDialog.Title = "Open a file";
-                    fileDialog.ShowDialog();
-
-                    if (fileDialog.FileName != "")
-                    {
-                        // Set Title to filename
-                        Text = fileDialog.SafeFileName;
-
-                        // Clear previous data
-                        spreadsheetPanel1.Clear();
-                        textBoxCellValue.Text = "";
-                        textBoxCellContents.Text = "";
-
-                        // Import new data and set focus on top leftmost cell.
-                        spreadsheetPanel1.import(fileDialog.FileName);
-                        spreadsheetPanel1.SetSelection(0, 0);
-                    }
-                }
-            }
-            catch (SpreadsheetReadWriteException)
-            {
-                DialogResult r = MessageBox.Show("FileReadingError: Cannot Open the file as a spreadsheet because it is incompatable.",
-              "Invalid File",
-              MessageBoxButtons.OK);
-            }
-        }
-
-        /// <summary>
-        /// Displays an message box if there have been any unsaved changed made to the spreadsheet.
-        /// Returns true if needs cancel an exit, false otherwise.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <returns></returns>
-        private bool CheckChanged(object sender, EventArgs e)
-        {/*
-            if (spreadsheetPanel1.Changed())
-            {
-                DialogResult r = MessageBox.Show("You have unsaved data that will be lost. Would you like to save?",
-              "Unsaved Document",
-              MessageBoxButtons.YesNoCancel);
-                switch (r)
-                {
-                    case DialogResult.Yes:
-                        saveToolStripMenuItem_Click(sender, e);
-                        return true;
-                    case DialogResult.No:
-                        return false;
-                    case DialogResult.Cancel:
-                        return true;
-                    default:
-                        return false;
-                }
-            }*/
-            return false;
-        }
-
-        /// <summary>
-        /// Creates a new spreadsheet in a new window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            // Tell the application context to run the form on the same
-            // thread as the other forms.
-            //TODO
-            //Program.DemoApplicationContext.getAppContext().RunForm(new SpreadsheetForm());
-        }
-
-        /// <summary>
-        /// Saves the current spreadsheet to file the user specifies
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Displays a SaveFileDialog so the user can save the spreadsheet
-            using (SaveFileDialog s = new SaveFileDialog())
-            {
-                s.Filter = "Spreadsheet|*.sprd";
-                s.Title = "Save a spreadsheet";
-                s.DefaultExt = ".sprd";
-                s.AddExtension = true;
-                s.ShowDialog();
-
-                // If the file name isn't an empty string, open it for saving.
-                if (s.FileName != "")
-                {
-                    spreadsheetPanel1.Save(s.FileName);
-                    Text = Path.GetFileName(s.FileName);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Closes the current spreadsheet window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         /// <summary>
@@ -352,29 +211,33 @@ namespace SpreadsheetGUI
         //  private void SpreadsheetForm_FormClosing(object sender, FormClosingEventArgs e)
         private void SpreadsheetForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-            if (CheckChanged(sender, e))
-                e.Cancel = true;
-
             //Close the socket and let the server know that the client has been disconnected
             Networking.SendAndClose(controller.theServer.TheSocket, "");
-
         }
 
         /// <summary>
-        /// method that shows a dialogue box with information of how to operate a spreadsheet
+        /// Displays a dialogue box with information of how to operate a spreadsheet.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonHelp_Click(object sender, EventArgs e)
         {
-            string helpText = "This is a basic spreadsheet. To edit a cell, click on it with the mouse. " +
-                "you can then edit the contents of the cell by typing in the contents and hitting enter. " +
-                "The value of the cell will be shown as well as the contents of that cell. ";
+            string helpText = "This is a client spreadsheet. To edit a cell, click on it with the mouse. " +
+                "The server you are connected to will send updates for your selections. You can then edit" +
+                "the contents of the cell by typing in the contents and hitting enter. The value of the " +
+                "cell will be shown as well as the contents of that cell.\n\nOther clients selections will" +
+                " be visable to you, as will their display names. Updates to cell contents will occur " +
+                "after the server processes them.\n\nFeatures: Undo, Redo\nTo undo your last action (i.e." +
+                "your last edit) press the undo button. To revert a selected cell, press the revert button.";
 
             MessageBox.Show(helpText, "Help");
         }
 
+        /// <summary>
+        /// Handler for pressing the night mode button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripNightModeButton_Click(object sender, EventArgs e)
         {
             NightMode();
@@ -405,6 +268,11 @@ namespace SpreadsheetGUI
             }
         }
 
+        /// <summary>
+        /// Handler for pressing the undo button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripUndoButton_Click(object sender, EventArgs e)
         {
             lock (controller)
@@ -414,6 +282,11 @@ namespace SpreadsheetGUI
             }
         }
 
+        /// <summary>
+        /// Handler for pressing the revert button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripRevertButton_Click(object sender, EventArgs e)
         {
             lock (controller)

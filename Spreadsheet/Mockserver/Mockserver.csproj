@@ -53,6 +53,10 @@
       <Project>{227E4180-8134-4BE4-846E-826C9F3D72C5}</Project>
       <Name>ClientCommands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Formula\Formula.csproj">
+      <Project>{2e5195b8-b632-4ecb-b563-2424c8b34b6f}</Project>
+      <Name>Formula</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MockeserverCommands\MockserverCommands.csproj">
       <Project>{C6ED82F7-9E27-4E82-84F3-29CF682EEDB7}</Project>
       <Name>MockserverCommands</Name>

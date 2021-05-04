@@ -14,7 +14,7 @@ namespace MockserverCommands
         [JsonProperty(PropertyName = "disconnected")]
         private string messageType;
         [JsonProperty]
-        private int user;
+        public int user;
 
         public Disconnected(string messageType, int user)
         {
