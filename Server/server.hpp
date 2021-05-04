@@ -1,4 +1,5 @@
 /*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
+/*Working version*/
 #include <algorithm>
 #include <cstdlib>
 #include <boost/bind.hpp>
@@ -16,10 +17,9 @@ public:
 	/*
 	* Constructor that automatically starts the connection process upon build
 	*/
-	server(boost::asio::io_service& io_service,
-		const tcp::endpoint& endpoint)
+	server(boost::asio::io_service& io_service)
 		: io_service_(io_service),
-		acceptor_(io_service, endpoint)
+		acceptor_(io_service)
 	{
 		start_accept();
 	}
@@ -64,5 +64,3 @@ private:
 
 typedef boost::shared_ptr<server> server_ptr;
 typedef std::list<server> server_list;
-
-//TODO: Add in server close

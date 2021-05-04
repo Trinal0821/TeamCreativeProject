@@ -1,4 +1,5 @@
 /*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
+/*Working version*/
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
@@ -21,9 +22,8 @@ class spreadsheet_instance
 {
 
 private:
-	std::list<client*> clients_;
+	std::list<client_ptr> clients_;
 	enum { max_recent_msgs = 100 };
-	message_queue messages_;
   std::list<ActionNode*> actions;
   std::list<ActionNode*> undone;
 	std::string filename;
@@ -90,7 +90,7 @@ public:
 	/*
 	* Assigns the client to the instance of the server, for output purposes
 	*/
-	int join(client* clientJoin)
+	int join(client_ptr clientJoin)
 	{
 		//partially-done: send empty string with two newlines if new spreadsheet
 		if (this->newlyCreated)
@@ -118,18 +118,16 @@ public:
 	/*
 	* Remove a client from the list of connected clients
 	*/
-	void leave(client* clientLeave)
+	void leave(client_ptr clientLeave)
 	{
 		int clientNum = getID(clientLeave);
-		std::list<client*>::iterator remove;
+		std::list<client_ptr>::iterator remove;
 		for(remove = clients_.begin();remove != clients_.end(); ++remove){
 		  if(&(*remove) == &clientLeave){
 		    clients_.erase(remove);
 		  }
 		}
-		//clients_.erase(clientLeave);
 		deliver("{\"messageType\":\"disconnected\", \"user\":\"" + std::to_string(clientNum) + "\"}");
-		//DONE: Broadcast leave to all clients
 	}
 
 
@@ -182,7 +180,6 @@ public:
 		Redo a cell action
 	*/
 	void revert(){
-		//DONE: Wrap in try/catch
 		try {
 			ActionNode* removingNode = undone.back();
 			undone.pop_back();
@@ -227,7 +224,7 @@ public:
 		sheetLock.unlock();
 	}
 
-	int getID(client* clientFind)
+	int getID(client_ptr clientFind)
 	{
 	  int counter = 0;
 		std::list<client*>::iterator clientNode;
