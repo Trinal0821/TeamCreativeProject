@@ -7,11 +7,11 @@ Actions for the spreadsheet instances
 class ActionNode{
   public:
     std::string cell;
-    std::string contents;
+    std::string value;
 
-  private:
+  public:
   ActionNode(std::string cell, std::string contents){
       this->cell = cell;
-      this->contents = contents;
+      this->value = contents;
     }
 };
