@@ -660,7 +660,7 @@ namespace SS
                                     // Draw name above selection
                                     Rectangle nameRect = new Rectangle(LABEL_COL_WIDTH + (col - _firstColumn) * DATA_COL_WIDTH + 1,
                                                       LABEL_ROW_HEIGHT +(row - _firstColumn) * DATA_ROW_HEIGHT - 6,
-                                                      DATA_COL_WIDTH,
+                                                      DATA_COL_WIDTH - 1,
                                                       DATA_ROW_HEIGHT - 8);
                                     e.Graphics.FillRectangle(
                                         new SolidBrush(penColor.Color),

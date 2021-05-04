@@ -92,6 +92,7 @@ namespace SpreadsheetGUI
                     {
                         spreadsheetPanel1.SetSelection(col, row);
 
+                        
                         // Update name, value, and contents textBoxs
                         textBoxCellName.Text = (this.spreadsheetPanel1.ConvertCellName(col, row));
 
@@ -121,9 +122,12 @@ namespace SpreadsheetGUI
                             spreadsheetPanel1.SetContents(cellUpdate.Key, cellUpdate.Value);
 
                             // Update the textbox
-                            textBoxCellContents.Text = cellUpdate.Value;
-                            spreadsheetPanel1.GetValue(cellUpdate.Key, out string cellValue);
-                            textBoxCellValue.Text = cellValue;
+                            if (cellUpdate.Key == controller.getClientSelection(controller.getThisID()))
+                            {
+                                textBoxCellContents.Text = cellUpdate.Value;
+                                spreadsheetPanel1.GetValue(cellUpdate.Key, out string cellValue);
+                                textBoxCellValue.Text = cellValue;
+                            }
                         }
                         foreach (KeyValuePair<string, string> updatedCell in cellsToRemove)
                             controller.cellUpdated(updatedCell);
