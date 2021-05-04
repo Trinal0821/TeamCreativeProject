@@ -10,10 +10,12 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include "Json/single_include/nlohmann/json.hpp"
-#include <signal.h>
-#include <unistd.h>
+#include <string>
+#include "spreadsheet_instance.hpp"
 
 using boost::asio::ip::tcp;
+
+
 
 class connection
 	: public client,
@@ -30,8 +32,7 @@ public:
 	/*
 	* Constructor; instant assign to remove chance for incomplete connection object
 	*/
-	connection(boost::asio::io_service& io_service)
-		: socket_(io_service)
+	connection(boost::asio::io_service& io_service) :socket_(io_service)
 	{}
 
 
@@ -81,16 +82,18 @@ public:
 	{
 		if (!error)
 		{
-			std::string name, serverlist;
-			std::istream is(&data_);
-			//pull the name out to save
-			is >> name;
+			std::ostringstream ss;
+			ss << input_message_;
+			std::string name = ss.str();
 			name_ = name;
-			//create a string list of all available spreadsheets
-			for (int i = 0; i < spreadsheets.size(); i++)
-			{
-				spreadlist += spreadsheets.at(i) + "\n";
+
+			//build up list of available spreadsheets
+			std::string spreadlist;
+			std::string path = "Spreadsheet";
+			for (const auto& entry : std::filesystem::directory_iterator(path)) {
+				spreadlist += entry.path() + "\n";
 			}
+
 			spreadlist += "\n";
 			//send list of spreadsheets to client, move onto the next part of the handshake
 			boost::asio::async_write(socket,
@@ -136,9 +139,9 @@ public:
 	{
 		if (!error)
 		{
-			std::string filename;
-			std::istream is(&data_);
-			is >> filename;
+			std::ostringstream ss;
+			ss << input_message_;
+			std::string filename = ss.str();
 			filename_ = filename;
 
 			spreadsheet_instance instance(filename_);
@@ -180,12 +183,12 @@ public:
 			//Parse Json
 			nlohmann::json decodedMessage = nlohmann::json::parse(msg);
 			std::string requestType = decodedMessage.value("requestType", "none");
-			switch (fName) {
+			switch (requestType) {
 				if (requestType == "editCell") {
 					//Update cell in spreadsheet
 					std::string cell = decodedMessage.value("cellName", "none");
 					std::string update = decodedMessage.value("contents", "none");
-					this.workingSheet->updateCell(cell, update);
+					workingSheet->updateCell(cell, update);
 					std::string message = "{\"messageType\":\"editCell\", \"cellName\": \"" + cell + "\",\"contents\":\"" + update + "\"}";
 				}
 
@@ -193,19 +196,19 @@ public:
 					//Open and create spreadsheet
 					std::string cell = decodedMessage.value("cellName", "none");
 					//DONE: We need to get the selector id
-					selectorID = this.workingSheet->getID(shared_from_this());
-					std::string highlightMessage = "{\"messageType\":\"cellSelected\", \"cellName\": \"" + cell + "\", \"selector\": \"" + selectorId + "\",\"selectorName\":\"" + this.name_ + "\"}";
-					this.workingSheet->deliver(highlightMessage);
+					int selectorID = workingSheet->getID(shared_from_this());
+					std::string highlightMessage = "{\"messageType\":\"cellSelected\", \"cellName\": \"" + cell + "\", \"selector\": \"" + selectorID + "\",\"selectorName\":\"" + name_ + "\"}";
+					workingSheet->deliver(highlightMessage);
 				}
 
 				else if (requestType == "undo") {
 					//Undo
-					this.workingSheet->undo(shared_from_this());
+					workingSheet->undo(shared_from_this());
 				}
 
 				else if (requestType == "revertCell") {
 					//Revert
-					this.workingSheet->revert(shared_from_this());
+					workingSheet->revert(shared_from_this());
 				}
 				else {
 					//Data is unreadable. Send a requestError message
@@ -214,7 +217,7 @@ public:
 		}
 		else
 		{
-			workingSheet.leave(shared_from_this());
+			workingSheet->leave(shared_from_this());
 		}
 	}
 
@@ -227,7 +230,6 @@ public:
 
 
 	/*
-	* IN PROGRESS
 	* Deliver the message to the instance for distribution to all clients
 	* Continues loop to wait for more client input
 	*/
@@ -249,7 +251,7 @@ public:
 		}
 		else
 		{
-			workingSheet.leave(shared_from_this());
+			workingSheet->leave(shared_from_this());
 		}
 	}
 
@@ -260,8 +262,8 @@ public:
 
 
 
+
 	/*
-	* IN PROGRESS
 	* Send messages out to clients
 	*/
 	void deliver(const std::string& msg)
@@ -278,8 +280,6 @@ public:
 		}
 	}
 
-
-	
 	void close()
 	{
 		socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_receive);
@@ -296,11 +296,11 @@ public:
 	}
 
 private:
-	tcp::socket socket_;
-	std::string input_message_;
+	boost::asio::streambuf input_message_;
 	std::string name_, filename_;
-	spreadsheet_instance& workingSheet;
-	std::deque<string> to_write;
-};
+	spreadsheet_instance* workingSheet;
+	std::deque<std::string> to_write;
+	boost::asio::ip::tcp::socket socket_;
 
+};
 typedef boost::shared_ptr<connection> connection_ptr;

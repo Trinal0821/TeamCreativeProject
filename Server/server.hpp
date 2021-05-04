@@ -6,11 +6,13 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include <list>
+#include "connection.hpp"
 
 using boost::asio::ip::tcp;
 
 class server
 {
+public:
 	/*
 	* Constructor that automatically starts the connection process upon build
 	*/
@@ -29,7 +31,7 @@ class server
 	{
 		connection_ptr new_connection(new connection(io_service_));
 		acceptor_.async_accept(new_connection->socket(),
-			boost::bind(&connection::handle_accept, this, new_connection));
+			boost::bind(&server::handle_accept, this, new_connection));
 	}
 	/*
 	* Method to handle the acception of clients
@@ -38,15 +40,19 @@ class server
 	void handle_accept(connection_ptr connection)
 	{
 		connection->start();
-
+		connections_.insert(connection);
 		start_accept();
 	}
 
+	/*
+	* Closes all sockets
+	* Used for server close
+	*/
 	void close()
 	{
 		std::set<connection_ptr>::iterator it;
 		for (it = connections_.begin(); it != connections_.end(); ++it) {
-			it.close();
+			it->close();
 		}
 	}
 
