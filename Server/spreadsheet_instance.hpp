@@ -105,6 +105,10 @@ public:
 		}
 		this->clientNumCounter++;
 		clients_.push_back(clientJoin);
+	        std::list<ActionNode*>::iterator node;
+	       	for(const auto& node : actions){
+		  clientJoin->deliver("{\"messageType\":\"editCell\", \"cellName\":\""+node->cell+"\", \"contents\":\""+node->value+"\"}");
+		}
 		return this->clientNumCounter;
 	}
 
