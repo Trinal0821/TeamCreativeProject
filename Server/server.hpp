@@ -1,5 +1,5 @@
 /*Boost library organization code based off of: https://www.boost.org/doc/libs/1_63_0/doc/html/boost_asio/example/cpp03/chat/chat_server.cpp */
-/*Working version*/
+/*Working version 1.1*/
 #include <algorithm>
 #include <cstdlib>
 #include <boost/bind.hpp>
@@ -17,9 +17,10 @@ public:
 	/*
 	* Constructor that automatically starts the connection process upon build
 	*/
-	server(boost::asio::io_service& io_service)
+	server(boost::asio::io_service& io_service,
+		const tcp::endpoint& endpoint)
 		: io_service_(io_service),
-		acceptor_(io_service)
+		acceptor_(io_service, endpoint)
 	{
 		start_accept();
 	}
