@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <deque>
 #include <iostream>
-#include <ofstream>
 #include <fstream>
 #include <list>
 #include <set>
@@ -12,7 +11,7 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 #include "rapidxml/rapidxml.hpp"
-#include "actionNodes.cpp"
+#include "actionNode.cpp"
 #include <map>
 #include <mutex> 
 
@@ -20,7 +19,7 @@ class spreadsheet_instance
 {
 public:
 
-	/**
+	/*
 		Creates an instance of the spreadsheet
 	*/
 	spreadsheet_instance(std::string filename){
@@ -64,8 +63,6 @@ public:
 			}
 			bool newlyCreated = false;
 		}
-
-		//MOVED (see below): Send the data to the client
 
 	}
 
