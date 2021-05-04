@@ -77,7 +77,7 @@ public:
 	*/
 	int join(client_ptr client)
 	{
-		//TODO: send empty string with two newlines if new spreadsheet
+		//partially-done: send empty string with two newlines if new spreadsheet
 		if (newlyCreated)
 		{
 			client->deliver("\n");
@@ -103,7 +103,7 @@ public:
 	{
 		int clientNum = getID(client);		
 		clients_.erase(client);
-		deliver("{\"messageType\":\"disconnected\", \"user\":\"" + clientNum + "\"}")
+		deliver("{\"messageType\":\"disconnected\", \"user\":\"" + clientNum + "\"}");
 		//DONE: Broadcast leave to all clients
 	}
 
